@@ -6,7 +6,7 @@ public class FishTankVolume
 		int height = Integer.parseInt(args[2]);	
 		int volume = width * depth * height;
 
-		System.out.println(" The volume of a tank with dimentions " 
+		System.out.println(" The volume of a tank with dimensions " 
 							+ "(" + width + ", " + depth + ", " + height + ") "
 							+ "is " + volume);	
 	}
