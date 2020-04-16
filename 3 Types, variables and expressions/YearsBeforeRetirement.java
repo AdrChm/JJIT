@@ -6,7 +6,7 @@ public class YearsBeforeRetirement
 		int retirementAge;
 		int yearsLeft;
 
-		myAgeNow = 27;
+		myAgeNow = Integer.parseInt(args[0]);
 		retirementAge = 68;
 		yearsLeft = retirementAge - myAgeNow;
 
