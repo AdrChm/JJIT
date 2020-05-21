@@ -5,10 +5,10 @@ public class OldestSpouse {
         int husbandAge = Integer.parseInt(args[0]);
         int wifeAge = Integer.parseInt(args[1]);
 
-        if(husbandAge > wifeAge)
             System.out.println("The husband is older than the wife");
+        else if(husbandAge == wifeAge)
+            System.out.println("The husband is the same age as the wife");        	
         else
-            System.out.println("The husband is not older than the wife");
-
+            System.out.println("The husband is younger than the wife");
     }
 }
