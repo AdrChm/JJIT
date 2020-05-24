@@ -12,7 +12,7 @@ public class CompoundInterestKnownYears
 
 		System.out.println(initialInvestment + " invested at interest rate "
 							+ interestRate + "%");
-		System.out.println("After " + noOfYearsInvestedSoFar + " years,"
+		System.out.println("After " + noOfYearsInvested + " years,"
 							+ " the balance will be " + currentBalance);
 	}
 }
