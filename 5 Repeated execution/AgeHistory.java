@@ -30,8 +30,10 @@ public class AgeHistory
 			System.out.println("You were " + ageInSomeYear + " in " + someYear);
 
 			// Add one to the year and to the age.
-			someYear = someYear + 1;
-			ageInSomeYear = ageInSomeYear + 1;
+			//someYear = someYear + 1;
+			someYear++;
+			//ageInSomeYear = ageInSomeYear + 1;
+			ageInSomeYear++;
 		} // while
 
 		// At this point someYear will equal presentYear.

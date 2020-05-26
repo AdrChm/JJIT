@@ -11,7 +11,8 @@ public class SinTable
 							+ " in steps of " + increment);	
 		System.out.println("--------------------------------");
 
-		for ( int degree = startDegree; degree <= endDegree; degree = degree + increment)
+		//for ( int degree = startDegree; degree <= endDegree; degree = degree + increment)
+		for ( int degree = startDegree; degree <= endDegree; degree += increment)
 			System.out.println( "| sin(" + degree + ") = " + Math.sin(Math.toRadians(degree)));
 
 		System.out.println("--------------------------------");				

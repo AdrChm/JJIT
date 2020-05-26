@@ -12,9 +12,11 @@ public class Power
 				result = 0;
 
 
-		for (int i = 1; i <= power; i = i + 1)
-			result = base * result;
-
+		//for (int i = 1; i <= power; i = i + 1)
+		for (int i = 1; i <= power; i++)
+			//result = base * result;
+			result *= base;
+		
 		System.out.println(base + " to power " + power + " equars " + result);
 
 	}

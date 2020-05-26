@@ -13,12 +13,14 @@ public class MinimumBitWidth
 		while(speedUpVariable < numberOfValues2/2)
 		//while(speedUpVariable < numberOfValues)
 		{
-			speedUpVariable = speedUpVariable * 2;
-			noOfBits = noOfBits + 1;
+			//speedUpVariable = speedUpVariable * 2;
+			speedUpVariable *=2;
+			//noOfBits = noOfBits + 1;
+			noOfBits++;
 
 		}
-		noOfBits = noOfBits + 1;
-
+		//noOfBits = noOfBits + 1;
+		noOfBits++;
 
 		System.out.println("You need " + noOfBits + " bits to represent "
 							+ numberOfValues + " values");
@@ -32,8 +34,10 @@ public class MinimumBitWidth
 		while(speedUpVariable2 < numberOfValues3)
 		//while(speedUpVariable < numberOfValues)
 		{
-			speedUpVariable2 = speedUpVariable2 * 2;
-			noOfBits2 = noOfBits2 + 1;
+			//speedUpVariable2 = speedUpVariable2 * 2;
+			speedUpVariable2 *= 2;
+			//noOfBits2 = noOfBits2 + 1;
+			noOfBits2++;
 
 		}
 

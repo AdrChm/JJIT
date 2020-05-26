@@ -7,8 +7,10 @@ public class CompoundInterestKnownYears
 		int noOfYearsInvested = Integer.parseInt(args[2]); 
 		double currentBalance = initialInvestment;
 
-		for (int year = 1; year <= noOfYearsInvested; year = year + 1)		
-			currentBalance = currentBalance + currentBalance * interestRate/100;
+		//for (int year = 1; year <= noOfYearsInvested; year = year + 1)
+		for (int year = 1; year <= noOfYearsInvested; year++)		
+			//currentBalance = currentBalance + currentBalance * interestRate/100;
+			currentBalance += currentBalance * interestRate/100;
 
 		System.out.println(initialInvestment + " invested at interest rate "
 							+ interestRate + "%");

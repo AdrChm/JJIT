@@ -4,8 +4,10 @@ public class MeanAverage
 	{
 		int sumSoFar = Integer.parseInt(args[0]);
 
-		for ( int argsIndex = 1; argsIndex < args.length; argsIndex = argsIndex + 1)
-			sumSoFar = sumSoFar + Integer.parseInt(args[argsIndex]);
+		//for ( int argsIndex = 1; argsIndex < args.length; argsIndex = argsIndex + 1)
+		for ( int argsIndex = 1; argsIndex < args.length; argsIndex++)
+			//sumSoFar = sumSoFar + Integer.parseInt(args[argsIndex]);
+			sumSoFar += Integer.parseInt(args[argsIndex]);
 
 		System.out.println("The mean average is " + sumSoFar / (double) args.length);
 	}

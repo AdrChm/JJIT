@@ -6,7 +6,8 @@ public class LargestSquare
 		int largestSquare = input;
 
 		while(Math.pow(largestSquare,2) > input)
-			largestSquare = largestSquare - 1;
+			//largestSquare = largestSquare - 1;
+			largestSquare--;
 
 		System.out.println("Largest square in " + input + " is " + largestSquare);
 

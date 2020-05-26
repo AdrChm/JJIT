@@ -6,7 +6,8 @@ public class MinimumTankSize
 		double sideLength = 0.5;
 
 		while(sideLength * sideLength * sideLength < requiredVolume)
-			sideLength = sideLength + 0.5;
+			//sideLength = sideLength + 0.5;
+			sideLength += 0.5;
 
 		System.out.println("You need a tank of " + sideLength
 							+ " meters per side to hold the volume "

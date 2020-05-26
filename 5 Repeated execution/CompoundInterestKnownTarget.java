@@ -10,8 +10,10 @@ public class CompoundInterestKnownTarget
 
 		while( currentBalance < targetInvest)
 		{
-			noOfYearsInvestedSoFar = noOfYearsInvestedSoFar + 1;
-			currentBalance = currentBalance + currentBalance * interestRate/100;
+			//noOfYearsInvestedSoFar = noOfYearsInvestedSoFar + 1;
+			noOfYearsInvestedSoFar++;
+			//currentBalance = currentBalance + currentBalance * interestRate/100;
+			currentBalance += currentBalance * interestRate/100;
 		}
 		System.out.println(initialInvestment + " invested at interest rate "
 							+ interestRate + "%");

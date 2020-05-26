@@ -7,7 +7,8 @@ public class TimesTable
 		System.out.println("--------------------------------");
 		System.out.println("| Times table for " + multiplier);
 		System.out.println("--------------------------------");
-		for (int thisNumber = 1; thisNumber <=10; thisNumber = thisNumber + 1)
+		//for (int thisNumber = 1; thisNumber <=10; thisNumber = thisNumber + 1)
+		for (int thisNumber = 1; thisNumber <=10; thisNumber++)
 			System.out.println("| " + thisNumber + " x " + multiplier
 								+ " = " + thisNumber * multiplier);
 		System.out.println("--------------------------------");		

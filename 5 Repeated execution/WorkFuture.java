@@ -25,8 +25,10 @@ public class WorkFuture
 		while ( currentAge < 67)
 		{
 
-			currentAge = currentAge + 1;
-			presentYear = presentYear + 1;
+			//currentAge = currentAge + 1;
+			currentAge++;
+			//presentYear = presentYear + 1;
+			presentYear++;
 
 			System.out.println("In " + presentYear + " you will have " + (68 
 								- currentAge) + " years left to work"); 
@@ -35,7 +37,8 @@ public class WorkFuture
 		} // while
 
 		// presentYear is increased to change final year message comparing to previous year
-		presentYear = presentYear + 1;
+		//presentYear = presentYear + 1;
+		presentYear++;
 
 		// Final message (for age of 68)
 		System.out.println("You will retire in " + presentYear);

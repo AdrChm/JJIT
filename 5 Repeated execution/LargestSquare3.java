@@ -15,8 +15,8 @@ public class LargestSquare3
 		int value = (int) largestSquare2;
 
 		while(Math.pow(value,2) > input)
-			value = value - 1;
-
+			//value = value - 1;
+			value--;
 		System.out.println("(method1)Largest square in " + input + " is " + largestSquare);
 		System.out.println("(method2)Largest square in " + input + " is " + value);
 
