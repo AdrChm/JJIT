@@ -39,7 +39,7 @@ public class PiEstimation
 		System.out.println("The estimated value of Pi to tolerance " + tolerance 
 							+ " is " + latestEstimate);
 		System.out.println("The estimate used " + termCountSoFar + " terms");
-		System.out.println(" The library value of Pi is " + Math.PI);
+		System.out.println("The library value of Pi is " + Math.PI);
 
 
 	} // main
