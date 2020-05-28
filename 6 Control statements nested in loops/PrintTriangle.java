@@ -12,7 +12,10 @@ public class PrintTriangle
 		for (int row = 1; row <= height; row++)
 		{
 			// Print out row number of cells, on the same line.
-			for (int column = 1; column <= row; column++)
+			//for (int column = 1; column <= row; column++)
+
+			// coffee 6.5.2
+			for (int column = 1; column <= height - row + 1; column++)
 			System.out.print("[_]");
 			// End of line.
 			System.out.println();
