@@ -1,7 +1,7 @@
 // Prints our remaining years of two people till retirement
 // Set retirement age is 68
 // Arguments order: present year, first person birthyear, second person birthyear 
-// Program assumes work from birthday 
+// Program assumes work since birthday 
 public class WorkFuture2 
 {
 	public static void main(String [] args)
@@ -27,7 +27,7 @@ public class WorkFuture2
 		{
 			System.out.println("Pn 1 has " + workYearsLeft + " years left to work");
 
-			// calculating remaining years,  
+			// Calculating remaining years.  
 			while (workYearsLeft > 1)
 			{
 				workYearsLeft--;
@@ -35,7 +35,7 @@ public class WorkFuture2
 				System.out.println("In " + currentYear + " Pn 1 will have " + workYearsLeft + " years left to work");				
 			}
 
-			// one year refore retirement
+			// One year before retirement.
 			currentYear++;
 			System.out.println("Pn 1 will retire in " + currentYear);
 
@@ -58,7 +58,7 @@ public class WorkFuture2
 		{
 			System.out.println("Pn 2 has " + workYearsLeft + " years left to work");
 			
-			// calculating remaining years,  
+			// Calculating remaining years.
 			while (workYearsLeft > 1)
 			{
 				workYearsLeft--;
@@ -66,7 +66,7 @@ public class WorkFuture2
 				System.out.println("In " + currentYear + " Pn 2 will have " + workYearsLeft + " years left to work");				
 			}
 
-			// one year refore retirement
+			// One year before retirement.
 			currentYear++;
 			System.out.println("Pn 2 will retire in " + currentYear);
 
