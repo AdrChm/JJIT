@@ -11,6 +11,23 @@ public class Date
 		month = requiredMonth;
 		year = requiredYear;
 
-	} // Date constructor
+	}  // Date constructor
+
+	// Compare this date with a given other one, for equality.
+	public boolean equals(Date other)
+	{
+		return day == other.day
+		  	&& month == other.month
+		  	&& year == other.year;
+	} // equals
+
+	// Compare this date with a given other one, for less than.
+	public boolean lessThan(Date other)
+	{
+		return year < other.year
+				|| year == other.year 
+					&& (month < other.month 
+						|| month == other.month && day < other.day);
+	} // lessThan
 
 } // Date class 

@@ -17,38 +17,30 @@ public class AgeHistory2
 							 birthDate.day + "/" + birthDate.month + "/" + birthDate.year);
 
 		// Now we will go through the years since bnirtyh but before today.
-		int someYear = birthDate.year + 1;
-		int ageInSomeYear = 1;
-		while(someYear < presentDate.year 
-				|| someYear == presentDate.year 
-					&& birthDate.month < presentDate.month 
-				|| someYear == presentDate.year 
-					&& birthDate.month == presentDate.month 
-					&& birthDate.day < presentDate.day)
+		Date someBirthday = new Date(birthDate.day, birthDate.month, birthDate.year + 1);
+		int ageOnSomeBirthday = 1;
+		while(someBirthday.lessThan(presentDate))
 		{			
-			System.out.println("Pn " + personNumber + " was " + ageInSomeYear
-							 + " on " + birthDate.day + "/" + birthDate.month
-							 + "/" + someYear);
-			someYear++;
-			ageInSomeYear++;
+			System.out.println("Pn " + personNumber + " was " + ageOnSomeBirthday
+							 + " on " + someBirthday.day + "/" + someBirthday.month
+							 + "/" + someBirthday.year);
+			someBirthday = new Date(someBirthday.day, someBirthday.month, someBirthday.year + 1);
+			ageOnSomeBirthday++;
 		} // while
 
 	// At this point birthDate.day/birthDate.month/someYear
-	// will be the next birthday, aged ageInSomeYear.
+	// will be the next birthday, aged ageOnSomeBirthday.
 	// This will be greater than or equal to the present date.
 	// If the person has not yet had their birthday in this year 
 	// someYear equals presentDate.year,
 	// otherwise someYear equals presentYear + 1.
-
-	if(birthDate.month == presentDate.month 
-		&& birthDate.day == presentDate.day)
-		// then someYear must be equal to preentYear.
+	if(someBirthday.equals(presentDate))
 		System.out.println("Pn " + personNumber + " is "
-							 + ageInSomeYear + " today!");
+							 + ageOnSomeBirthday + " today!");
 	else
-		System.out.println("Pn " + personNumber + " is "
-							 + ageInSomeYear + " on " + birthDate.day + "/"
-							 + birthDate.month + "/" + someYear);
+		System.out.println("Pn " + personNumber + " will be "
+							 + ageOnSomeBirthday + " on " + someBirthday.day + "/"
+							 + someBirthday.month + "/" + someBirthday.year);
 	} // printAgeHistory
 
 
