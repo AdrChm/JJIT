@@ -3,15 +3,18 @@
 // and displaying final result
 public class AddQuadPoly
 {
-	private static QuadPoly firstPoly; 
-	private static QuadPoly secondPoly;
-	private static QuadPoly resultPoly; 
+
 
 	// extension method made for adding uknown amount of quadratic polynomials
 	// it also handles cases of lacking values by giving them 0 
 	// method parameter is args length
 	public static void main (String [] args)
 	{
+
+		// 1 class variables should not be created unless it is necessary
+		QuadPoly firstPoly; 
+		QuadPoly secondPoly;
+		QuadPoly resultPoly; 
 
 		// first Poly
 		switch(args.length)
@@ -33,18 +36,56 @@ public class AddQuadPoly
 				firstPoly = new QuadPoly(Double.parseDouble(args[0]),
 									 	Double.parseDouble(args[1]),
 									 	Double.parseDouble(args[2]));
-		}
+		} // switch 
 
 		System.out.print("Polynomial:		");
 		firstPoly.printQuadPoly();
 
-		// second and other polies
-		int checkedArguments = 3;  
+		if(args.length == 3)
+		{
+			secondPoly = new QuadPoly(0,0,0);
+			System.out.print("\nadded to: 		");
+			secondPoly.printQuadPoly();	
+		}
+		// second and other polynomials 
 
-		int secondPolyAX2 = 0;
-		int secondPolyBX = 0;
-		int secondPolyC = 0;
+		double secondPolyAX2 = 0;
+		double secondPolyBX = 0;
+		double secondPolyC = 0;
 
+		for(int checkedArguments = 3; args.length > checkedArguments; checkedArguments+=3)
+		{
+
+			if(args.length-checkedArguments == 1)
+			{
+				secondPoly = new QuadPoly(Double.parseDouble(args[checkedArguments]),0,0);
+				secondPolyAX2 += Double.parseDouble(args[checkedArguments]);			
+			} 
+			else if (args.length-checkedArguments == 2)
+			{
+				secondPoly = new QuadPoly(Double.parseDouble(args[checkedArguments]),
+									  	Double.parseDouble(args[checkedArguments+1]),0);
+				secondPolyAX2 += Double.parseDouble(args[checkedArguments]);
+				secondPolyBX += Double.parseDouble(args[checkedArguments+1]);
+			}
+			// args.length - checkedArguments > 3 
+			else
+			{
+				secondPoly = new QuadPoly(Double.parseDouble(args[checkedArguments]),
+										  Double.parseDouble(args[checkedArguments+1]),
+										  Double.parseDouble(args[checkedArguments+2]));
+				secondPolyAX2 += Double.parseDouble(args[checkedArguments]);
+				secondPolyBX += Double.parseDouble(args[checkedArguments+1]);
+				secondPolyC += Double.parseDouble(args[checkedArguments+2]); 
+			} 
+
+			System.out.print("\nadded to: 		");
+			secondPoly.printQuadPoly();
+
+		} // for loop
+
+
+		/*
 		while(args.length >= checkedArguments)
 		{
 
@@ -84,36 +125,16 @@ public class AddQuadPoly
 			checkedArguments += 3;
 
 		} // while
+		*/
 
-		resultPoly = new QuadPoly(secondPolyAX2, secondPolyBX, secondPolyC);
+		resultPoly = new QuadPoly(secondPolyAX2 + firstPoly.a,
+								  secondPolyBX + firstPoly.b,
+								  secondPolyC + firstPoly.c);
 
 		System.out.print("\nresults in:	 	");
 		resultPoly.printQuadPoly();
 		System.out.println();		
 
-
-		/* This piece of code is an old version of the program
-		firstPoly = new QuadPoly(Double.parseDouble(args[0]),
-								 Double.parseDouble(args[1]),
-								 Double.parseDouble(args[2]));
-
-		secondPoly = new QuadPoly(Double.parseDouble(args[3]),
-								  Double.parseDouble(args[4]),
-								  Double.parseDouble(args[5]));	
-
-		resultPoly = new QuadPoly(firstPoly.a + secondPoly.a, 
-								  firstPoly.b + secondPoly.b, 
-								  firstPoly.c + secondPoly.c);
-
-		System.out.print("Polynomial:		");
-		firstPoly.printQuadPoly();
-		System.out.print("\nadded to: 		");
-		secondPoly.printQuadPoly();
-		System.out.print("\nresults in:	 	");
-		resultPoly.printQuadPoly();
-		System.out.println();
-
-		*/
 
 	} // main 
 
