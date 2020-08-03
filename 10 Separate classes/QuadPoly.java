@@ -15,10 +15,11 @@ public class QuadPoly
 
 	} // QuadPoly constructor
 
-	// print polynomial format
-	public void printQuadPoly()
+
+	// Returns the a + "x^2 + " + b + "x + " + c as represntation of polynomial
+	public String toString()
 	{
-		System.out.print(a + "x^2 + " + b + "x + " + c);
+		return a + "x^2 + " + b + "x + " + c;
 	}
 
 	// instance method, which verifies if polynomials are equal
@@ -34,5 +35,7 @@ public class QuadPoly
 		return a < toCompare.a || a == toCompare.a
 				 && ( b < toCompare.b || b == toCompare.b && c < toCompare.c);
 	}
+
+
 
 } // QuadPoly class 
