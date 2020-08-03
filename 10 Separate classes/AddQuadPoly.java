@@ -32,21 +32,19 @@ public class AddQuadPoly
 				firstPoly = new QuadPoly(Double.parseDouble(args[0]),
 									 	Double.parseDouble(args[1]),0);
 			break;
-			
+
 			default:
 				firstPoly = new QuadPoly(Double.parseDouble(args[0]),
 									 	Double.parseDouble(args[1]),
 									 	Double.parseDouble(args[2]));
 		} // switch 
 
-		System.out.print("Polynomial:		");
-		firstPoly.printQuadPoly();
+		System.out.println("Polynomial:		" + firstPoly.toString());
 
 		if(args.length == 3)
 		{
 			secondPoly = new QuadPoly(0,0,0);
-			System.out.print("\nadded to: 		");
-			secondPoly.printQuadPoly();	
+			System.out.println("added to: 		" + secondPoly.toString());
 		}
 		// second and other polynomials 
 
@@ -80,8 +78,7 @@ public class AddQuadPoly
 				secondPolyC += Double.parseDouble(args[checkedArguments+2]); 
 			} 
 
-			System.out.print("\nadded to: 		");
-			secondPoly.printQuadPoly();
+			System.out.println("added to: 		" + secondPoly.toString());
 
 		} // for loop
 
@@ -132,9 +129,7 @@ public class AddQuadPoly
 								  secondPolyBX + firstPoly.b,
 								  secondPolyC + firstPoly.c);
 
-		System.out.print("\nresults in:	 	");
-		resultPoly.printQuadPoly();
-		System.out.println();		
+		System.out.println("results in:	 	" + resultPoly.toString());	
 
 
 	} // main 
