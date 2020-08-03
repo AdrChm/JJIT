@@ -16,9 +16,23 @@ public class QuadPoly
 	} // QuadPoly constructor
 
 	// print polynomial format
-	public void printQuadPoly(){
+	public void printQuadPoly()
+	{
 		System.out.print(a + "x^2 + " + b + "x + " + c);
 	}
 
+	// instance method, which verifies if polynomials are equal
+	public boolean equals(QuadPoly toCompare)
+	{
+		return a == toCompare.a && b == toCompare.b && c == toCompare.c;
+	}
+
+	// instance method, which returns if instance polynomial 
+	// is smaller than one in the parameter
+	public boolean lessThan(QuadPoly toCompare)
+	{
+		return a < toCompare.a || a == toCompare.a
+				 && ( b < toCompare.b || b == toCompare.b && c < toCompare.c);
+	}
 
 } // QuadPoly class 
