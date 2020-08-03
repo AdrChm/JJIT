@@ -32,6 +32,7 @@ public class AddQuadPoly
 				firstPoly = new QuadPoly(Double.parseDouble(args[0]),
 									 	Double.parseDouble(args[1]),0);
 			break;
+			
 			default:
 				firstPoly = new QuadPoly(Double.parseDouble(args[0]),
 									 	Double.parseDouble(args[1]),
