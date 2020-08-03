@@ -30,4 +30,10 @@ public class Date
 						|| month == other.month && day < other.day);
 	} // lessThan
 
-} // Date class 
+	// Returns the day/month/year representation of the date
+	public String toString()
+	{
+		return day + "/" + month + "/" + year;
+	} // toString
+
+} // Date class  
