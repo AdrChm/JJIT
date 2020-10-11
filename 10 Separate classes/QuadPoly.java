@@ -46,6 +46,31 @@ public class QuadPoly
 		return new QuadPoly(newA, newB, newC);
 	} // addPoly
 
+		public QuadPoly substractPoly(QuadPoly substracted)
+	{
+		double newA = a - substracted.a;
+		double newB = b - substracted.b;
+		double newC = c - substracted.c;
 
+		return new QuadPoly(newA, newB, newC);
+	} // substractPoly
+
+	public QuadPoly divideBy(double divisor)
+	{
+		double newA = a / divisor;
+		double newB = b / divisor;
+		double newC = c / divisor;
+
+		return new QuadPoly(newA, newB, newC);
+	} // divideBy
+
+	public QuadPoly multiplyBy(double multiplier)
+	{
+		double newA = a * multiplier;
+		double newB = b * multiplier;
+		double newC = c * multiplier;
+
+		return new QuadPoly(newA, newB, newC);
+	} // multiplyBy
 
 } // QuadPoly class 
