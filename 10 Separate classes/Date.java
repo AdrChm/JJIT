@@ -2,7 +2,7 @@
 public class Date
 {
 	// The day, month and year of the date. 
-	public int day, month, year;
+	private int day, month, year;
 
 	// Construct a date -- given the required day, month and year.
 	public Date(int requiredDay, int requiredMonth, int requiredYear)
@@ -35,5 +35,12 @@ public class Date
 	{
 		return day + "/" + month + "/" + year;
 	} // toString
+
+	// return Date with year increased by 1
+	public Date addYear()
+	{
+		return new Date(day, month, ++year);
+
+	} // addYear
 
 } // Date class  

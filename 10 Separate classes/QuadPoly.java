@@ -4,7 +4,7 @@ public class QuadPoly
 {
 	// varialbes accordingly to the formula
 	// ax^2 + bx + c 
-	public double a, b, c;
+	private double a, b, c;
 
 	// polynomials constructor
 	public QuadPoly(double firstValue, double secondValue, double thirdValue)
@@ -35,6 +35,16 @@ public class QuadPoly
 		return a < toCompare.a || a == toCompare.a
 				 && ( b < toCompare.b || b == toCompare.b && c < toCompare.c);
 	}
+
+	// 10.5.4 method to improve AddQuadPoly class  
+	public QuadPoly addPoly(QuadPoly added)
+	{
+		double newA = a + added.a;
+		double newB = b + added.b;
+		double newC = c + added.c;
+
+		return new QuadPoly(newA, newB, newC);
+	} // addPoly
 
 
 

@@ -68,7 +68,7 @@ public class CompareQuadPoly
 
 			// second step - compare
 
-			System.out.print("The polynomial: 		" + firstPoly.toString());
+			System.out.print("The polynomial: 		" + firstPoly);
 
 			if(firstPoly.equals(paramPoly))		
 				System.out.print("\nis the same as:			");
@@ -84,7 +84,7 @@ public class CompareQuadPoly
 				// the smallest
 				minPoly = paramPoly;
 			}
-			System.out.println(paramPoly.toString());
+			System.out.println(paramPoly);
 
 			//third step change polynomial assignment
 			firstPoly = paramPoly;
@@ -93,9 +93,9 @@ public class CompareQuadPoly
 		} 
 		while(args.length > checkedArguments); // do
 
-		System.out.println("The biggest polynomial is:	" + maxPoly.toString());
+		System.out.println("The biggest polynomial is:	" + maxPoly);
 
-		System.out.println("The smallest polynomial is:  	" + minPoly.toString());
+		System.out.println("The smallest polynomial is:  	" + minPoly);
 
 
 	} // main 
