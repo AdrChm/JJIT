@@ -11,7 +11,7 @@ public class QuadPolyCalculator
 
 	public static void main(String [] args)
 	{
-
+		
 		//starting point 
 		QuadPoly accumulator = new QuadPoly(0,0,0);
 		QuadPoly theSmallestPoly = new QuadPoly(0,0,0);		

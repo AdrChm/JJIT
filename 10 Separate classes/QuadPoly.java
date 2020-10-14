@@ -7,11 +7,11 @@ public class QuadPoly
 	private double a, b, c;
 
 	// polynomials constructor
-	public QuadPoly(double firstValue, double secondValue, double thirdValue)
+	public QuadPoly(double a, double b, double c)
 	{
-		a = firstValue;
-		b = secondValue;
-		c = thirdValue;
+		this.a = a;
+		this.b = b;
+		this.c = c;
 
 	} // QuadPoly constructor
 
