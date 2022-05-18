@@ -6,7 +6,7 @@ public class MinimumTankSize
 		double volume = Double.parseDouble(args[0]);
 		
 		while(sideLenght * sideLenght * sideLenght < volume)
-			sideLenght = sideLenght + 0.5;
+			sideLenght = sideLenght + 0.1;
 		
 		System.out.println("You need a square of " + sideLenght
 				  + " meters per side to hold the volume " 
