@@ -7,7 +7,9 @@ public class OldestSpouse
 
 		if(husbandsAge > wifesAge)
 			System.out.println("The husband is older than the wife");
+		else if (husbandsAge == wifesAge)
+			System.out.println("The husband is the same age as the wife");
 		else
-			System.out.println("The husband is not older than the wife");
+			System.out.println("The husband is younger than the wife");
 	}
 }
