@@ -2,13 +2,14 @@ public class MinimumTankSize
 {
 	public static void main(String [] args)
 	{
-		double requiredVolume = Double.parseDouble(args[0]);
-		int sideLenght = 1;
-
-		while(sideLenght * sideLenght * sideLenght < requiredVolume)
-			sideLenght = sideLenght + 1;
-		System.out.println("You need a tank of " + sideLenght
-				  + " meters per side to hold the volume "	
-				  + requiredVolume + " cubic meters");
+		double sideLenght = 0;
+		double volume = Double.parseDouble(args[0]);
+		
+		while(sideLenght * sideLenght * sideLenght < volume)
+			sideLenght = sideLenght + 0.5;
+		
+		System.out.println("You need a square of " + sideLenght
+				  + " meters per side to hold the volume " 
+				  + volume);
 	}
 }
