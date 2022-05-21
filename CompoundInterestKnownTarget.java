@@ -8,7 +8,7 @@ public class CompoundInterestKnownTarget
 		int noOfYearsInvestedSoFar = Integer.parseInt(args[2]);
 		double currentBalance = initialInvestment;
 		
-		for(int year = 1; year <= noOfYearsInvestedSoFar; year = year + 1)
+		for(int year = 0; year < noOfYearsInvestedSoFar; year = year + 1)
 			currentBalance = currentBalance + currentBalance * interestRate / 100;
 
 		System.out.println(initialInvestment + " invested at interest rate "
