@@ -25,10 +25,8 @@ public class FilmAgeCheck
 		} // for
 
 		// Now report how many underage were found.
-		if (underAgeCountSoFar  == 1)
-			System.out.println("There is 1 under age");
-		else
-			System.out.println("There are " + underAgeCountSoFar + " under age");	
+		System.out.println("There " + (underAgeCountSoFar == 1 ? "is" : "are")
+				  + " " + underAgeCountSoFar +" under age");
 
 	} // main
 
