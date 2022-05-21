@@ -4,15 +4,12 @@ public class CompoundInterestKnownTarget
 	{
 		double initialInvestment = Double.parseDouble(args[0]);
 		double interestRate = Double.parseDouble(args[1]);
-		double targetBalance = Double.parseDouble(args[2]);
-		int noOfYearsInvestedSoFar = 0;
+		//double targetBalance = Double.parseDouble(args[2]);
+		int noOfYearsInvestedSoFar = Integer.parseInt(args[2]);
 		double currentBalance = initialInvestment;
 		
-		while( currentBalance < targetBalance)
-		{
-			noOfYearsInvestedSoFar = noOfYearsInvestedSoFar + 1;
+		for(int year = 1; year <= noOfYearsInvestedSoFar; year = year + 1)
 			currentBalance = currentBalance + currentBalance * interestRate / 100;
-		}
 
 		System.out.println(initialInvestment + " invested at interest rate "
 				  + interestRate + "%");
