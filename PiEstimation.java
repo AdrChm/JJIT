@@ -17,10 +17,10 @@ public class PiEstimation
 		double latestEstimate = 4;
 
 		// We count the terms, initially 1 for the 4.
-		int termCountSoFar = 1;
+		long termCountSoFar = 1;
 
 		// The value of the next term denominator, initially 3.
-		int nextDenominator = 3;
+		long nextDenominator = 3;
 
 		// The sign of the next term, initially -ve.
 		int nextNumeratorSign = -1;
