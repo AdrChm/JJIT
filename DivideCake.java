@@ -42,6 +42,10 @@ public class DivideCake
 
 		// Report the total number of portions.
 		System.out.println("So the cake should be devided into " + (noOfPortions1 + noOfPortions2));
+
+		// Report the number of portions for each person.
+		System.out.println("Person " + age1 + " years old gets " + noOfPortions1
+				  + " and the " + age2 + " years old gets " + noOfPortions2);
 			
 	} // main 
 
