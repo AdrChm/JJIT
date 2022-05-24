@@ -10,8 +10,8 @@ public class PiEstimation
 		// terms before we stop estimating 
 		double tolerance = Double.parseDouble(args[0]);
 
-		// The result from our previous estimate, initially 0 for 0 terms.
-		double previousEstimate = 0;
+		// The value of the latest term.
+		double latestTerm;
 
 		// The result form our latest estimate, eventually the final result.
 		double latestEstimate = 4;
@@ -25,15 +25,16 @@ public class PiEstimation
 		// The sign of the next term, initially -ve.
 		int nextNumeratorSign = -1;
 
-		// Keep adding terms until change is within tolerance.
-		while (Math.abs(latestEstimate - previousEstimate) > tolerance)	
+		// Keep adding terms until lastest term is within tolerance.
+		do
 		{
-			previousEstimate = latestEstimate;
-			latestEstimate = latestEstimate += nextNumeratorSign * 4.0 / nextDenominator;
+			
+			latestTerm = nextNumeratorSign * 4.0 / nextDenominator;
+			latestEstimate += latestTerm; 
 			termCountSoFar++;		
 			nextNumeratorSign *= -1;
 			nextDenominator += 2;
-		} // while
+		} while (Math.abs(latestTerm) > tolerance);	
 
 		System.out.println("The estimated value of Pi to tolerance " + tolerance
 				   + " is " + latestEstimate);		
