@@ -1,19 +1,15 @@
-//*review modification solves KwnownTarget and KnownYears problem by seperate class
-public class CompoundInterestKnownTarget
+public class CompoundInterestKnownYears
 {
 	public static void main(String [] args)
 	{
 		double initialInvestment = Double.parseDouble(args[0]);
 		double interestRate = Double.parseDouble(args[1]);
-		double targetBalance = Double.parseDouble(args[2]);
-		int noOfYearsInvestedSoFar = 0;
+		//double targetBalance = Double.parseDouble(args[2]);
+		int noOfYearsInvestedSoFar = Integer.parseInt(args[2]);
 		double currentBalance = initialInvestment;
 		
-		while(currentBalance < targetBalance)
-		{
-			noOfYearsInvestedSoFar = noOfYearsInvestedSoFar + 1;
+		for(int year = 0; year < noOfYearsInvestedSoFar * 2; year = year + 2)
 			currentBalance = currentBalance + currentBalance * interestRate / 100;
-		}
 
 		System.out.println(initialInvestment + " invested at interest rate "
 				  + interestRate + "%");
