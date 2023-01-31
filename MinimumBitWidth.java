@@ -4,21 +4,26 @@ public class MinimumBitWidth
 	{
 		int numberOfValues = Integer.parseInt(args[0]);
 		int noOfBits = 0;
-		int doubledValue = 1;
+		double doubledValue = 1;
 
 		while (doubledValue < numberOfValues)
 		{
 			noOfBits = noOfBits + 1;
-			doubledValue = doubledValue * 2;
+			doubledValue = Math.pow(2,noOfBits);
+
+
+			/* chapter review - fix and refactor (removed code)			
+			// monitoring purposes
 			System.out.println(noOfBits + "," + doubledValue);
-		
-			// inflinite loop fix
+
+			//inflinite loop fix
 			if(doubledValue < 0)
 			{
 				doubledValue = numberOfValues;
 				System.out.println("Given input exceeded maximum allowed value "
 				+ "of 1073741825, so the result displayed below is incorrect");
 			}
+			*/
 		}
 		
 		System.out.println("You need " + noOfBits + " bits to represent "
