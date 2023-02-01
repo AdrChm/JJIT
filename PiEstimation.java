@@ -1,4 +1,4 @@
-// A program to estimat ePi using Leibniz's formula.
+// A program to estimate Pi using Leibniz's formula.
 // Argument is desired tolerance between successive terms.
 // Reports the estimate, the number of terms
 // and the librart constant for comparison.
