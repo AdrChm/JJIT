@@ -1,4 +1,4 @@
-// This program outputs the gives value from given numbers
+// This program outputs the biggest value from given numbers
 public class MaxList
 {
 	public static void main(String [] args)
