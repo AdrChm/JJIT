@@ -13,7 +13,7 @@ public class DivideCake3
 		int GCDArgument = age1;
 		int GCDArgument2 = age2; 
 		
-		// Euclid's algorithm
+		// Euclidean algorithm
 		while(GCDArgument != GCDArgument2)
 			if(GCDArgument > GCDArgument2)
 				GCDArgument -= GCDArgument2;
@@ -25,7 +25,7 @@ public class DivideCake3
 		// so one of them is replaced with third argument
 		GCDArgument2 = age3;
 
-		// and Euclid's algorithm is run again 
+		// and Euclidean algorithm is run again 
 		while(GCDArgument != GCDArgument2)
 			if(GCDArgument > GCDArgument2)
 				GCDArgument -= GCDArgument2;
