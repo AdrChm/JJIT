@@ -20,13 +20,16 @@ public class WorkFuture2
 
 
 		// Iteration through remaining years
-		for(; remainingYears > 0; remainingYears--)
+		while(remainingYears > 0)
 		{
 			// saving resources by avoidind redundant variables (nextYear)
 			// presentYear = 68 + birthYear1 - remainingYears
 			System.out.println("In " + (68 + birthYear1 - remainingYears) + " person 1 will have "
                                            + remainingYears + " years left to work");	
-		} // for
+			
+			remainingYears--;
+
+		} // while
 		
 		// Display last line of the output
 		System.out.println("You will retire in " + (68 + birthYear1 - remainingYears));
@@ -43,13 +46,16 @@ public class WorkFuture2
 
 
 		// Iteration through remaining years
-		for(; remainingYears > 0; remainingYears--)
+		while(remainingYears > 0)
 		{
 			// saving resources by avoidind redundant variables (nextYear)
 			// presentYear = 68 + birthYear2 - remainingYears
 			System.out.println("In " + (68 + birthYear2 - remainingYears) + " person 2 will have "
-                                           + remainingYears + " years left to work");	
-		} // for
+                                           + remainingYears + " years left to work");
+
+			remainingYears--;
+	
+		} // while
 		
 		// Display last line of the output
 		System.out.println("You will retire in " + (68 + birthYear2 - remainingYears));
