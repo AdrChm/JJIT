@@ -74,56 +74,11 @@ public class TimesTable
 
 	private static void printNumber(int numberToPoint)
 	{
-		if (numberToPoint < 10)
-			System.out.print("   " + numberToPoint);
-		else if (numberToPoint < 100)
-			System.out.print("  " + numberToPoint);
-		else
-			System.out.print(" " + numberToPoint);		
+				 
+		// Coffee 8.5.1 update - string formatting with printf
+
+			System.out.printf("%4d", numberToPoint);		
 	
 	} // printNumber
-
-
-
-
-
-/*		 
-		// Coffee 6.6.1 update - provide input for size flexibility
-		int size = Integer.parseInt(args[0]);	
-
-			// Need to make column number always occupy 4 characters.
-			if (column < 10)	
-				System.out.print("   " + column);					
-			else 
-				System.out.print("  " + column);
-
-
-		for (int row = 1; row <= size; row++)	
-		{
-			// Need to make row nubmer always occupy 7 characters
-			// including vertical lines.
-			if(row < 10)
-				System.out.print("|   " + row + " |");
-			else 
-				System.out.print("|  " + row + " |");					
-			
-			// Now the column on this row.
-			for (int column = 1; column <= size; column++)	
-			{
-				int product = row * column;
-				// Need to make product always occupy 4 characters.
-				if (product < 10)
-					System.out.print("   " + product);
-				else if (product < 100)
-					System.out.print("  " + product);
-				else
-					System.out.print(" " + product);		
-			} // for
-			
-			// The right side.
-			System.out.println(" |");
-		} // for
-		
-*/					
 
 } // TimesTable class
