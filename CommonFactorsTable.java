@@ -2,61 +2,80 @@
 // has GCD greater than 1 (by displaying # in respective cross section)
 public class CommonFactorsTable
 {
+	private static int size = 20;
+	
 	public static void main(String [] args)
 	{
+
 		// Printing heading opening line 
+		printLine(size);
+		
+		// Priting heading 
+		printHeading(size);
+		
+		// Printing heading closing line 
+		printLine(size);
+		
+		// Printing table rows 
+		printTableRow(size);	
+
+		// Printing table closing line 
+		printLine(size);
+			
+	} // main
+ 
+	// Printing line across the table 
+	private static void printLine(int size)
+	{
 		System.out.print("|-----|");
-		for(int column = 2; column <= 20; column++)
+
+		for(int column = 2; column <= size; column++)
 			System.out.print("---");
 
 		// Right side of the line
 		System.out.println("-|");
 		
-		// Priting heading 
+	} // printLine
+
+	// Printing column heading
+	private static void printHeading(int size)
+	{
 		System.out.print("|     |");
-		for(int column = 2; column <= 20; column++)
-			if(column < 10)
-				System.out.print("  " + column);
-			else 
-				System.out.print(" " + column);	
-		
+
+		for(int column = 2; column <= size; column++)
+			System.out.printf("%3d", column);	
+
+		// Right side of the line
 		System.out.println(" |");
 		
-		// Printing heading closing line 
-		System.out.print("|-----|");
-		for(int column = 2; column <= 20; column++)
-			System.out.print("---");
-		System.out.println("-|");
-		
-		// Printing table rows 
-		for(int row = 2; row <= 20; row++)
-		{
-				// Row left side.
-				if(row < 10)
-					System.out.print("|   " + row + " |");
-				else
-					System.out.print("|  " + row + " |");
-			// Printing column of the row
-			for(int column = 2; column <= 20; column++)
-			{	
+	} // printHeading
+	
+	// verifies if GCD of given numbers is greater than 1
+	private static boolean isGCDBiggerThanOne(int a, int b)
+	{
+		// Euclidean algorithm
+		while(a != b)
+			if(a > b)
+				a -= b;
+			else
+				b -= a;
+				
+		return a == 1? false : true;
+	} // isGCDBiggerThanOne
 
-					
+	// prints row with GCD calculation result
+	private static void printTableRow(int size)
+	{
+		for(int row = 2; row <= size; row++)
+		{
+			// Row left side.
+			System.out.printf("| %3d |", row);
+
+			// Printing column of the row
+			for(int column = 2; column <= size; column++)
+			{	
 				// Calculating the GCD
-				int GCDvalue = row;
-				int GCDvalue2 = column;
-				
-				while(GCDvalue != GCDvalue2)
-					if(GCDvalue > GCDvalue2)
-						GCDvalue -= GCDvalue2;
-					else
-						GCDvalue2 -= GCDvalue;
-				
-				if(GCDvalue == 1)
-					System.out.print("--|");
-				else
-					System.out.print("--#");
-					
-				
+				System.out.print(isGCDBiggerThanOne(column, row)? "--#" : "--|");
 	
 			} // for - column
 
@@ -64,13 +83,7 @@ public class CommonFactorsTable
 			System.out.println(" |");
 
 		} // for - row
-			
-		// Printing table closing line 
-		System.out.print("|-----|");
-		for(int column = 2; column <= 20; column++)
-			System.out.print("---");
-		System.out.println("-|");		
-				
-		
-				} // main 
+
+	} // printTableRow
+
 } // CommonFactorTable class

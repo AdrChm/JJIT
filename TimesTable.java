@@ -1,60 +1,84 @@
-// Program to print out a neat 10 by 10 multiplication table.
+// Program to print out a neat x by x multiplication table, where x is the size of the table
+// Which is given as input argument
 public class TimesTable
 {
+	// The size of the table -- the number of rows and columns.
+	private static int tableSize = 12;
+	
+	// The main method implements the top structure of the table.
 	public static void main(String [] args)
 	{
+	
 		// Top line.
+		printLine();
+		
+		// Column headings.
+		printColumnHeadings();
+
+		// UnderlineHeadings
+		printLine();
+
+		// Now the rows.
+		for(int row =1; row <= tableSize; row++)
+			printRow(row);
+
+		// Bottom line.
+		printLine();	
+
+	} // main
+
+	// Print line across the table.
+	private static void printLine()
+	{
 		// Left side, 5 characters for row labels, separator.
 		System.out.print("|-----|");
-		// Above the column headings.
-		for (int column = 1; column <= 10; column++)
+
+		// Across each column.
+		for (int column = 1; column <= tableSize; column++)
 			// 4 character for each column.
 			System.out.print("----");
+
 		// The right side.
 		System.out.println("-|");
 
-		// Column headings.
-		System.out.print("|     |");
-		for (int column = 1; column <= 10; column++)
-			// Need to make column number always occupy 4 characters.
-			if (column < 10)	
-				System.out.print("   " + column);					
-			else 
-				System.out.print("  " + column);
-			System.out.println(" |");
+	} // printLine
 
-		// Now the rows.
-		for (int row = 1; row <= 10; row++)	
-		{
-			// Need to make row nubmer always occupy 7 characters
-			// including vertical lines.
-			if(row < 10)
-				System.out.print("|   " + row + " |");
-			else 
-				System.out.print("|  " + row + " |");					
-			
-			// Now the column on this row.
-			for (int column = 1; column <= 10; column++)	
-			{
-				int product = row * column;
-				// Need to make product always occupy 4 characters.
-				if (product < 10)
-					System.out.print("   " + product);
-				else if (product < 100)
-					System.out.print("  " + product);
-				else
-					System.out.print(" " + product);		
-			} // for
-			
-			// The right side.
-			System.out.println(" |");
-		} // for
+	// Print the line containing the column headings.
+	private static void printColumnHeadings()
+	{
+		System.out.print("|     |");
+		for (int column = 1; column <= tableSize; column++)
+			printNumber(column);
+			System.out.println(" |");		
 		
-		// Bottom line -- same as Top line.
-		System.out.print("|-----|");
-		for (int column = 1; column <= 10; column++)
-			System.out.print("----");
-		System.out.println("-|");	
-					
-	} // main
+	} // printColumnHeadings
+
+	// Print one row of the table.
+	private static void printRow(int row)
+	{
+		// The left side.
+			System.out.print("|");	
+		printNumber(row);	
+		// Separator
+		System.out.print(" |");	
+
+		// Now for the columns on this row.
+		for (int column = 1; column <= tableSize; column++)
+			printNumber(row * column);
+		
+		// The right side.
+		System.out.println(" |");			
+	
+	} // printRow
+
+
+	private static void printNumber(int numberToPoint)
+	{
+				 
+		// Coffee 8.5.1 update - string formatting with printf
+
+			System.out.printf("%4d", numberToPoint);		
+	
+	} // printNumber
+
 } // TimesTable class

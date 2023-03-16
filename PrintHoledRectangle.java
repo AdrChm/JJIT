@@ -6,11 +6,17 @@ public class PrintHoledRectangle
 		int height = Integer.parseInt(args[0]);
 		int width = Integer.parseInt(args[1]);
 			
-		// To be properly displayed rectangle has to be based on odd dimentions
-		if(width%2 == 0)
+		// To be properly displayed rectangle has to have dimentions at leaset equal to 3 
+		// and its size should be an odd number
+		if(width%2 ==  0)
 			width++;
 		if(height%2 == 0)
 			height++;
+		
+		if(width < 3)
+			width = 3;
+		if(height < 3)
+			height = 3;	
 
 		// Iterating though rows
 		for (int row = 0; row < width; row++)
@@ -18,15 +24,13 @@ public class PrintHoledRectangle
 			// Iterating though columns
 			for (int column = 0; column < height; column++)
 			{
-				// First and last layer is always build with squares	
-				if(row == 0 || row == width - 1)
+				// print squares - logical NAND for middle row and column
+				if(!(row == width/2 && column == height/2))
 					System.out.print("[_]");
-				// In other cases only first and last column prints square
-				else
-					if(column == 0 || column == height - 1)
-						System.out.print("[_]");
-					else	
-						System.out.print("   ");
+
+				// center cell has to be empty
+				else	
+					System.out.print("   ");
 			
 			} // for - columns
 			System.out.println();
