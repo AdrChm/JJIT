@@ -12,4 +12,17 @@ public class Date
 		year = RequiredYear;
 	} // Date
 
+	// Compare this date with a given other one, for equality.
+	public boolean equals(Date other)
+	{
+		return year == other.year && month == other.month && day == other.day;	
+	} // equals
+
+	// Compare this date with a given other one, for less than.
+	public boolean lessThan(Date other)
+	{
+		return year < other.year || year == other.year 
+				&& (month < other.month 
+				|| month < other.month && day < other.day);		
+	} // lessThan
 } // class Date

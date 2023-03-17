@@ -16,20 +16,16 @@ public class AgeHistory2
 				  + "/" + birthDate.year);
 
 		// Now we will go through the years since birth, but before today.
-		int someYear = birthDate.year + 1;
-		int ageInSomeYear = 1;
-		while (someYear < presentDate.year
-			|| someYear == presentDate.year 
-				&& birthDate.month < presentDate.month
-			|| someYear == presentDate.year 
-				&& birthDate.month == presentDate.month
-				&& birthDate.day < presentDate.day)
+		// We keep track of the birthday we are considering.
+		Date someBirthday = new Date(birthDate.day, birthDate.month, birthDate.year + 1);
+		int ageOnSomeBirthday = 1;
+		while (someBirthday.lessThan(presentDate))
 		{
-			System.out.println("Pn " + personNumber + " was " + ageInSomeYear  
+			System.out.println("Pn " + personNumber + " was " + ageOnSomeBirthday  
 					  + " on " + birthDate.day + "/" +  birthDate.month
-					  + "/" + someYear);
-			someYear++; 
-			ageInSomeYear++;
+					  + "/" + someBirthday.year);
+			someBirthday = new Date(someBirthday.day, someBirthday.month, someBirthday.year + 1);
+			ageOnSomeBirthday++;
 		} // while		
 				
 		// At this point birthDay/birthMonth/someYear
@@ -38,14 +34,14 @@ public class AgeHistory2
 		// If the person has not yet had their birthday this year
 		// someYear equals a presentYear,
 		// otherwise someYear equals presentYear + 1.
-
-		if (birthDate.month == presentDate.month && birthDate.day == presentDate.day) 
+		// Now deal with the next birthday
+		if (someBirthday.equals(presentDate)) 
 		// then the someYear must be equal to presentYear.
-			System.out.println("Pn " + personNumber + " is" + ageInSomeYear + " today!");
+			System.out.println("Pn " + personNumber + " is" + ageOnSomeBirthday + " today!");
 		else
 			System.out.println("Pn " + personNumber + " will be "
-					  + ageInSomeYear + " on " + birthDate.day + "/"
-					  +  birthDate.month + "/" + someYear);
+					  + ageOnSomeBirthday + " on " + someBirthday.day + "/"
+					  +  someBirthday.month + "/" + someBirthday.year + 1);
 			
 	} // printAgeHistory
 	
