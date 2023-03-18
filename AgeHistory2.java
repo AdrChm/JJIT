@@ -12,17 +12,17 @@ public class AgeHistory2
 	{
 		// Start by printing the event of birth.	
 		System.out.println("Pn " + personNumber + " was born on " 
-				  + birthDate.toString());
+				  + birthDate);
 
 		// Now we will go through the years since birth, but before today.
 		// We keep track of the birthday we are considering.
-		Date someBirthday = new Date(birthDate.day, birthDate.month, birthDate.year + 1);
+		Date someBirthday = birthDate.addYear();
 		int ageOnSomeBirthday = 1;
 		while (someBirthday.lessThan(presentDate))
 		{
 			System.out.println("Pn " + personNumber + " was " + ageOnSomeBirthday  
-					  + " on " + someBirthday.toString());
-			someBirthday = new Date(someBirthday.day, someBirthday.month, someBirthday.year + 1);
+					  + " on " + someBirthday);
+			someBirthday = someBirthday.addYear();
 			ageOnSomeBirthday++;
 		} // while		
 				
@@ -38,7 +38,7 @@ public class AgeHistory2
 			System.out.println("Pn " + personNumber + " is" + ageOnSomeBirthday + " today!");
 		else
 			System.out.println("Pn " + personNumber + " will be "
-					  + ageOnSomeBirthday + " on " + someBirthday.toString());
+					  + ageOnSomeBirthday + " on " + someBirthday);
 			
 	} // printAgeHistory
 	
