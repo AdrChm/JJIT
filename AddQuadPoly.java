@@ -37,9 +37,9 @@ public class AddQuadPoly
 			quadPolyBoTeAdded = new QuadPoly();
 
 			// There is no need to create third QuadPoly as first is the answer.
-			System.out.println("Polynomial:\t" + displayQuadPoly(firstQuadPoly)
-				   		  + "\nadded to:\t" + displayQuadPoly(quadPolyBoTeAdded)
- 				   		  + "\nresults in:\t" + displayQuadPoly(firstQuadPoly));
+			System.out.println("Polynomial:\t" + firstQuadPoly
+				   		  + "\nadded to:\t" + quadPolyBoTeAdded
+ 				   		  + "\nresults in:\t" + firstQuadPoly);
 
 		} // if 
 		// 3+ arguments
@@ -49,7 +49,7 @@ public class AddQuadPoly
 			firstQuadPoly = new QuadPoly(Double.parseDouble(args[0]), 
 						     Double.parseDouble(args[1]),
 						     Double.parseDouble(args[2]));
-			System.out.println("Polynomial:\t" + displayQuadPoly(firstQuadPoly));
+			System.out.println("Polynomial:\t" + firstQuadPoly);
 			
 			// Updates result polyQuad.
 			resultQuadPoly = firstQuadPoly;
@@ -78,36 +78,18 @@ public class AddQuadPoly
 				argumentsUsedSoFar += 3;
 				
 				// Add output row
-				System.out.println("added to:\t" + displayQuadPoly(quadPolyBoTeAdded));	
+				System.out.println("added to:\t" + quadPolyBoTeAdded);	
 				
 				// Update result QuadPoly
-				resultQuadPoly = addQuadPoly(resultQuadPoly, quadPolyBoTeAdded);
+				resultQuadPoly = resultQuadPoly.addQuadPoly(quadPolyBoTeAdded);
 
 			}// while
 
 			// Display the result.
-			System.out.println("results in:\t" + displayQuadPoly(resultQuadPoly));
+			System.out.println("results in:\t" + resultQuadPoly);
 
 		} // else
 
 	} // main
-
-	// adds coefficients fo given quadratic polymonials and return result.
-	private static QuadPoly addQuadPoly(QuadPoly quadPoly1, QuadPoly quadPoly2)
-	{
-		QuadPoly quadPoly = new QuadPoly(quadPoly1.coefficientOfx2 + quadPoly2.coefficientOfx2,
-					 	  quadPoly1.coefficientOfx + quadPoly2.coefficientOfx,
-					  	  quadPoly1.constant + quadPoly2.constant);
-	
-		return quadPoly;
-	} // addQuadPoly
-	
-	// Creates quadratic polynomial String to display it in a proper manner.
-	private static String displayQuadPoly(QuadPoly q)
-	{
-		String polyString = q.coefficientOfx2 + "x^2 + "
-				    + q.coefficientOfx + "x + " + q.constant;
-		return polyString;
-	} // displayQuadPoly
 
 } // AddQuadPoly

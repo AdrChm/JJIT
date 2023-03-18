@@ -2,9 +2,9 @@
 // Each not provided coefficient has assigned value of 0.  
 public class QuadPoly
 {
-	public double coefficientOfx2 = 0;
-	public double coefficientOfx = 0;
-	public double constant = 0;
+	private double coefficientOfx2 = 0;
+	private double coefficientOfx = 0;
+	private double constant = 0;
 
 	// Construct a quadratic polynomial by providing its coeffients.
 	public QuadPoly(double a, double b, double c)
@@ -53,4 +53,13 @@ public class QuadPoly
 		return coefficientOfx2 + "x^2 + "+ coefficientOfx + "x + " + constant;
 	} // toString
 
+
+	// adds coefficients fo given quadratic polymonials and returns new one as the result.
+	public QuadPoly addQuadPoly(QuadPoly other)
+	{
+
+		return new QuadPoly(coefficientOfx2 + other.coefficientOfx2,
+				    coefficientOfx + other.coefficientOfx,
+				    constant + other.constant);
+	} // addQuadPoly
 } // class QuadPoly 
