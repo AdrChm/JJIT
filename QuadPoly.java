@@ -47,4 +47,10 @@ public class QuadPoly
 			&& constant == other.constant;
 	} // isEqualTo
 
+	// Creates quadratic polynomial String to display it in a proper manner.
+	public String toString()
+	{
+		return coefficientOfx2 + "x^2 + "+ coefficientOfx + "x + " + constant;
+	} // toString
+
 } // class QuadPoly 
