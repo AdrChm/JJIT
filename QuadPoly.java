@@ -33,4 +33,18 @@ public class QuadPoly
 	{
 	} // QuadPoly
 
+	public boolean isLessThan(QuadPoly other)
+	{
+		return coefficientOfx2 < other.coefficientOfx2 || coefficientOfx2 == other.coefficientOfx2
+			&& (coefficientOfx < other.coefficientOfx || coefficientOfx == other.coefficientOfx
+			&& constant < other.constant);
+	} // isEqual
+
+	public boolean isEqualTo(QuadPoly other)
+	{
+		return coefficientOfx2 == other.coefficientOfx2 
+			&& coefficientOfx == other.coefficientOfx
+			&& constant == other.constant;
+	} // isEqualTo
+
 } // class QuadPoly 
