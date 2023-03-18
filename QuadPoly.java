@@ -54,12 +54,36 @@ public class QuadPoly
 	} // toString
 
 
-	// adds coefficients fo given quadratic polymonials and returns new one as the result.
+	// Adds coefficients of given quadratic polymonials and returns new one as the result.
 	public QuadPoly addQuadPoly(QuadPoly other)
 	{
-
 		return new QuadPoly(coefficientOfx2 + other.coefficientOfx2,
 				    coefficientOfx + other.coefficientOfx,
 				    constant + other.constant);
 	} // addQuadPoly
+
+	// Substracts coefficients of given quadratic polymonials and returns new one as the result.
+	public QuadPoly substractQuadPoly(QuadPoly other)
+	{
+		return new QuadPoly(coefficientOfx2 - other.coefficientOfx2,
+				    coefficientOfx - other.coefficientOfx,
+				    constant - other.constant);
+	} // substractQuadPoly
+
+	// Multiplies coefficients of polymonials by given constant and returns new one as the result.
+	public QuadPoly multiplyQuadPoly(double constant)
+	{
+		return new QuadPoly(coefficientOfx2 * constant,
+				    coefficientOfx * constant,
+				    constant * constant);
+	} // multiplyQuadPoly
+
+	// Divides coefficients of polymonials by given constant and returns new one as the result.
+	public QuadPoly divideQuadPoly(double constant)
+	{
+		return new QuadPoly(coefficientOfx2 / constant,
+				    coefficientOfx / constant,
+				    constant / constant);
+	} // divideQuadPoly
+
 } // class QuadPoly 
