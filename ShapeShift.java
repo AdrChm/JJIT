@@ -53,7 +53,7 @@ public class ShapeShift
 	public static void main(String [] args)
 	{
 		// Obtain shape choice.
-		System.out.print("Choose cicrle (1), triangle (2), rectangle (3): ");
+		System.out.print("Choose cicrle (1), triangle (2), rectangle (3), irregular 4 sided polygon (4): ");
 		int shapeChoice = inputScanner.nextInt();
 	
 		// Process the shape based on the choice.
@@ -107,6 +107,23 @@ public class ShapeShift
 				System.out.println("and when shifted by X offset " + xShift
 						   + " and Y offset " + yShift + ", gives");
 				System.out.println(shiftedRectangle);
+				break;
+
+			case 4:
+				Point a = inputPoint("Enter point A as X Y : ");
+				Point b = inputPoint("Enter point B as X Y : ");
+				Point c = inputPoint("Enter point C as X Y : ");
+				Point d = inputPoint("Enter point D as X Y : ");
+				IrregularRectangle originalIrregularRectangle = new IrregularRectangle(a, b, c, d);
+				inputXYShifts();
+				IrregularRectangle shiftedIrregularRectangle = originalIrregularRectangle.shift(xShift, yShift);
+				System.out.println();
+				System.out.println(originalIrregularRectangle);				
+				System.out.println("has area " + originalIrregularRectangle.area()
+						   + ", perimeter " + originalIrregularRectangle.perimeter());
+				System.out.println("and when shifted by X offset " + xShift
+						   + " and Y offset " + yShift + ", gives");
+				System.out.println(shiftedIrregularRectangle);
 				break;
 
 			// Bad choise
