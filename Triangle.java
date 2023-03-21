@@ -29,20 +29,18 @@ public class Triangle
 
 	// Calculates height of the triangle based on tangent between AB and AC lines
 	// and based on returned radian value calculates height 
-Math.tan() 
 	private double height()
 	{
+		// Calculating angle of the first line
+		double angleXAB = pointA.calculateLineAngle(pointB);
 
+		// Calculating angle of the second line
+		double angleXAC = pointA.calculateLineAngle(pointC);
+		
+		// Calculating CAB angle
+		double angleCAB = Math.abs(angleXAB - angleXAC);
 
-		// Calculating slope of the first line
-		double slopeAB = pointA.calculateLineSlope(pointB);
-
-		// Calculating slope of the second line
-		double slopeAC = pointA.calculateLineSlope(pointC);
-
-		Point middlePoint = new Point((pointA.getX() + pointB.getX()) / 2, (pointA.getY() + pointB.getY()) / 2);
-			
-		return middlePoint.getDistance(pointC);
+		return Math.cos(angleCAB) * pointA.getDistance(pointC);
 
 	} // height
 
