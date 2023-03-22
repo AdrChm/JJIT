@@ -1,8 +1,25 @@
 // Representation of a date.
 public class Date
-{
-	// The day, month and year of the date.
-	private int day, month, year;
+{	
+	// Class variable to hold the present date.
+	private static Date presentDate = null;
+	
+	// Class method to set the present date.
+	// This does nothing if it has already been set.
+	public static void setPresentDate(Date requiredPresentDate)
+	{
+		if (presentDate == null)
+			presentDate = requiredPresentDate;
+	} // setPresentDate
+
+	// Method to obtain the present date.
+	public static Date getPresentDate()
+	{
+		return presentDate;
+	} // getPresentDate
+
+	// Instance variables: the day, month and year of a date.
+	private final int day, month, year;
 
 	// Construct a date -- given the required day, month and year.
 	public Date(int RequiredDay, int RequiredMonth, int RequiredYear)
@@ -38,3 +55,4 @@ public class Date
 		return new Date(day, month, year + 1);
 	} // addYear
 } // class Date
+
