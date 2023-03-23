@@ -1,5 +1,5 @@
 /**
- * This class represetens calendar dates and provides certain
+ * This class represents calendar dates and provides certain
  * manipulations of them.
  *
  * @author John Latham
@@ -11,7 +11,7 @@ public class Date
 
 	/**
 	 * Sets the present date.
-	 * This is ignored if the date has already neen set.
+	 * This is ignored if the date has already been set.
 	 *
 	 * @param requiredPresentDate The required date for the present day.
 	 */
