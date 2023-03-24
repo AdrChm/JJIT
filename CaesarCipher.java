@@ -64,10 +64,10 @@ public class CaesarCipher {
      */
     public String translate(String message)
     {
-        String result = "";
+        StringBuffer result = new StringBuffer();
         for (int index = 0; index < message.length(); index++)
-            result += translate(message.charAt(index));
-        return result;
+            result.append(translate(message.charAt(index)));
+        return result.toString();
     } // translate
     /**
      * Translates a single character.
