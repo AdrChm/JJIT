@@ -1,7 +1,8 @@
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 // Program to display greetings to all 9 planets, in a window.
 public class HelloSolarSystem extends JFrame{
 
@@ -10,7 +11,9 @@ public class HelloSolarSystem extends JFrame{
 	{
 		setTitle("Hello Solar System");
 		Container contents = getContentPane();
-		contents.setLayout( new FlowLayout());
+		// Set layout to be a grid of 3 columns.
+		// This will also give 3 rows, as there are 9 items.
+		contents.setLayout( new GridLayout(0, 3,20, 10));
 
 		contents.add(new JLabel("Hello Mercury!"));
 		contents.add(new JLabel("Hello Venus!"));
