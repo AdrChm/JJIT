@@ -18,6 +18,9 @@ public class HelloWorld extends JFrame{
     public static void main(String[] args) {
         HelloWorld theHelloWorld = new HelloWorld();
         theHelloWorld.setVisible(true);
+
+        HelloWorld secondWindow = new HelloWorld();
+        secondWindow.setVisible(true);
     } // main
 
 } // class HelloWorld
