@@ -14,7 +14,7 @@ public class HelloWorld extends JFrame{
         pack();
     } // HelloWorld
 
-    // Create a hello world and make it appear on screen.
+    // Create a HelloWorld and make it appear on screen.
     public static void main(String[] args) {
         HelloWorld theHelloWorld = new HelloWorld();
         theHelloWorld.setVisible(true);
