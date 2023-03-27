@@ -1,5 +1,11 @@
-// Program telling story about some Students using their Accounts on their Phones
-// to make some call.
+/**
+ * Program telling story about some Students using their Phones to make some call
+ * on their Accounts. Class has a bunch of helper methods to make block of code
+ * responsible for particular group of actions separate making 'story telling'
+ * easier in main method.
+ *
+ * @author Adrian Chmielewski
+ */
 public class StudentsCalling
 {
 	// Private helper method for students creation.
@@ -31,7 +37,7 @@ public class StudentsCalling
 
 	} // studentMakesACall
 
-	// Private helper method for students toppinng up their phones.
+	// Private helper method for students topping up their phones.
 	private static void studentTopsUpThePhone(Student s, int topUpAmount)
 	{
 
@@ -60,7 +66,11 @@ public class StudentsCalling
 
 	} // studentBuysPhone
 
-	// Here the story is being told. 
+	/**
+	 * 	Here the story is being told.
+	 *
+	 * 	@param args serves no purposes, no arguments are needed.
+ 	 */
 	public static void main(String [] args)
 	{
 		Student s1 = createStudent("Chatty Charlie");

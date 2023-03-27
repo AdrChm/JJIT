@@ -1,3 +1,18 @@
+# Web documentation elements
+*.html
+*.js
+*.css
+*.svg
+# related directories
+element-list
+legal/
+resources/
+script-dir/
+
+# addidtional intelliJ files
+out/
+.idea/
+
 # Compiled class file
 *.class
 
