@@ -1,4 +1,3 @@
-package Chapter13;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,7 +9,7 @@ public class HelloWorld extends JFrame{
     {
         setTitle("Hello World");
         Container contents = getContentPane();
-        contents.add(new JLabel("Greetings to all who dwell on Planet Earth!"));
+        contents.add(new JLabel("Bonjour le monde!"));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
     } // HelloWorld
