@@ -23,6 +23,10 @@ public class StopClock extends JFrame implements ActionListener{
     // as milliseconds since midnight, January 1st, 1970.
     private long slipTime = 0;
 
+    // Amount of slips done so far. Counting starts from 1
+    // as first split is just clock being run.
+    private int slipCounter = 1;
+
     // A label for showing the elapsed time.
     private final JLabel elapsedTimeJLabel = new JLabel("Not started");
 
@@ -34,12 +38,15 @@ public class StopClock extends JFrame implements ActionListener{
 
     // Split button.
     private final JButton splitJButton;
+
+    // Container.
+    private final Container contents;
     // Constructor.
     public StopClock()
     {
         setTitle("Stop Clock");
 
-        Container contents = getContentPane();
+        contents = getContentPane();
         // Use a grid layout with one column.
         contents.setLayout(new GridLayout(0, 1));
 
@@ -82,9 +89,13 @@ public class StopClock extends JFrame implements ActionListener{
                 elapsedTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
                 isRunning = false;
 
-                // Split time label if Split button was never pushed.
-                if (this.slipTime == 0)
+                // Split time of the last slip is there was one than one additional
+                // label is added to represent last split.
+                if (slipCounter == 1)
                     splitTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
+                else
+                    contents.add(new JLabel("Split " + slipCounter + " time (seconds):" + (stopTime - slipTime) / 1000.0));
+
             } // else
 
         else // Event behaviour for Split button.
@@ -93,11 +104,14 @@ public class StopClock extends JFrame implements ActionListener{
                 if (slipTime == 0) {
                     slipTime = System.currentTimeMillis();
                     long splitTimeMilliseconds = slipTime - startTime;
+                    splitTimeJLabel.setText("" + splitTimeMilliseconds/ 1000.0);
+                    slipCounter++;
                 }
                 else // Next split.
                 {
                     long nextSplit = System.currentTimeMillis();
-                    splitTimeJLabel.setText("" + (nextSplit - slipTime) / 1000.0);
+                    contents.add(new JLabel("Split " + slipCounter + " time (seconds):" + (nextSplit - slipTime) / 1000.0));
+                    //splitTimeJLabel.setText("" + (nextSplit - slipTime) / 1000.0);
                     slipTime = nextSplit;
                 }
             } // if
