@@ -23,12 +23,6 @@ public class StopClock extends JFrame implements ActionListener{
     // as milliseconds since midnight, January 1st, 1970.
     private long slipTime = 0;
 
-    // A label for showing the start of the timer.
-    private final JLabel startTimeJLabel = new JLabel("Not started");
-
-    // A label for showing the start of the timer.
-    private final JLabel stopTimeJLabel = new JLabel("Not started");
-
     // A label for showing the elapsed time.
     private final JLabel elapsedTimeJLabel = new JLabel("Not started");
 
@@ -48,13 +42,6 @@ public class StopClock extends JFrame implements ActionListener{
         Container contents = getContentPane();
         // Use a grid layout with one column.
         contents.setLayout(new GridLayout(0, 1));
-
-
-        contents.add(new JLabel("Started at:"));
-        contents.add(startTimeJLabel);
-
-        contents.add(new JLabel("Stopped at"));
-        contents.add(stopTimeJLabel);
 
         contents.add(new JLabel("Elapsed time (seconds):"));
         contents.add(elapsedTimeJLabel);
@@ -83,7 +70,6 @@ public class StopClock extends JFrame implements ActionListener{
             {
                 // Start the clock.
                 startTime = System.currentTimeMillis();
-                startTimeJLabel.setText("" + startTime);
                 elapsedTimeJLabel.setText("Running... ");
                 splitTimeJLabel.setText("Running... ");
                 isRunning = true;
@@ -92,14 +78,13 @@ public class StopClock extends JFrame implements ActionListener{
             {
                 // Stop the clock.
                 stopTime = System.currentTimeMillis();
-                stopTimeJLabel.setText("" + stopTime);
                 long elapsedMilliseconds = stopTime - startTime;
                 elapsedTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
                 isRunning = false;
 
                 // Split time label if Split button was never pushed.
-                if (slipTime == 0)
-                    splitTimeJLabel.setText("" + stopTime);
+                if (this.slipTime == 0)
+                    splitTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
             } // else
 
         else // Event behaviour for Split button.
