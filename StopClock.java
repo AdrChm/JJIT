@@ -1,8 +1,10 @@
-import java.awt.Container;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JButton;
 
 // A simple stop clock program. The button stops and starts the clock.
 // The clock records start time, stop time and shows elapsed time.
@@ -45,10 +47,12 @@ public class StopClock extends JFrame implements ActionListener{
     private long previousPauses = 0;
 
     // A text field for showing the elapsed time.
-    private final JTextField elapsedTimeJLabel = new JTextField("Not started");
+    private final JTextField elapsedTimeJTextField = new JTextField("Not started");
 
     // A text field for showing the elapsed time.
-    private final JTextField splitTimeJLabel = new JTextField("Not started");
+    private final JTextField splitTimeJTextField = new JTextField("Not started");
+
+    private Font JTextFont = elapsedTimeJTextField.getFont();
 
     // Start/Stop button.
     private final JButton startStopJButton;
@@ -70,12 +74,16 @@ public class StopClock extends JFrame implements ActionListener{
         contents.setLayout(new GridLayout(0, 1));
 
         contents.add(new JLabel("Elapsed time (seconds):"));
-        contents.add(elapsedTimeJLabel);
-        elapsedTimeJLabel.setEnabled(false);
+        contents.add(elapsedTimeJTextField);
+        elapsedTimeJTextField.setEnabled(false);
+
+        JTextFont = new Font(JTextFont.getFontName(), Font.BOLD, JTextFont.getSize());
+        elapsedTimeJTextField.setFont(JTextFont);
 
         contents.add(new JLabel("Split time (seconds):"));
-        contents.add(splitTimeJLabel);
-        splitTimeJLabel.setEnabled(false);
+        contents.add(splitTimeJTextField);
+        splitTimeJTextField.setEnabled(false);
+        splitTimeJTextField.setFont(JTextFont);
 
         this.startStopJButton = new JButton("Start");
         startStopJButton.addActionListener(this);
@@ -107,8 +115,8 @@ public class StopClock extends JFrame implements ActionListener{
                 splitJButton.setEnabled(true);
                 pauseJButton.setEnabled(true);
                 startTime = System.currentTimeMillis();
-                elapsedTimeJLabel.setText("Running... ");
-                splitTimeJLabel.setText("Running... ");
+                elapsedTimeJTextField.setText("Running... ");
+                splitTimeJTextField.setText("Running... ");
                 isRunning = true;
             } // if
             else // isRunning
@@ -128,19 +136,20 @@ public class StopClock extends JFrame implements ActionListener{
                 } // if
 
                 long elapsedMilliseconds = stopTime - startTime - previousPauses;
-                elapsedTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
+                elapsedTimeJTextField.setText("" + elapsedMilliseconds/ 1000.0);
                 isRunning = false;
 
                 // Split time of the last slip is there was one than one additional
                 // label is added to represent last split.
                 if (slipCounter == 1)
-                    splitTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
+                    splitTimeJTextField.setText("" + elapsedMilliseconds/ 1000.0);
                 else
                 {
                     JTextField newText = new JTextField("Split " + slipCounter + " time (seconds):"
                             + (stopTime - slipTime - (previousPauses - splitPause)) / 1000.0);
                     contents.add(newText);
                     newText.setEnabled(false);
+                    newText.setFont(JTextFont);
 
                 } // else
 
@@ -154,7 +163,7 @@ public class StopClock extends JFrame implements ActionListener{
                 // First split. No previous split means all pauses ale in this one.
                 slipTime = System.currentTimeMillis();
                 long splitTimeMilliseconds = slipTime - startTime - previousPauses;
-                splitTimeJLabel.setText("" + splitTimeMilliseconds / 1000.0);
+                splitTimeJTextField.setText("" + splitTimeMilliseconds / 1000.0);
                 slipCounter++;
 
             } else // Next split.
@@ -164,6 +173,7 @@ public class StopClock extends JFrame implements ActionListener{
                                                     + (nextSplit - slipTime  - (previousPauses - splitPause)) / 1000.0);
                 contents.add(newText);
                 newText.setEnabled(false);
+                newText.setFont(JTextFont);
                 slipTime = nextSplit;
             } // else
             splitPause = previousPauses;
@@ -175,10 +185,10 @@ public class StopClock extends JFrame implements ActionListener{
                 pauseJButton.setText("Resume");
                 splitJButton.setEnabled(false);
                 pauseTime = System.currentTimeMillis();
-                elapsedTimeJLabel.setText("Paused... ");
+                elapsedTimeJTextField.setText("Paused... ");
 
                 if (slipTime == 0)
-                    splitTimeJLabel.setText("Paused... ");
+                    splitTimeJTextField.setText("Paused... ");
                 isPause = true;
             } // if
             else // Pause is active - resume.
@@ -188,10 +198,10 @@ public class StopClock extends JFrame implements ActionListener{
                 long resumeTimeStamp = System.currentTimeMillis();
                 pauseTime = resumeTimeStamp - pauseTime;
                 previousPauses += pauseTime;
-                elapsedTimeJLabel.setText("Running... ");
+                elapsedTimeJTextField.setText("Running... ");
 
                 if (slipTime == 0)
-                    splitTimeJLabel.setText("Running... ");
+                    splitTimeJTextField.setText("Running... ");
                 isPause = false;
             } // else
         } // else
