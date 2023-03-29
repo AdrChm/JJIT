@@ -44,11 +44,11 @@ public class StopClock extends JFrame implements ActionListener{
     // Number to represent sum of previous pauses.
     private long previousPauses = 0;
 
-    // A label for showing the elapsed time.
-    private final JLabel elapsedTimeJLabel = new JLabel("Not started");
+    // A text field for showing the elapsed time.
+    private final JTextField elapsedTimeJLabel = new JTextField("Not started");
 
-    // A label for showing the elapsed time.
-    private final JLabel splitTimeJLabel = new JLabel("Not started");
+    // A text field for showing the elapsed time.
+    private final JTextField splitTimeJLabel = new JTextField("Not started");
 
     // Start/Stop button.
     private final JButton startStopJButton;
@@ -71,20 +71,24 @@ public class StopClock extends JFrame implements ActionListener{
 
         contents.add(new JLabel("Elapsed time (seconds):"));
         contents.add(elapsedTimeJLabel);
+        elapsedTimeJLabel.setEnabled(false);
 
         contents.add(new JLabel("Split time (seconds):"));
         contents.add(splitTimeJLabel);
+        splitTimeJLabel.setEnabled(false);
 
-        this.startStopJButton = new JButton("Start / Stop");
+        this.startStopJButton = new JButton("Start");
         startStopJButton.addActionListener(this);
         contents.add(startStopJButton);
 
         this.splitJButton = new JButton("Split");
         splitJButton.addActionListener(this);
+        splitJButton.setEnabled(false);
         contents.add(splitJButton);
 
-        this.pauseJButton = new JButton("Pause/Resume");
+        this.pauseJButton = new JButton("Pause");
         pauseJButton.addActionListener(this);
+        pauseJButton.setEnabled(false);
         contents.add(pauseJButton);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -99,6 +103,9 @@ public class StopClock extends JFrame implements ActionListener{
             if (!isRunning)
             {
                 // Start the clock.
+                startStopJButton.setText("Stop");
+                splitJButton.setEnabled(true);
+                pauseJButton.setEnabled(true);
                 startTime = System.currentTimeMillis();
                 elapsedTimeJLabel.setText("Running... ");
                 splitTimeJLabel.setText("Running... ");
@@ -108,6 +115,9 @@ public class StopClock extends JFrame implements ActionListener{
             {
                 // Stop the clock.
                 stopTime = System.currentTimeMillis();
+                startStopJButton.setText("Start");
+                splitJButton.setEnabled(false);
+                pauseJButton.setEnabled(false);
 
                 // If pause is active it has to be stopped.
                 if(isPause)
@@ -126,52 +136,55 @@ public class StopClock extends JFrame implements ActionListener{
                 if (slipCounter == 1)
                     splitTimeJLabel.setText("" + elapsedMilliseconds/ 1000.0);
                 else
-                    contents.add(new JLabel("Split " + slipCounter + " time (seconds):"
-                                            + (stopTime - slipTime - (previousPauses - splitPause)) / 1000.0));
+                {
+                    JTextField newText = new JTextField("Split " + slipCounter + " time (seconds):"
+                            + (stopTime - slipTime - (previousPauses - splitPause)) / 1000.0);
+                    contents.add(newText);
+                    newText.setEnabled(false);
+
+                } // else
 
             } // else
 
         // Event behaviour for Split button.
         else if(event.getSource() == this.splitJButton)
         {
-            if (isRunning) {
-                System.out.println("split :" + startTime + " ");
+            if (slipTime == 0)
+            {
                 // First split. No previous split means all pauses ale in this one.
-                if (slipTime == 0) {
-                    slipTime = System.currentTimeMillis();
-                    long splitTimeMilliseconds = slipTime - startTime - previousPauses;
-                    splitTimeJLabel.setText("" + splitTimeMilliseconds / 1000.0);
-                    System.out.println("split :" + startTime + " " + splitPause + " " + slipTime + " " + previousPauses);
-                    slipCounter++;
-                    splitPause = previousPauses;
+                slipTime = System.currentTimeMillis();
+                long splitTimeMilliseconds = slipTime - startTime - previousPauses;
+                splitTimeJLabel.setText("" + splitTimeMilliseconds / 1000.0);
+                slipCounter++;
 
-
-                } else // Next split.
-                {
-                    long nextSplit = System.currentTimeMillis();
-                    contents.add(new JLabel("Split " + slipCounter + " time (seconds):" + (nextSplit - slipTime  - (previousPauses - splitPause)) / 1000.0));
-                    //splitTimeJLabel.setText("" + (nextSplit - slipTime) / 1000.0);
-                    System.out.println("split :" + nextSplit + " " + splitPause + " " + slipTime + " " + previousPauses);
-                    slipTime = nextSplit;
-                    splitPause = previousPauses;
-                } // else
-            } // if
-        }
+            } else // Next split.
+            {
+                long nextSplit = System.currentTimeMillis();
+                JTextField newText = new JTextField("Split " + slipCounter + " time (seconds):"
+                                                    + (nextSplit - slipTime  - (previousPauses - splitPause)) / 1000.0);
+                contents.add(newText);
+                newText.setEnabled(false);
+                slipTime = nextSplit;
+            } // else
+            splitPause = previousPauses;
+        } // else if
         else // Event behaviour for Pause/Resume button.
         {
             if (!isPause) // Pause option is not pushed yet
             {
+                pauseJButton.setText("Resume");
+                splitJButton.setEnabled(false);
                 pauseTime = System.currentTimeMillis();
                 elapsedTimeJLabel.setText("Paused... ");
 
                 if (slipTime == 0)
                     splitTimeJLabel.setText("Paused... ");
                 isPause = true;
-                System.out.println("pause started " + previousPauses);
             } // if
             else // Pause is active - resume.
             {
-
+                pauseJButton.setText("Resume");
+                splitJButton.setEnabled(true);
                 long resumeTimeStamp = System.currentTimeMillis();
                 pauseTime = resumeTimeStamp - pauseTime;
                 previousPauses += pauseTime;
@@ -180,9 +193,9 @@ public class StopClock extends JFrame implements ActionListener{
                 if (slipTime == 0)
                     splitTimeJLabel.setText("Running... ");
                 isPause = false;
-                System.out.println("pause ended " + previousPauses);
             } // else
-        }
+        } // else
+
         // It is a good idea to pack again
         // because of the size of the labels may have changed.
         pack();
