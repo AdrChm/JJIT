@@ -1,65 +1,61 @@
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-// Program to print out a neat multiplication table.
-// It can take up to two arguments:
-// First describes scope of the table (starting from one)
-// Second describes number, which will be multiplied by each table element.
-public class TimesTable extends JFrame
+// Program to show a times table for a multiplier chosen by the user.
+public class TimesTable extends JFrame implements ActionListener
 {
+	// A text field for the user to enter the multiplier.
+	private final JTextField multiplierJTextField = new JTextField(5);
+
+	// A text area for the resulting times table, 15 lines or 20 characters.
+	private final JTextArea displayJTextArea = new JTextArea(15,20);
+
 	// Constructor method
-	public TimesTable(int tableSize, int numberToMultiply) {
-
-		setTitle( tableSize + " x " + numberToMultiply);
+	public TimesTable()
+	{
+		setTitle("Times Table");
 		Container content = getContentPane();
-		content.setLayout(new GridLayout(0,5, 0, 5));
-		content.setBackground(Color.WHITE);
+		content.setLayout(new BorderLayout());
 
-		for (int index = 1; index <= tableSize; index++) {
+		content.add(multiplierJTextField, BorderLayout.NORTH);
+		content.add(displayJTextArea, BorderLayout.CENTER);
 
-			if(index % 2 == 0)
-			{
-				content.add(formatJLabel("" + index));
-				content.add(formatJLabel("X"));
-				content.add(formatJLabel("" + numberToMultiply));
-				content.add(formatJLabel("="));
-				content.add(formatJLabel("" + index * numberToMultiply));
-			}
-			else {
-
-				content.add(new JLabel("" + index));
-				content.add(new JLabel("X"));
-				content.add(new JLabel("" + numberToMultiply));
-				content.add(new JLabel("="));
-				content.add(new JLabel("" + index * numberToMultiply));
-
-			} // else
-		} // for
+		JButton displayJButton = new JButton("Display");
+		content.add(displayJButton,BorderLayout.SOUTH);
+		displayJButton.addActionListener(this);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 
 	} // TimesTable
 
-	// Option extra - setting colors for alternating rows.
-	// Private helper method to color even labels
-	private JLabel formatJLabel(String text)
+	// Act upon the button being pressed.
+	public void actionPerformed(ActionEvent event)
 	{
-		Color lightBlue = new Color(222, 245, 255);
-		JLabel label = new JLabel(text);
-		label.setOpaque(true);
-		label.setBackground(lightBlue);
-		return label;
-	}
+		// Empty the text area to remove any previous result.
+		displayJTextArea.setText("");
+
+		int multiplier = Integer.parseInt(multiplierJTextField.getText());
+
+		displayJTextArea.append("--------------------------------\n");
+		displayJTextArea.append("| Times table for " + multiplier + "\n");
+		displayJTextArea.append("--------------------------------\n");
+		for (int thisNumber = 1; thisNumber <= 10; thisNumber++)
+			displayJTextArea.append("| " + thisNumber + " x " + multiplier
+								   + " = " + thisNumber * multiplier + "\n");
+
+		displayJTextArea.append("--------------------------------\n");
+	} // actionPerformed
 
 	// Create a TimesTable and make it appear on screen.
-	public static void main(String[] args) {
-
-		TimesTable theTimesTable = new TimesTable(Integer.parseInt(args[0]),Integer.parseInt(args[1]));
-		theTimesTable.setVisible(true);
+	public static void main(String [] args) {
+		new TimesTable().setVisible(true);
 	} // main
 
 } // TimesTable class
