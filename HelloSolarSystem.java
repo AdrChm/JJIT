@@ -31,8 +31,7 @@ public class HelloSolarSystem extends JFrame{
 
 	// Create a HelloSolarSystem and make it appear on screen.
 	public static void main(String [] args){
-		HelloSolarSystem theHelloSolarSystem = new HelloSolarSystem();
-		theHelloSolarSystem.setVisible(true);
+		new HelloSolarSystem().setVisible(true);
 	} // main
 
 } // class HelloSolarSystem

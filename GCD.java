@@ -69,14 +69,12 @@ public class GCD extends JFrame implements ActionListener
             else
                 digitsShift = number2;
         } // else
-        System.out.println("shift " + number1 + " , " + number2 + " , " + number3);
 
         // Overwriting required digit shift with excepted result of casting to int.
         number1 = shiftDigits(Double.parseDouble(number1JTextField.getText()), digitsShift);
         number2 = shiftDigits(Double.parseDouble(number2JTextField.getText()), digitsShift);
         number3 = shiftDigits(Double.parseDouble(number3JTextField.getText()), digitsShift);
 
-        System.out.println("digitShift " + number1 + " , " + number2 + " , " + number3);
         // If any result is 0 then result must be cast to long.
         // And GCD is returned as such.
         if(number1 == 0 || number2 == 0 || number3 == 0) {
@@ -84,12 +82,9 @@ public class GCD extends JFrame implements ActionListener
             long extendedNumber2 = (long) (Double.parseDouble(number2JTextField.getText()) * Math.pow(10, digitsShift));
             long extendedNumber3 = (long) (Double.parseDouble(number3JTextField.getText()) * Math.pow(10, digitsShift));
 
-            System.out.println("digitShift " + extendedNumber1 + " , " + extendedNumber2 + " , " + extendedNumber3);
-
             long theGCD = MyMath.greatestCommonDivisor(extendedNumber1, extendedNumber2);
             theGCD = MyMath.greatestCommonDivisor(theGCD, extendedNumber3);
             resultJTextField.setText(shiftDigits(theGCD, digitsShift));
-            System.out.println("long  " + extendedNumber1 + " , " + extendedNumber2 + " , " + extendedNumber3);
 
         } // if
         else
@@ -231,7 +226,6 @@ public class GCD extends JFrame implements ActionListener
     // Create a GCD and make it appear on screen.
     public static void main(String [] args)
     {
-        GCD theGCD = new GCD();
         new GCD().setVisible(true);
     } // main
 

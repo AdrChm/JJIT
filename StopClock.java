@@ -214,8 +214,7 @@ public class StopClock extends JFrame implements ActionListener{
 
     // Create StopClock and make it appear on screen.
     public static void main(String[] args) {
-        StopClock theStopClock = new StopClock();
-        theStopClock.setVisible(true);
+        new StopClock().setVisible(true);
 
     } // main
 

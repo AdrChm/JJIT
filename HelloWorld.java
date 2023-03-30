@@ -15,12 +15,11 @@ public class HelloWorld extends JFrame{
     } // HelloWorld
 
     // Create a HelloWorld and make it appear on screen.
-    public static void main(String[] args) {
-        HelloWorld theHelloWorld = new HelloWorld();
-        theHelloWorld.setVisible(true);
+    public static void main(String[] args)
+    {
+        new HelloWorld().setVisible(true);
 
-        HelloWorld secondWindow = new HelloWorld();
-        secondWindow.setVisible(true);
+        new HelloWorld().setVisible(true);
     } // main
 
 } // class HelloWorld

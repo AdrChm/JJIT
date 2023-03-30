@@ -34,8 +34,7 @@ public class CoinTosser extends JFrame{
 
     // Create a CoinTosser and make it appear on the screen.
     public static void main(String[] args) {
-        CoinTosser theCoinTosser = new CoinTosser();
-        theCoinTosser.setVisible(true);
+        new CoinTosser().setVisible(true);
     } // main
 
 } // class CoinTosser
