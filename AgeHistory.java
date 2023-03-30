@@ -132,15 +132,26 @@ public class AgeHistory extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent event)
 	{
 		if(event.getSource() == newJButton)
+		{
 			new AgeHistory().setVisible(true);
+
+
+		} // if
+
+
+
 		else if (event.getSource() == displayJButton)
 		{
 			// Set the present date only if it has not already been set.
 			if (Date.getPresentDate() == null)
 			{
+
 				Date presentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
 											Integer.parseInt(presentMonthJTextField.getText()),
 											Integer.parseInt(presentYearJTextField.getText()));
+
+			System.out.println("gen" + presentDate);
+
 				Date.setPresentDate(presentDate);
 
 				// Date should be set only once: disable further editing.
@@ -148,7 +159,23 @@ public class AgeHistory extends JFrame implements ActionListener
 				presentMonthJTextField.setEnabled(false);
 				presentYearJTextField.setEnabled(false);
 			} // if
+			else // Prevents existence of multiple present dates
+			{
+				Date givenPresentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
+												 Integer.parseInt(presentMonthJTextField.getText()),
+												 Integer.parseInt(presentYearJTextField.getText()));
 
+				// When given date is not present date, fields will update themselves to original value.
+				if(Date.getPresentDate().compareTo(givenPresentDate) != 0)
+				{
+					presentDayJTextField.setText("" + Date.getPresentDate().getDay());
+					presentMonthJTextField.setText("" + Date.getPresentDate().getMonth());
+					presentYearJTextField.setText("" + Date.getPresentDate().getYear());
+					presentDayJTextField.setEnabled(false);
+					presentMonthJTextField.setEnabled(false);
+					presentYearJTextField.setEnabled(false);
+				} // if
+			}
 			// Compute and display the age history.
 			String name = nameJTextField.getText();
 			Date birthday = new Date(Integer.parseInt(birthDayJTextField.getText()),
