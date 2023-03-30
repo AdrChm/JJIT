@@ -1,58 +1,171 @@
-import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
-/* Program to print out the history of any number of named people's ages.
-   The age history of a person consists of a statement of thier bnirth on their
-   birth date, followed by a statement of their age on each of their birthdays
-   which have occured before the present date. Finally it ends with a 
-   statement saying what age they will be on their next birthday, including 
-   the present date, if their birthday is today. However, if the person has 
-   not yet been born, or is born on the present date then their age history 
-   consists merely of a statement stating or predicting thier birth.
-
-   It first prompts for the present date, to be entered by user as three
-   integers in the order day, month then year. Then it prompts for the number 
-   of persons, which is to be entered as a string, and date of birth,
-   to be entered as three integers in the order day, month then year. Then it
-   produces the age history for that person.  
+/* Report the age history of a person.
+	Current date and person details are entered through text fields.
+	The result is displayed in a text area.
+	A ''new'' button enables multiple displays.
 */
-public class AgeHistory
+public class AgeHistory extends JFrame implements ActionListener
 {
+
+	// JTextFields for the present date.
+	private final JTextField presentDayJTextField = new JTextField(2);
+	private final JTextField presentMonthJTextField = new JTextField(2);
+	private final JTextField presentYearJTextField = new JTextField(4);
+
+	// JTextFields for the name and birthday.
+	private final JTextField nameJTextField = new JTextField(15);
+	private final JTextField birthDayJTextField = new JTextField(2);
+	private final JTextField birthMonthJTextField = new JTextField(2);
+	private final JTextField birthYearJTextField = new JTextField(4);
+
+	// JTextArea for the result.
+	private final JTextArea ageHistoryJTextArea = new JTextArea(15,20);
+
+	// TThe age history display button.
+	private final JButton displayJButton = new JButton("Display");
+
+	// TThe new window button.
+	private final JButton newJButton = new JButton("New");
+
+	// The number of instances created: each has its number in the title.
+	private static int instanceCountSoFar = 0;
+
+	// Constructor.
+	public AgeHistory()
+	{
+		instanceCountSoFar++;
+		setTitle("Age History (" + instanceCountSoFar + ")");
+
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
+
+		// The top panel is for the inputs.
+		// It will be a grid of 3 by 2.
+		JPanel inputDataJPanel = new JPanel();
+		contents.add(inputDataJPanel, BorderLayout.NORTH);
+		inputDataJPanel.setLayout(new GridLayout(0,2));
+
+		// Top left of inputDataJPanel.
+		inputDataJPanel.add(new JLabel("Present date"));
+
+		// Top right of inputDataJPanel.
+		// A JPanel with left aligned FlowLayout,
+		// For today's date components.
+		JPanel presentDayJPanel = new JPanel();
+		inputDataJPanel.add(presentDayJPanel);
+		presentDayJPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		// JTextFields for present date components, with JLabels.
+		presentDayJPanel.add(presentDayJTextField);
+		presentDayJPanel.add(new JLabel("/"));
+		presentDayJPanel.add(presentMonthJTextField);
+		presentDayJPanel.add(new JLabel("/"));
+		presentDayJPanel.add(presentYearJTextField);
+
+		// Middle left of inputDataJPanel.
+		inputDataJPanel.add(new JLabel("Person name"));
+
+		// Middle right of inputDataJPanel.
+		// Use a JPanel so that alignment matches rows above and below.
+		JPanel nameJPanel = new JPanel();
+		inputDataJPanel.add(nameJPanel);
+		nameJPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		nameJPanel.add(nameJTextField);
+
+		// Bottom left of inputDataJPanel.
+		inputDataJPanel.add(new JLabel("Birthday"));
+
+		// Bottom right of inputDataJPanel.
+		// A JPanel with left aligned FlowLayout,
+		// For birthday components.
+		JPanel birthdayJPanel = new JPanel();
+		inputDataJPanel.add(birthdayJPanel);
+		birthdayJPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		// JTextFields for birthday components, with JLabels.
+		birthdayJPanel.add(birthDayJTextField);
+		birthdayJPanel.add(new JLabel("/"));
+		birthdayJPanel.add(birthMonthJTextField);
+		birthdayJPanel.add(new JLabel("/"));
+		birthdayJPanel.add(birthYearJTextField);
+
+		// The result JTextArea goes in the centre.
+		contents.add(new JScrollPane(ageHistoryJTextArea), BorderLayout.CENTER);
+
+		// The buttons go at the bottom, in a JPanel with FlowLayout.
+		JPanel buttonJPanel = new JPanel();
+		contents.add(buttonJPanel,BorderLayout.SOUTH);
+		buttonJPanel.setLayout(new FlowLayout());
+		buttonJPanel.add(displayJButton);
+		displayJButton.addActionListener(this);
+		buttonJPanel.add(newJButton);
+		newJButton.addActionListener(this);
+
+		// Allow for the possibility that the present date has already been set.
+		Date presentDate = Date.getPresentDate();
+		if (presentDate != null)
+		{
+			presentDayJTextField.setText("" + presentDate.getDay());
+			presentMonthJTextField.setText("" + presentDate.getMonth());
+			presentYearJTextField.setText("" + presentDate.getYear());
+			presentDayJTextField.setEnabled(false);
+			presentMonthJTextField.setEnabled(false);
+			presentYearJTextField.setEnabled(false);
+		} // if
+
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		pack();
+
+	} // AgeHistory
+
+	// Act upon the button being pressed.
+	public void actionPerformed(ActionEvent event)
+	{
+		if(event.getSource() == newJButton)
+			new AgeHistory().setVisible(true);
+		else if (event.getSource() == displayJButton)
+		{
+			// Set the present date only if it has not already been set.
+			if (Date.getPresentDate() == null)
+			{
+				Date presentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
+											Integer.parseInt(presentMonthJTextField.getText()),
+											Integer.parseInt(presentYearJTextField.getText()));
+				Date.setPresentDate(presentDate);
+
+				// Date should be set only once: disable further editing.
+				presentDayJTextField.setEnabled(false);
+				presentMonthJTextField.setEnabled(false);
+				presentYearJTextField.setEnabled(false);
+			} // if
+
+			// Compute and display the age history.
+			String name = nameJTextField.getText();
+			Date birthday = new Date(Integer.parseInt(birthDayJTextField.getText()),
+									 Integer.parseInt(birthMonthJTextField.getText()),
+									 Integer.parseInt(birthYearJTextField.getText()));
+
+			Person person = new Person(name, birthday);
+			ageHistoryJTextArea.setText(person.ageHistory());
+		} // else if
+	} // actionPerformed
+
+	// Create and AgeHistory and make it appear on the screen.
 	public static void main(String [] args)
 	{
-		// For interaction with the user.
-		Scanner inputScanner = new Scanner(System.in);
-		
-		// The date class needs to be told the present date.
-		System.out.print("Enter today' date as three numbers, dd mm yyyy: ");
-		int day = inputScanner.nextInt();
-		int month = inputScanner.nextInt();
-		int year = inputScanner.nextInt();
-		Date.setPresentDate(new Date(day, month, year));
-
-		// Now find out how many people there are.
-		System.out.print("Enter the number of people: ");
-		int noOfPeople = inputScanner.nextInt();
-		// Skip to the next line of input
-		// or else first name will be blank!
-		inputScanner.nextLine();
-
-		// For each person...
-		for (int personNumber = 1; personNumber <= noOfPeople; personNumber++)
-		{
-			// Obtain name and birthday.
-			System.out.print("Enter the name of person: " + personNumber + ": ");	
-			String personName = inputScanner.nextLine();
-			System.out.print("Enter his/her birthday (dd mm yyyy): ");
-			int birthDay = inputScanner.nextInt();
-			int birthMonth = inputScanner.nextInt();
-			int birthYear = inputScanner.nextInt();		
-			// Skip to the next line, or else next name will be blank!
-			inputScanner.nextLine();
-
-			Date birthDate = new Date(birthDay, birthMonth, birthYear);
-			Person person = new Person(personName, birthDate);
-			System.out.println(person.ageHistory());
-		} // for
+		// Ensure we use just \n for age history line separator on all platforms.
+		Person.setLineSeparator("\n");
+		new AgeHistory().setVisible(true);
 	} // main
 
 } // class AgeHistory
