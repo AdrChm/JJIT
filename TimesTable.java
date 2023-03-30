@@ -1,84 +1,84 @@
-// Program to print out a neat x by x multiplication table, where x is the size of the table
-// Which is given as input argument
-public class TimesTable
+import java.awt.Container;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+// Program to show a times table for a multiplier chosen by the user.
+// The user also chooses the size of the table.
+public class TimesTable extends JFrame implements ActionListener
 {
-	// The size of the table -- the number of rows and columns.
-	private static int tableSize = 12;
-	
-	// The main method implements the top structure of the table.
-	public static void main(String [] args)
+	// A text field for the user to enter the multiplier.
+	private final JTextField multiplierJTextField = new JTextField(5);
+
+	// A text field for the user to enter the size of the table.
+	private final JTextField tableSizeJTextField = new JTextField("10");
+
+	// A text area for the resulting times table, 15 lines or 20 characters.
+	private final JTextArea displayJTextArea = new JTextArea(15,20);
+
+	// Constructor method
+	public TimesTable()
 	{
-	
-		// Top line.
-		printLine();
-		
-		// Column headings.
-		printColumnHeadings();
+		setTitle("Times Table");
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
 
-		// UnderlineHeadings
-		printLine();
+		// A JPanel the two text fields.
+		// It will be a GridLayout of two times two,
+		// at the top of the JFrame contents.
+		JPanel numbersPanel = new JPanel();
+		contents.add(numbersPanel, BorderLayout.NORTH);
+		numbersPanel.setLayout(new GridLayout(2,0));
 
-		// Now the rows.
-		for(int row =1; row <= tableSize; row++)
-			printRow(row);
+		// Add to JLabels, and two JTextFields to the numbersPanel.
+		numbersPanel.add(new JLabel("Multiplier:"));
+		numbersPanel.add(multiplierJTextField);
+		numbersPanel.add(new JLabel("Table size:"));
+		numbersPanel.add(tableSizeJTextField);
 
-		// Bottom line.
-		printLine();	
+		// The result JScrollPane/JTextArea goes in the centre.
+		contents.add(new JScrollPane(displayJTextArea), BorderLayout.CENTER);
 
+		// The JButton goes at the bottom.
+		JButton displayJButton = new JButton("Display");
+		contents.add(displayJButton,BorderLayout.SOUTH);
+		displayJButton.addActionListener(this);
+
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+
+	} // TimesTable
+
+	// Act upon the button being pressed.
+	public void actionPerformed(ActionEvent event)
+	{
+		// Empty the text area to remove any previous result.
+		displayJTextArea.setText("");
+
+		int multiplier = Integer.parseInt(multiplierJTextField.getText());
+		int tableSize = Integer.parseInt(tableSizeJTextField.getText());
+
+		displayJTextArea.append("--------------------------------\n");
+		displayJTextArea.append("| Times table for " + multiplier + "\n");
+		displayJTextArea.append("--------------------------------\n");
+		for (int thisNumber = 1; thisNumber <= tableSize; thisNumber++)
+			displayJTextArea.append("| " + thisNumber + " x " + multiplier
+								   + " = " + thisNumber * multiplier + "\n");
+
+		displayJTextArea.append("--------------------------------\n");
+	} // actionPerformed
+
+	// Create a TimesTable and make it appear on screen.
+	public static void main(String [] args) {
+		new TimesTable().setVisible(true);
 	} // main
-
-	// Print line across the table.
-	private static void printLine()
-	{
-		// Left side, 5 characters for row labels, separator.
-		System.out.print("|-----|");
-
-		// Across each column.
-		for (int column = 1; column <= tableSize; column++)
-			// 4 character for each column.
-			System.out.print("----");
-
-		// The right side.
-		System.out.println("-|");
-
-	} // printLine
-
-	// Print the line containing the column headings.
-	private static void printColumnHeadings()
-	{
-		System.out.print("|     |");
-		for (int column = 1; column <= tableSize; column++)
-			printNumber(column);
-			System.out.println(" |");		
-		
-	} // printColumnHeadings
-
-	// Print one row of the table.
-	private static void printRow(int row)
-	{
-		// The left side.
-			System.out.print("|");	
-		printNumber(row);	
-		// Separator
-		System.out.print(" |");	
-
-		// Now for the columns on this row.
-		for (int column = 1; column <= tableSize; column++)
-			printNumber(row * column);
-		
-		// The right side.
-		System.out.println(" |");			
-	
-	} // printRow
-
-
-	private static void printNumber(int numberToPoint)
-	{
-				 
-		// Coffee 8.5.1 update - string formatting with printf
-
-			System.out.printf("%4d", numberToPoint);		
-	
-	} // printNumber
 
 } // TimesTable class

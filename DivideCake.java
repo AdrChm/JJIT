@@ -10,7 +10,7 @@ public class DivideCake
 		// Both multiple1OfGCD and multiple2OfGCD must be positive
 		// While the two multiples are not the same, the difference
 		// between them must also be a multiple of GCD.
-		// So we keep substracting the smallest from the largest
+		// So we keep subtracting the smallest from the largest
 		// until they are equal.
 		while (multiple1OfGCD != multiple2OfGCD)
 			if( multiple1OfGCD > multiple2OfGCD)
