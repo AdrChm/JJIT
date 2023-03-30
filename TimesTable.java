@@ -25,6 +25,7 @@ public class TimesTable extends JFrame implements ActionListener
 
 		content.add(multiplierJTextField, BorderLayout.NORTH);
 		content.add(displayJTextArea, BorderLayout.CENTER);
+		displayJTextArea.setEnabled(false);
 
 		JButton displayJButton = new JButton("Display");
 		content.add(displayJButton,BorderLayout.SOUTH);
