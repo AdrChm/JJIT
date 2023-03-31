@@ -18,13 +18,14 @@ public class MarkAnalysis {
 
             // Processing each mark and calculating sum of marks.
             int sumOfMarks = 0;
-
-
+            int[] students = new int[numberOfMarks];
             int[] marks = new int[numberOfMarks];
+
             for (int index = 0; index < numberOfMarks; index++)
             {
                 System.out.print("Enter mark # " + (index + 1) + ": ");
                 marks[index] = inputScanner.nextInt();
+                students[index] = marks[index];
                 sumOfMarks += marks[index];
 
             } // for
@@ -45,7 +46,7 @@ public class MarkAnalysis {
 
             System.out.println("Person | Score | difference from mean");
             for (int index = 0; index < numberOfMarks; index++)
-                System.out.printf("%6d | %5d | %6.2f%n", index + 1, marks[index], (double)marks[index] - meanMark);
+                System.out.printf("%6d | %5d | %6.2f%n", findArrayIndex(students, marks[index]) + 1, marks[index], (double)marks[index] - meanMark);
 
         } // if
         else // Wrong number of marks is entered
@@ -60,19 +61,19 @@ public class MarkAnalysis {
        if(anArray.length < 2)
             return; // Nothing to be done here continue.
 
-           int[] firstHalfArray = new int[anArray.length /2];
-           int[] secondHalfArray = new int[anArray.length - firstHalfArray.length];
+        int[] firstHalfArray = new int[anArray.length /2];
+        int[] secondHalfArray = new int[anArray.length - firstHalfArray.length];
 
-           // Filling the elements for first and then second sub array.
-           for (int index = 0; index < firstHalfArray.length; index++)
-                   firstHalfArray[index] = anArray[index];
+        // Filling the elements for first and then second sub array.
+        for (int index = 0; index < firstHalfArray.length; index++)
+            firstHalfArray[index] = anArray[index];
 
-            for (int index = 0; index < secondHalfArray.length; index++)
-                secondHalfArray[index] = anArray[index + firstHalfArray.length];
+        for (int index = 0; index < secondHalfArray.length; index++)
+            secondHalfArray[index] = anArray[index + firstHalfArray.length];
 
-           mergeSort(firstHalfArray);
-           mergeSort(secondHalfArray);
-           merge(firstHalfArray,secondHalfArray, anArray);
+        mergeSort(firstHalfArray);
+        mergeSort(secondHalfArray);
+        merge(firstHalfArray,secondHalfArray, anArray);
 
     } // mergeSort
 
@@ -109,5 +110,21 @@ public class MarkAnalysis {
         } // while
 
     } // merge
+
+    // Compare arrays elements to adjust index values.
+    // Private helper method to find index of given array based on given value
+    private static int findArrayIndex(int[] anArray, int searchedValue)
+    {
+
+        for (int index = 0; index < anArray.length; index++)
+        {
+            if (anArray[index] == searchedValue)
+                return index;
+        } // for
+
+        // return -1 if value was not found
+        return -1;
+
+    } // findArrayIndex
 
 } // class MarkAnalysis
