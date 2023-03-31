@@ -53,6 +53,4 @@ public class SalaryAnalysis {
 
     } // main
 
-
-
 } // class SalaryAnalysis
