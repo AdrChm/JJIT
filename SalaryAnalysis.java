@@ -17,12 +17,13 @@ public class SalaryAnalysis {
 
         // Salaries are ints stored in the array.
         int[] salaries = new int[numberOfSalaries];
-
+        int[] people = new int[numberOfSalaries];
         //Obtain salaries for the input and compute the sum of the salaries.
         for (int index = 0; index < numberOfSalaries; index++)
         {
             System.out.print("Enter salary # " + (index + 1) + ": ");
             salaries[index] = salariesScanner.nextInt();
+            people[index] = salaries[index];
         } // for
 
         // Now we compute the sum of the salaries.
@@ -53,11 +54,29 @@ public class SalaryAnalysis {
                                       : (differenceFromMean < 0
                                         ? "less than" : "greater than");
             System.out.printf("Person %2d earns %5d , which is %5d %s the mean%n",
-                              (index+1), salaries[index],
+                    findArrayIndex(people, salaries[index]) + 1, salaries[index],
                               Math.abs(differenceFromMean), comparisonToMean);
         } // for
 
     } // main
+
+    // Coffee 14.3.5 solving index problem, without changing sort method.
+    // Coping reference doesn't work so, values must be copied.
+    // Compare arrays elements to adjust index values.
+    // Private helper method to find index of given array based on given value
+    private static int findArrayIndex(int[] anArray, int searchedValue)
+    {
+
+        for (int index = 0; index < anArray.length; index++)
+        {
+            if (anArray[index] == searchedValue)
+                return index;
+        } // for
+
+        // return -1 if value was not found
+            return -1;
+
+    } // findArrayIndex
 
     // Sort a given array of int into ascending order.
     public static void sort(int [] anArray)
