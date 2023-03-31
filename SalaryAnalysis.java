@@ -18,17 +18,14 @@ public class SalaryAnalysis {
         // Salaries are ints stored in the array.
         int[] salaries = new int[numberOfSalaries];
 
-        // Obtain salaries for the input
+        // Obtain salaries for the input and compute the sum of the salaries.
+        int sumOfSalaries = 0;
         for (int index = 0; index < numberOfSalaries; index++)
         {
             System.out.print("Enter salary # " + (index + 1) + ": ");
             salaries[index] = salariesScanner.nextInt();
-        } // for
-
-        // Now compute the sum of the salaries.
-        int sumOfSalaries = 0;
-        for (int index = 0; index < numberOfSalaries; index++)
             sumOfSalaries += salaries[index];
+        } // for
 
         // Compute the mean, which is double not an integer.
         double meanSalary = sumOfSalaries / (double)numberOfSalaries;
