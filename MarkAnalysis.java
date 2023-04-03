@@ -7,35 +7,42 @@ public class MarkAnalysis {
 
     public static void main(String[] args) {
 
-        // Getting arguments.
+        // A scanner for getting data from the user.
         Scanner inputScanner = new Scanner(System.in);
 
         // Number of marks.
-        System.out.print("Enter the number of marks: ");
-        int numberOfMarks = inputScanner.nextInt();
+        System.out.print("Enter the number of students: ");
+        int numberOfStudents = inputScanner.nextInt();
 
-        if(numberOfMarks > 0) {
+        // Skip past the end of that line.
+        inputScanner.nextLine();
 
-            // Processing each mark and calculating sum of marks.
+        if(numberOfStudents > 0) {
+
+            // Obtaining data for each student and calculating sum of marks.
             int sumOfMarks = 0;
-            int[] students = new int[numberOfMarks];
-            int[] marks = new int[numberOfMarks];
+            Student [] students = new Student[numberOfStudents];
 
-            for (int index = 0; index < numberOfMarks; index++)
+            for (int studentCount = 1; studentCount <= numberOfStudents; studentCount++)
             {
-                System.out.print("Enter mark # " + (index + 1) + ": ");
-                marks[index] = inputScanner.nextInt();
-                students[index] = marks[index];
-                sumOfMarks += marks[index];
+                System.out.print("Enter the name of the student " + studentCount + ": ");
+                String name = inputScanner.nextLine();
+                System.out.print("Enter the mark for '" + name + "': ");
+                int mark = inputScanner.nextInt();
 
+                students [studentCount - 1] = new Student(name, mark);
+                sumOfMarks += mark;
+
+                // Skip past the end of that line.
+                inputScanner.nextLine();
             } // for
 
             // Getting max and min value
-            mergeSort(marks);
-            int maxMark = marks[marks.length - 1];
-            int minMark = marks[0];
+            mergeSort(students);
+            int maxMark = students[numberOfStudents - 1].getMark();
+            int minMark = students[0].getMark();
 
-            double meanMark = sumOfMarks/ (double) numberOfMarks;
+            double meanMark = sumOfMarks/ (double) numberOfStudents;
 
             // Final report.
             System.out.println();
@@ -45,8 +52,8 @@ public class MarkAnalysis {
             System.out.println();
 
             System.out.println("Person | Score | difference from mean");
-            for (int index = 0; index < numberOfMarks; index++)
-                System.out.printf("%6d | %5d | %6.2f%n", findArrayIndex(students, marks[index]) + 1, marks[index], (double)marks[index] - meanMark);
+            for (int index = 0; index < numberOfStudents; index++)
+                System.out.printf("%s | %6.2f%n", students[index].toString("mark"), students[index].getMark() - meanMark);
 
         } // if
         else // Wrong number of marks is entered
@@ -55,14 +62,15 @@ public class MarkAnalysis {
     } // main
 
     // For this task I decided to use merge sort as it seems to be one of the most reasonable algorithms.
-    public static void mergeSort(int [] anArray)
+    public static void mergeSort(Student [] anArray)
     {
+
         // Divides array until there is one element.
        if(anArray.length < 2)
             return; // Nothing to be done here continue.
 
-        int[] firstHalfArray = new int[anArray.length /2];
-        int[] secondHalfArray = new int[anArray.length - firstHalfArray.length];
+        Student[] firstHalfArray = new Student[anArray.length /2];
+        Student[] secondHalfArray = new Student[anArray.length - firstHalfArray.length];
 
         // Filling the elements for first and then second sub array.
         for (int index = 0; index < firstHalfArray.length; index++)
@@ -78,12 +86,12 @@ public class MarkAnalysis {
     } // mergeSort
 
     // Private helper method to sort merge sorted arrays.
-    public static void merge(int[] array1, int[] array2 ,int[] mergedArray)
+    public static void merge(Student[] array1, Student[] array2 ,Student[] mergedArray)
     {
         int array1Index = 0, array2Index = 0, mergedArrayIndex = 0;
         while (array1Index < array1.length && array2Index < array2.length)
         {
-            if(array1[array1Index] <= array2[array2Index])
+            if(array1[array1Index].compareTo(array2[array2Index]) <= 0)
             {
                 mergedArray[mergedArrayIndex] = array1[array1Index];
                 array1Index++;
@@ -110,21 +118,5 @@ public class MarkAnalysis {
         } // while
 
     } // merge
-
-    // Compare arrays elements to adjust index values.
-    // Private helper method to find index of given array based on given value
-    private static int findArrayIndex(int[] anArray, int searchedValue)
-    {
-
-        for (int index = 0; index < anArray.length; index++)
-        {
-            if (anArray[index] == searchedValue)
-                return index;
-        } // for
-
-        // return -1 if value was not found
-        return -1;
-
-    } // findArrayIndex
 
 } // class MarkAnalysis
