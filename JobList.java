@@ -142,17 +142,17 @@ public class JobList
     // Helper method for toString.
     private String listOneJobArray(Job[] jobArray)
     {
-        String result = "";
+        StringBuffer result = new StringBuffer("");
         for (Job job: jobArray) {
             int differenceFromMean = job.getSalary() - meanSalaryRounded;
             String comparisonToMean = differenceFromMean == 0
                                       ? "zero difference from"
                                       : (differenceFromMean < 0
                                         ? "less than" : "greater than");
-            result += String.format("%n%s, which is %5d %s the mean",
-                                   job, Math.abs(differenceFromMean), comparisonToMean);
+            result.append(String.format("%n%s, which is %5d %s the mean",
+                                   job, Math.abs(differenceFromMean), comparisonToMean));
         } // for
-        return result;
+        return result.toString();
     } // listOneJobArray
 
 } // class JobList
