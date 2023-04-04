@@ -26,19 +26,36 @@ public class Job {
         return salary;
     } // getSalary
 
+    // These are possible sort orders.
+    // If more required, then add here and update compareTo.
+    public enum SortOrder { BY_EMPLOYER, BY_SALARY }
+
     // Compare this Job with a given other,
-    // basing the comparison on the salaries, then the employers.
+    // basing the comparison on the given sort order.
     // Return -ve(<), 0(=) or +ve(>) int. -ve means this one is the smallest.
-    public int compareTo(Job other)
+    public int compareTo(Job other, SortOrder sortOrder)
     {
-        if(salary == other.salary)
-            return employer.compareTo(other.employer);
-        else
-            return salary - other.salary;
+        switch (sortOrder)
+        {
+            case BY_EMPLOYER:
+                if (employer.equals(other.employer))
+                    return salary - other.salary;
+                else
+                    return employer.compareTo(other.employer);
+            case BY_SALARY:
+                if (salary == other.salary)
+                    return employer.compareTo(other.employer);
+                else
+                    return salary - other.salary;
+            default:
+                return 0;
+        } // switch
+
     } // compareTo
 
     // Return a string representation.
-    public String toString(){
+    public String toString()
+    {
         return String.format("%-15s pays %5d", employer, salary);
     } // toString
 
