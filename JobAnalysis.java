@@ -47,7 +47,7 @@ public class JobAnalysis
         int meanSalaryRounded = (int) Math.round(meanSalary);
 
         // Sort the jobs by salary into ascending order.
-        sort(jobs);
+        sort(jobs, Job.SortOrder.BY_SALARY);
 
         // Produce the results.
         System.out.println();
@@ -69,7 +69,7 @@ public class JobAnalysis
     } // main
 
     // Sort the given array of Jobs using compareTo on the Job objects.
-    public static void sort(Job [] anArray) {
+    private static void sort(Job [] anArray, Job.SortOrder sortOrder) {
         // Each pass of the sort reduces unsortedLength by one.
         int unsortedLength = anArray.length;
         // If no change is made on a pass, the main loop can stop.
@@ -79,9 +79,9 @@ public class JobAnalysis
             changeThisOnPass = false;
             for (int pairLeftIndex = 0; pairLeftIndex < unsortedLength - 1; pairLeftIndex++)
             {
-                if (anArray[pairLeftIndex].compareTo(anArray[pairLeftIndex + 1]) > 0)
+                if (anArray[pairLeftIndex].compareTo(anArray[pairLeftIndex + 1], sortOrder) > 0)
                 {
-                    System.out.println(anArray[pairLeftIndex].getSalary() + ", " + anArray[pairLeftIndex+1].getSalary() + ", " + anArray[pairLeftIndex].compareTo(anArray[pairLeftIndex + 1]));
+                    System.out.println(anArray[pairLeftIndex].getSalary() + ", " + anArray[pairLeftIndex+1].getSalary() + ", " + anArray[pairLeftIndex].compareTo(anArray[pairLeftIndex + 1], sortOrder));
                     Job thatWasAtPairLeftIndex = anArray [pairLeftIndex];
                     anArray [pairLeftIndex] = anArray [pairLeftIndex + 1];
                     anArray [pairLeftIndex + 1] = thatWasAtPairLeftIndex;
