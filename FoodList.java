@@ -57,7 +57,7 @@ public class FoodList
             foodIndex++;
         if(foodIndex == noOfFoodItems)
             return null;
-        else
-            return foodList[foodIndex];
+
+        return foodList[foodIndex];
     } // findFood
 } // class FoodList
