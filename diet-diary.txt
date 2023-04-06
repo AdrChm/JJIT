@@ -1,0 +1,8 @@
+pizza		400
+garlic bread	200
+cheesecake	260
+burger		200
+fries		180
+milkshake	400
+fried chicken	360
+wedges		270

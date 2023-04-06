@@ -1,0 +1,9 @@
+Food		Protein	Carb	Fat	Fibre	Sodium
+burger		150	200	100	25	12
+cheesecake	50	300	200	6	5
+fried chicken	225	115	190	15	10
+fries		35	400	150	50	12
+garlic bread	130	420	95	25	5
+milkshake	28	202	32	1	2
+pizza		140	300	119	25	8
+wedges		210	390	99	41	12		
