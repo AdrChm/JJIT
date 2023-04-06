@@ -53,7 +53,7 @@ public class FoodList
     {
         int foodIndex = 0;
         while (foodIndex < noOfFoodItems
-                && ! foodList[foodIndex].getName().equals(foodNameToFind))
+                && ! foodList[foodIndex].getName().equalsIgnoreCase(foodNameToFind))
             foodIndex++;
         if(foodIndex == noOfFoodItems)
             return null;
