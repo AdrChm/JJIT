@@ -55,11 +55,12 @@ public class Diet
     } // readDietDiary
 
     // Print the dietTable as grams (so divide by 1000).
+    // With proper formatting.
     private static void printDietTable()
     {
         for (int componentIndex = 0;
              componentIndex < Food.NUTRITIONAL_COMPONENTS.length; componentIndex++)
-            System.out.println(Food.NUTRITIONAL_COMPONENTS[componentIndex] + "\t" +
+            System.out.printf("%-10s \t%d\n",Food.NUTRITIONAL_COMPONENTS[componentIndex],
                     Math.round(dietTable[componentIndex] / 1000));
     } // printDietTable
 
