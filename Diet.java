@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 
-/* this program reads food information from food-details.txt
+/* This program reads food information from food-details.txt
    and diet information from diet-diary.txt
    and produces a table of how much nutritional component was eaten.
  */

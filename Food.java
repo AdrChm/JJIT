@@ -1,4 +1,4 @@
-// representation of a food, as a name
+// Representation of a food, as a name
 // together with nutritional data in grams per kilogram.
 public class Food
 {

@@ -3,7 +3,7 @@ import java.util.Scanner;
 // Keeps list of food items, and provides a search facility.
 public class FoodList
 {
-    // For array extension fo FoodList.
+    // For array extension of FoodList.
     private static final int INITIAL_ARRAY_SIZE = 100, ARRAY_RESIZE_FACTOR = 2;
 
     // The food details are stored in a partially filled array
