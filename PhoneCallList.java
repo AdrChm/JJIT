@@ -51,7 +51,7 @@ public class PhoneCallList
         StringBuilder result = new StringBuilder();
 
         for (int index = 0; index < noOfPhoneCallItems; index++)
-            if(phoneCalls[index].isPrefix(searchedValue))
+            if(phoneCalls[index].isMatching(searchedValue))
             {
                 result.append(phoneCalls[index]+"\n");
                 totalCost += phoneCalls[index].getCallCost();
