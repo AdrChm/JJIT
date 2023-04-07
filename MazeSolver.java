@@ -83,10 +83,12 @@ public class MazeSolver
 
         while(!isPathFound)
         {
+            // Verification if iteration made a progress (found another path element or exit)
+            // If not it means no solution - stop of the program.
+            boolean hasMatchBeenFound = false;
             for (int row = 1; row < HEIGHT + 2; row++)
                 for (int column = 1; column < WIDTH + 2; column++)
                 {
-                    // System.out.println("current position: " + row + "," + column);
                     // Verify continuation for selected cell.
                     if (maze[row][column] == currentSearchStep)
                     {
@@ -99,17 +101,23 @@ public class MazeSolver
                             {
                                 // This solution considers only one exit (first to be found).
                                 markPathBackFrom(row,column);
+                                hasMatchBeenFound = true;
                                 isPathFound = true;
 
                             } // if
                             else if (maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] == SPACE)
                             {
                                 maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] = currentSearchStep + 1;
+                                hasMatchBeenFound = true;
                             }
                         } // for
                     } // if
                 } // for
-
+            if(!hasMatchBeenFound)
+            {
+                isPathFound = true;
+                System.out.println("This maze has no solution");
+            }
             currentSearchStep++;
 
         } // while
@@ -120,7 +128,10 @@ public class MazeSolver
     private void markPathBackFrom(int row, int column)
     {
         int lastPathElement = maze[row][column];
-        while (lastPathElement != 0)
+        // Marking last element of the path.
+        maze[row][column] = PATH;
+
+        while (lastPathElement != 1)
         {
             lastPathElement--;
             for (int index = 0; index < neighboursOffsets.length; index++)
