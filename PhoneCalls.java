@@ -21,8 +21,8 @@ public class PhoneCalls
         {
             System.out.println("Enter the phone number prefix, or Q to quit: ");
             userInput = inputScanner.nextLine();
-            if(!userInput.equals("Q"))
+            if(!(userInput.equals("Q")||userInput.equals("q")))
                 System.out.println(callList.matchCallsReport(userInput));
-        } while(!userInput.equals("Q"));
+        } while(!(userInput.equals("Q")||userInput.equals("q")));
     } // main
 } // class PhoneCalls
