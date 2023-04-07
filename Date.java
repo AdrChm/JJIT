@@ -92,7 +92,7 @@ public int getDay()
 	 */
 	public String toString()
 	{
-		return day + "/" +  month + "/" +  year;
+		return String.format("%02d/%02d/%02d", day, month, year);
 	} // toString
 
 	/**

@@ -54,8 +54,8 @@ public class PhoneCallList
             if(phoneCalls[index].isMatching(searchedValue))
             {
                 result.append(phoneCalls[index]+"\n");
-                totalCost += phoneCalls[index].getCallCost();
-                totalDuration = totalDuration.add(phoneCalls[index].getCallDuration());
+                totalCost += phoneCalls[index].getCost();
+                totalDuration = totalDuration.add(phoneCalls[index].getDuration());
                 matchesFound++;
             } // if
 

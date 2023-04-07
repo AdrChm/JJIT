@@ -9,11 +9,14 @@ public class PhoneCall
     private final String phoneNumber;
 
     // Duration of the call.
-    private final Duration callDuration;
+    private final Duration duration;
 
     // Cost of this call.
-    private final double callCost;
+    private final double cost;
 
+    // Date and time this call took place.
+    private final Date date;
+    private final Time time;
     public PhoneCall(String fileRecord)
     {
         String [] phoneCallElements = fileRecord.split("\t+");
@@ -23,8 +26,13 @@ public class PhoneCall
             tempPhoneNumber.append(subString);
 
         phoneNumber = tempPhoneNumber.toString();
-        callDuration = new Duration(phoneCallElements[1]);
-        callCost = Double.parseDouble(phoneCallElements[2]);
+        duration = new Duration(phoneCallElements[1]);
+        cost = Double.parseDouble(phoneCallElements[2]);
+
+        String [] dateTimeComponents = phoneCallElements[3].split("\\W");
+        date = new Date(Integer.parseInt(dateTimeComponents[0]), Integer.parseInt(dateTimeComponents[1]), Integer.parseInt(dateTimeComponents[2]));
+        time = new Time(Integer.parseInt(dateTimeComponents[3]), Integer.parseInt(dateTimeComponents[4]), Integer.parseInt(dateTimeComponents[5]));
+
     } // PhoneCall
 
     // Returns boolean information, if given string is matches this phone number.
@@ -43,11 +51,11 @@ public class PhoneCall
         // General pattern for phone number.
         Pattern pattern = Pattern.compile("\\+?\\(?\\.?\\W?(\\d{0,10})\\)?-?\\.?\\W?(\\d{0,10})-?\\.?\\W?(\\d{0,10})-?\\.?\\W?(\\d{0,10})");
         Matcher matcher = pattern.matcher(userInput);
+
         // If input is actual phone number or its prefix.
         if (matcher.matches())
         {
             StringBuilder phoneNumber = new StringBuilder();
-
             // Creates phone number by appending found digit groups.
             for (int index = 1; index <= matcher.groupCount(); index++)
             {
@@ -55,7 +63,7 @@ public class PhoneCall
                     phoneNumber.append(matcher.group(index));
 
             } // for
-            //System.out.println("build number: " + phoneNumber.toString());
+
             return phoneNumber.toString();
         } // if
 
@@ -64,21 +72,21 @@ public class PhoneCall
     } // convertToPhoneNumber
 
     // Accessor for phone call duration.
-    public Duration getCallDuration()
+    public Duration getDuration()
     {
-        return callDuration;
+        return duration;
     } // getCallDuration
 
     // Accessor for phone call cost.
-    public double getCallCost()
+    public double getCost()
     {
-        return callCost;
-    } // getCallCost
+        return cost;
+    } // getCost
 
     // String representation of the phone call.
     public String toString()
     {
-        return String.format( "%-15s\t%s\t%1.2f",phoneNumber,callDuration,callCost);
+        return String.format( "%-15s\t%s\t%1.2f\t%s\s%s",phoneNumber, duration, cost, date, time);
     } // toString
 
 } // class PhoneCall
