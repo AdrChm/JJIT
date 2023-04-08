@@ -60,20 +60,26 @@ public class TimesTable extends JFrame implements ActionListener
 	// Act upon the button being pressed.
 	public void actionPerformed(ActionEvent event)
 	{
-		// Empty the text area to remove any previous result.
-		displayJTextArea.setText("");
+		try {
+			// Empty the text area to remove any previous result.
+			displayJTextArea.setText("");
 
-		int multiplier = Integer.parseInt(multiplierJTextField.getText());
-		int tableSize = Integer.parseInt(tableSizeJTextField.getText());
+			int multiplier = Integer.parseInt(multiplierJTextField.getText());
+			int tableSize = Integer.parseInt(tableSizeJTextField.getText());
 
-		displayJTextArea.append("--------------------------------\n");
-		displayJTextArea.append("| Times table for " + multiplier + "\n");
-		displayJTextArea.append("--------------------------------\n");
-		for (int thisNumber = 1; thisNumber <= tableSize; thisNumber++)
-			displayJTextArea.append("| " + thisNumber + " x " + multiplier
-								   + " = " + thisNumber * multiplier + "\n");
+			displayJTextArea.append("--------------------------------\n");
+			displayJTextArea.append("| Times table for " + multiplier + "\n");
+			displayJTextArea.append("--------------------------------\n");
+			for (int thisNumber = 1; thisNumber <= tableSize; thisNumber++)
+				displayJTextArea.append("| " + thisNumber + " x " + multiplier
+						+ " = " + thisNumber * multiplier + "\n");
 
-		displayJTextArea.append("--------------------------------\n");
+			displayJTextArea.append("--------------------------------\n");
+		} // try
+		catch (NumberFormatException exception)
+		{
+			displayJTextArea.setText("Error parsing multiplier '" + multiplierJTextField.getText() + ",");
+		} // catch
 	} // actionPerformed
 
 	// Create a TimesTable and make it appear on screen.
