@@ -1,0 +1,15 @@
+Mon	pizza		400
+Mon	garlic bread	200
+Mon	cheesecake	260
+Tue	burger		200
+Tue	fries		180
+Tue	milkshake	400
+Wed	fried chicken	360
+Wed	wedges		270
+Thu	pizza		650
+Fri	burger		400
+Fri	fries		360
+Sat	fried chicken	360
+Sat	wedges		540
+Sun	garlic bread	800
+Sun	cheesecake	260
