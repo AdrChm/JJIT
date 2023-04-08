@@ -7,20 +7,29 @@ public class AgeNextYear
 	public static void main(String [] args)
 	{
 		try{
-			int myAgeNow = Integer.parseInt(args[0]);
-			int myAgeNextYear = myAgeNow + 1;
+			int ageNow = Integer.parseInt(args[0]);
 
-			System.out.println("My age now is " + myAgeNow);
+			if(args.length > 1)
+				throw new ArrayIndexOutOfBoundsException(
+						"You have supplied " + args.length + " arguments!");
+
+			if(ageNow < 0)
+				throw new NumberFormatException(
+						"Your age of " + ageNow + " is negative!");
+
+			int myAgeNextYear = ageNow + 1;
+
+			System.out.println("My age now is " + ageNow);
 			System.out.println("My age next year will be " + myAgeNextYear);
 		} // try
 		catch(ArrayIndexOutOfBoundsException exception)
 		{
-			System.out.println("Please supply your age.");
+			System.out.println("Please supply only your age, and nothing else.");
 			System.err.println(exception);
 		} // catch
 		catch (NumberFormatException exception)
 		{
-			System.out.println("Your age must be a whole number!");
+			System.out.println("Your age must be a non-negative whole number!");
 			System.out.println("Exception message was: '" + exception.getMessage() + "'");
 			System.err.println(exception);
 		} // catch
