@@ -63,8 +63,8 @@ public class TimesTable extends JFrame implements ActionListener
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
 		contents.add(displayJTextArea);
-		displayJTextArea.setText("Error parsing multiplier '" + multiplierJTextFieldMessage + "'");
-
+		displayJTextArea.setText(multiplierJTextFieldMessage);
+		displayJTextArea.append("\nOnly whole numbers are accepted arguments.");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 
@@ -91,7 +91,8 @@ public class TimesTable extends JFrame implements ActionListener
 		} // try
 		catch (NumberFormatException exception)
 		{
-				TimesTable errorTable = new TimesTable(multiplierJTextField.getText());
+				System.err.println(exception.getMessage());
+				TimesTable errorTable = new TimesTable(exception.getMessage());
 				errorTable.setVisible(true);
 		} // catch
 	} // actionPerformed
