@@ -16,9 +16,21 @@ public class FishTankVolume
 					+ "(" + width + "," + depth + "," + height + ") "
 					+ "is " + volume);
 		} // try
+		catch (ArrayIndexOutOfBoundsException exception)
+		{
+			System.out.println("Given input has no enough arguments.");
+			System.err.println("the problem: " + exception.getCause());
+			System.err.println(exception);
+		} // catch
+		catch (NumberFormatException exception)
+		{
+			System.out.println("Given input is not a list of proper integers.");
+			System.err.println("the problem: " + exception.getCause());
+			System.err.println(exception);
+		} // catch
 		catch (Exception exception)
 		{
-			System.out.println("Given input is not a list of proper integers, try again.");
+			System.out.println("Unexpected error occurred.");
 			System.err.println("the problem: " + exception.getCause());
 			System.err.println(exception);
 		} // catch
