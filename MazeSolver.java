@@ -44,9 +44,9 @@ public class MazeSolver
     {
         // First we place a surround of HEDGE cells.
         for (int row = 0; row < HEIGHT + 2; row++)
-            maze[row][0] = maze[row][WIDTH + 1] = new Cell(HEDGE);
+            maze[row][0] = maze[row][WIDTH + 1] = new Cell(row, WIDTH + 1, HEDGE);
         for (int column = 0; column < WIDTH + 2; column++)
-            maze[0][column] = maze[HEIGHT + 1][column] = new Cell(HEDGE);
+            maze[0][column] = maze[HEIGHT + 1][column] = new Cell(HEIGHT + 1,column,HEDGE);
 
         // Next we read the maze, assuming the file is valid.
         // This goes in to positions 1 to HEIGHT and 1 to WIDTH
@@ -59,10 +59,10 @@ public class MazeSolver
                 char inputChar = mazeLine.charAt(column - 1);
                 switch (inputChar)
                 {
-                    case SPACE_REP: maze[row][column] = new Cell(SPACE); break;
-                    case HEDGE_REP: maze[row][column] = new Cell(HEDGE); break;
-                    case START_REP: maze[row][column] = new Cell(START); break;
-                    case END_REP:   maze[row][column] = new Cell(END);   break;
+                    case SPACE_REP: maze[row][column] = new Cell(row, column, SPACE); break;
+                    case HEDGE_REP: maze[row][column] = new Cell(row, column, HEDGE); break;
+                    case START_REP: maze[row][column] = new Cell(row, column, START); break;
+                    case END_REP:   maze[row][column] = new Cell(row, column, END);   break;
                 }
             } // for
         } // for
@@ -113,7 +113,7 @@ public class MazeSolver
                             {
                                 maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].setMoveCount(currentSearchStep + 1);
                                 hasMatchBeenFound = true;
-                            }
+                            } // else if
                         } // for
                     } // if
                 } // for
@@ -143,11 +143,11 @@ public class MazeSolver
             for (int index = 0; index < neighboursOffsets.length; index++)
             {
                 // Combination allows neighboursOffsets to create following shifts (-1,0), (0,-1), (1,0), (0,1).
-                if ((maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].getMoveCount()) == lastPathElement)
+                if (maze[maze[row][column].neighbours[index][0]][maze[row][column].neighbours[index][1]].getMoveCount() == lastPathElement)
                 {
-                    maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].setType(PATH);
-                    row = row + neighboursOffsets[index];
-                    column = column + neighboursOffsets[(index + 1) % 4];
+                    maze[maze[row][column].neighbours[index][0]][maze[row][column].neighbours[index][1]].setType(PATH);
+                    row = maze[row][column].neighbours[index][0];
+                    column = maze[row][column].neighbours[index][1];
 
                 } // if
 

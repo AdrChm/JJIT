@@ -1,31 +1,34 @@
 // Representation of a cell and methods related to it.
 public class Cell {
 
+    // Cell coordinates.
+    public final int row;
+    public final int column;
+
     // Cell types
     private int type;
 
     // Move count
     private int moveCount = -1;
 
-  /*
-    // Cell coordinates.
-    public final int row;
-    public final int column;
+    // Neighbour Cells index
+    final int [][] neighbours = new int[4][2];
 
-
-    // Constructor method.
-    public Cell(int row, int column)
+    // Constructor method for given coordinates and type.
+    public Cell(int row, int column, int type)
     {
         this.row = row;
         this.column = column;
-    } // public Cell
-    */
-    // Constructor method.
-    public Cell(int type)
-    {
         this.type = type;
+
         if(type == 0)
             moveCount = 0;
+
+        neighbours[0] = new int[]{row, column - 1};
+        neighbours[1] = new int[]{row - 1, column};
+        neighbours[2] = new int[]{row, column + 1};
+        neighbours[3] = new int[]{row + 1, column};
+
     } // public Cell
 
     // Return moveCount of this cell
