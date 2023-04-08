@@ -2,31 +2,23 @@
 // Gives an error message if age is not a valid number.
 public class AgeNextYear
 {
-	// Return true if and only if given string is all digits and not empty.
-	private static boolean isNotEmptyDigits(String shouldBeDigits)
-	{
-		boolean okaySoFar = shouldBeDigits.length() != 0;
-		int index = 0;
-		while (okaySoFar && index < shouldBeDigits.length())
-		{
-			okaySoFar = Character.isDigit(shouldBeDigits.charAt(index));
-			index++;
-		} // while
-		return okaySoFar;
-	} // isNotEmptyDigits
 
 	// Check argument and compute result of report error.
 	public static void main(String [] args)
 	{
-		if(args.length > 0 && isNotEmptyDigits(args[0])) {
+		try{
 			int myAgeNow = Integer.parseInt(args[0]);
 			int myAgeNextYear = myAgeNow + 1;
 
 			System.out.println("My age now is " + myAgeNow);
 			System.out.println("My age next year will be " + myAgeNextYear);
-		} // if
-		else
+		} // try
+		catch(Exception exception)
+		{
 			System.out.println("Please supply your age, as a whole number.");
+			System.out.println("Exception message was: '" + exception.getMessage() + "'");
+			System.err.println(exception);
+		} // catch
 	} // main
 
 } // class AgeNextYear
