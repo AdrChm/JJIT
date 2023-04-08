@@ -57,6 +57,19 @@ public class TimesTable extends JFrame implements ActionListener
 
 	} // TimesTable
 
+	public TimesTable(String multiplierJTextFieldMessage)
+	{
+		setTitle("Times Table Error");
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
+		contents.add(displayJTextArea);
+		displayJTextArea.setText("Error parsing multiplier '" + multiplierJTextFieldMessage + "'");
+
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		pack();
+
+	} // TimesTable
+
 	// Act upon the button being pressed.
 	public void actionPerformed(ActionEvent event)
 	{
@@ -78,7 +91,8 @@ public class TimesTable extends JFrame implements ActionListener
 		} // try
 		catch (NumberFormatException exception)
 		{
-			displayJTextArea.setText("Error parsing multiplier '" + multiplierJTextField.getText() + ",");
+				TimesTable errorTable = new TimesTable(multiplierJTextField.getText());
+				errorTable.setVisible(true);
 		} // catch
 	} // actionPerformed
 
