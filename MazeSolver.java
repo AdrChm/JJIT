@@ -36,7 +36,7 @@ public class MazeSolver
     // The maze model. It is two bigger in each dimension, so we can have an
     // extra hedge around the whole maze. This means every real cell has 4
     // neighbours, so we don't need to check edges of the array.
-    private final int[][] maze = new int[HEIGHT + 2][WIDTH + 2];
+    private final Cell[][] maze = new Cell[HEIGHT + 2][WIDTH + 2];
 
     // Construct a MazeSolver from the given scanner for a file
     // which contains HEIGHT lines each of WIDTH characters.
@@ -44,9 +44,9 @@ public class MazeSolver
     {
         // First we place a surround of HEDGE cells.
         for (int row = 0; row < HEIGHT + 2; row++)
-            maze[row][0] = maze[row][WIDTH + 1] = HEDGE;
+            maze[row][0] = maze[row][WIDTH + 1] = new Cell(HEDGE);
         for (int column = 0; column < WIDTH + 2; column++)
-            maze[0][column] = maze[HEIGHT + 1][column] = HEDGE;
+            maze[0][column] = maze[HEIGHT + 1][column] = new Cell(HEDGE);
 
         // Next we read the maze, assuming the file is valid.
         // This goes in to positions 1 to HEIGHT and 1 to WIDTH
@@ -59,10 +59,10 @@ public class MazeSolver
                 char inputChar = mazeLine.charAt(column - 1);
                 switch (inputChar)
                 {
-                    case SPACE_REP: maze[row][column] = SPACE; break;
-                    case HEDGE_REP: maze[row][column] = HEDGE; break;
-                    case START_REP: maze[row][column] = START; break;
-                    case END_REP:   maze[row][column] = END;   break;
+                    case SPACE_REP: maze[row][column] = new Cell(SPACE); break;
+                    case HEDGE_REP: maze[row][column] = new Cell(HEDGE); break;
+                    case START_REP: maze[row][column] = new Cell(START); break;
+                    case END_REP:   maze[row][column] = new Cell(END);   break;
                 }
             } // for
         } // for
@@ -89,25 +89,29 @@ public class MazeSolver
             for (int row = 1; row < HEIGHT + 2; row++)
                 for (int column = 1; column < WIDTH + 2; column++)
                 {
+
                     // Verify continuation for selected cell.
-                    if (maze[row][column] == currentSearchStep)
+                    if (maze[row][column].getMoveCount() == currentSearchStep)
                     {
 
                         for (int index = 0; !isPathFound && index < neighboursOffsets.length; index++)
                         {
 
                             // Combination allows neighboursOffsets to create following shifts (-1,0), (0,-1), (1,0), (0,1).
-                            if(maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] == END)
+                            if(maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].getType() == END)
                             {
+
                                 // This solution considers only one exit (first to be found).
+                                System.out.println("Found EXIT at [" + row + "][" + column + "]: " + currentSearchStep);
                                 markPathBackFrom(row,column);
                                 hasMatchBeenFound = true;
                                 isPathFound = true;
 
                             } // if
-                            else if (maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] == SPACE)
+                            else if (maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].getType() == SPACE
+                                    && maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].getMoveCount() == -1)
                             {
-                                maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] = currentSearchStep + 1;
+                                maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].setMoveCount(currentSearchStep + 1);
                                 hasMatchBeenFound = true;
                             }
                         } // for
@@ -127,21 +131,24 @@ public class MazeSolver
     // Mark the path backwards from row, column.
     private void markPathBackFrom(int row, int column)
     {
-        int lastPathElement = maze[row][column];
+        int lastPathElement = maze[row][column].getMoveCount();
+        System.out.println("begins with: " + row + ", " + column + ", " + maze[row][column].getMoveCount());
         // Marking last element of the path.
-        maze[row][column] = PATH;
+        maze[row][column].setType(PATH);
 
         while (lastPathElement != 1)
         {
+            // System.out.println("searching at: " + row + ", " + column + ", " + maze[row][column].getMoveCount());
             lastPathElement--;
             for (int index = 0; index < neighboursOffsets.length; index++)
             {
                 // Combination allows neighboursOffsets to create following shifts (-1,0), (0,-1), (1,0), (0,1).
-                if (maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] == lastPathElement)
+                if ((maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].getMoveCount()) == lastPathElement)
                 {
-                    maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]] = PATH;
+                    maze[row + neighboursOffsets[index]][column + neighboursOffsets[(index + 1) % 4]].setType(PATH);
                     row = row + neighboursOffsets[index];
                     column = column + neighboursOffsets[(index + 1) % 4];
+
                 } // if
 
             } // for
@@ -158,7 +165,7 @@ public class MazeSolver
         for (int row = 1; row <= HEIGHT; row++)
         {
             for (int column = 1; column <= WIDTH; column++)
-                switch (maze[row][column])
+                switch (maze[row][column].getType())
                 {
                     case HEDGE: result += HEDGE_REP; break;
                     case START: result += START_REP; break;
