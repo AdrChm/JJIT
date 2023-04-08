@@ -7,9 +7,20 @@ public class FishTankVolume
 	{
 		try
 		{
+			// Arguments number exception.
+			if(args.length != 3)
+				throw new ArrayIndexOutOfBoundsException(
+						"Program will work properly only when three arguments are provide.");
+
 			int width = Integer.parseInt(args[0]);
 			int depth = Integer.parseInt(args[1]);
 			int height = Integer.parseInt(args[2]);
+
+			// Negative numbers exception.
+			if(width < 0 || depth < 0 || height < 0)
+				throw new NumberFormatException(
+						"Program will work properly only when all arguments are non-negative numbers.");
+
 			int volume = width * depth * height;
 
 			System.out.println("The volume of a tank with dimensions "
@@ -18,7 +29,6 @@ public class FishTankVolume
 		} // try
 		catch (ArrayIndexOutOfBoundsException exception)
 		{
-			System.out.println("Given input has no enough arguments.");
 			System.err.println("the problem: " + exception.getCause());
 			System.err.println(exception);
 		} // catch
