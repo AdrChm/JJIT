@@ -216,28 +216,22 @@ public class Date
 	 */
 	public Date addDay()
 	{
-		int newDay = day + 1;
-		int newMonth = month;
-		int newYear = year;
-		if (newDay > daysInMonth())
+		// First try the obvious.
+		try { return new Date(day + 1, month, year); }
+		catch (Exception exception1)
 		{
-			newDay = 1;
-			newMonth++;
-			if(newMonth > 12)
+			// Okay, so day must have been the last in the month.
+			// Now try the first of the next month.
+			try { return new Date(1, month + 1, year); }
+			catch (Exception exception2)
 			{
-				newMonth = 1;
-				newYear++;
-			} // if
-		} // if
-		// This cannot cause an exception, but Java does not know that.
-		try
-		{
-			return new Date(newDay, newMonth, newYear);
-		} // try
-		catch (Exception exception)
-		{
-			return null;
-		} // catch
+				// Okay, so month must have been 12.
+				// Now try the first of the next year.
+				// This cannot cause an exception.
+				try { return new Date(1, 1, year + 1); }
+				catch (Exception exception3) { return null; }	// catch
+			}	// catch
+		}	// catch
 	} // addDay
 
 	/**
