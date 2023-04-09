@@ -72,7 +72,7 @@ public class Date
 		if (year < 1753)
 			throw new Exception("Year " + year + " must be >= 1753");
 
-		if (month < 1 ||  month < 12)
+		if (month < 1 ||  month > 12)
 			throw new Exception("Month " + month + " must be from 1 to 12");
 
 		if (day < 1 ||  day > daysInMonth())
@@ -142,6 +142,8 @@ public class Date
 
 	/**
 	 * Provides the day/month/year representation of this date.
+	 * Any single digit values have 0 added to keep exactly 2 spaces
+	 * occupied by single value.
 	 *
 	 * @return A String day/month/year representation of this date.
 	 */
@@ -243,19 +245,16 @@ public class Date
 	 */
 	public Date addMonth()
 	{
-		int newDay = day;
-		int newMonth = month + 1;
-		int newYear = year;
-		if(newMonth > 12)
+		// First try the obvious.
+		try { return new Date(day, month + 1, year); }
+		catch (Exception monthException)
 		{
-			newMonth = 1;
-			newYear++;
-		} // if
-		if(newDay > daysInMonth(newMonth, newYear))
-			newDay = daysInMonth(newMonth, newYear);
-		// This may cause an exception, but Java doesn't know that.
-		try { return new Date(newDay, newMonth, newYear); }
-		catch (Exception exception) { return null; }
+			// Okay, so month must have been 12.
+			// Now try the first of the next year.
+			// This cannot cause an exception.
+			try { return new Date(day, 1, year + 1); }
+			catch (Exception exception) { return null; }	// catch
+		}	// catch
 	} // addMonth
 
 	/**
@@ -288,20 +287,23 @@ public class Date
 	 */
 	public Date subtractDay() throws Exception
 	{
-		int newDay = day - 1;
-		int newMonth = month;
-		int newYear = year;
-		if (newDay < 1)
+		// First try the obvious.
+		try { return new Date(day - 1, month, year); }
+		catch (Exception dayException)
 		{
-			newMonth--;
-			if(newMonth < 1)
+			// Okay, so day must have been the first in the month.
+			// Now try the last of the previous month.
+			try { return new Date(daysInMonth(month - 1, year), month - 1, year); }
+			catch (Exception monthException)
 			{
-				newMonth = 12;
-				newYear--;
-			} // if
-			newDay = daysInMonth(newMonth, newYear);
-		} // if
-		return new Date(newDay, newMonth, newYear);
+				// Okay, so month must have been 1.
+				// Now try the first of the previous year.
+				// This cannot cause an exception.
+				try { return new Date(daysInMonth(12, year - 1), 12, year - 1); }
+				catch (Exception yearException) { return null; }	// catch
+			}	// catch
+		}	// catch
+
 	} // subtractDay
 
 	/**
@@ -317,17 +319,17 @@ public class Date
 	 */
 	public Date subtractMonth() throws Exception
 	{
-		int newDay = day;
-		int newMonth = month - 1;
-		int newYear = year;
-		if(newMonth < 1)
+		// First try the obvious.
+		try { return new Date(day, month - 1, year); }
+		catch (Exception monthException)
 		{
-			newMonth = 12;
-			newYear--;
-		} // if
-		if (newDay > daysInMonth(newMonth, newYear))
-			newDay = daysInMonth(newMonth, newYear);
-		return new Date(newDay, newMonth, newYear);
+			// Okay, so month must have been 1.
+			// Now try the first of the previous year.
+			// This cannot cause an exception.
+			try { return new Date(day, 1, year - 1); }
+			catch (Exception exception) { return null; }	// catch
+		}	// catch
+
 	} // subtractMonth
 
 	/**
@@ -342,10 +344,13 @@ public class Date
 	 */
 	public Date subtractYear() throws Exception
 	{
-		if (day == 29 && month == 2)
-			return new Date(28, month, year - 1);
-		else
-			return new Date(day, month, year - 1);
+		try{
+			if (day == 29 && month == 2)
+				return new Date(28, month, year - 1);
+			else
+				return new Date(day, month, year - 1);
+		} // try
+		catch (Exception exception) { return null; }
 	} // subtractYear
 
 	/**
@@ -427,4 +432,5 @@ public class Date
 	{
 		return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 	} // isLeapYear
+
 } // class Date
