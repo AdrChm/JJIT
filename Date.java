@@ -77,7 +77,7 @@ public class Date
 
 		if (day < 1 ||  day > daysInMonth())
 			throw new Exception("Day " + month + " must be from 1 to " + daysInMonth()
-								+ " for " + month + " / " + year);
+								+ " for " + month + "/" + year);
 
 	} // checkDateIsLegal
 
