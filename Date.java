@@ -411,7 +411,7 @@ public class Date
 			// Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 		 = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
 		DAYS_PER_MONTH_LEAP_YEAR
-		 = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		 = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	// Calculate the number of days in a given month for a given year.
 	// This will never be called with a month out of range 1 to 12.
