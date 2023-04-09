@@ -57,23 +57,44 @@ public class TimesTable extends JFrame implements ActionListener
 
 	} // TimesTable
 
+	public TimesTable(String multiplierJTextFieldMessage)
+	{
+		setTitle("Times Table Error");
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
+		contents.add(displayJTextArea);
+		displayJTextArea.setText(multiplierJTextFieldMessage);
+		displayJTextArea.append("\nOnly whole numbers are accepted arguments.");
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		pack();
+
+	} // TimesTable
+
 	// Act upon the button being pressed.
 	public void actionPerformed(ActionEvent event)
 	{
-		// Empty the text area to remove any previous result.
-		displayJTextArea.setText("");
+		try {
+			// Empty the text area to remove any previous result.
+			displayJTextArea.setText("");
 
-		int multiplier = Integer.parseInt(multiplierJTextField.getText());
-		int tableSize = Integer.parseInt(tableSizeJTextField.getText());
+			int multiplier = Integer.parseInt(multiplierJTextField.getText());
+			int tableSize = Integer.parseInt(tableSizeJTextField.getText());
 
-		displayJTextArea.append("--------------------------------\n");
-		displayJTextArea.append("| Times table for " + multiplier + "\n");
-		displayJTextArea.append("--------------------------------\n");
-		for (int thisNumber = 1; thisNumber <= tableSize; thisNumber++)
-			displayJTextArea.append("| " + thisNumber + " x " + multiplier
-								   + " = " + thisNumber * multiplier + "\n");
+			displayJTextArea.append("--------------------------------\n");
+			displayJTextArea.append("| Times table for " + multiplier + "\n");
+			displayJTextArea.append("--------------------------------\n");
+			for (int thisNumber = 1; thisNumber <= tableSize; thisNumber++)
+				displayJTextArea.append("| " + thisNumber + " x " + multiplier
+						+ " = " + thisNumber * multiplier + "\n");
 
-		displayJTextArea.append("--------------------------------\n");
+			displayJTextArea.append("--------------------------------\n");
+		} // try
+		catch (NumberFormatException exception)
+		{
+				System.err.println(exception.getMessage());
+				TimesTable errorTable = new TimesTable(exception.getMessage());
+				errorTable.setVisible(true);
+		} // catch
 	} // actionPerformed
 
 	// Create a TimesTable and make it appear on screen.
