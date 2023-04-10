@@ -7,20 +7,25 @@ public class TestStockItemSubclasses
     {
         StockItem [] inventory =
         {
-                new MouseMat( 1000, 20),
-                new Catalogue( 100, 100),
+                new MouseMat("Plain blue cloth, foam backed", 1000, 20),
+                new MouseMat("Gaming mouse mat with led lightning", 4000, 20),
+                new Book("List of all items and prices", 0, 100),
+                new Book("Java: Just in Time", 15000, 100),
                 new Keyboard( 4999, 15),
                 new CPU( 99999, 10),
-                new HardDisc( 19999, 20),
-
+                new HardDisc( 19999, 20)
         };
 
             for(StockItem item: inventory)
                 test(item);
 
+
+
     } // main
 
-    private static void test(StockItem item) {
+    // Display state of the stock item as it changes along the way.
+    private static void test(StockItem item)
+    {
 
         System.out.println("-------------------------------------------------");
 
@@ -40,6 +45,16 @@ public class TestStockItemSubclasses
         item.setPriceExVat((int) Math.round(item.getPriceExVat() * 0.8));
         System.out.println(item);
 
+        if(item instanceof TextDescriptionStockItem)
+            testTextDescriptionStockItem((TextDescriptionStockItem) item);
+
     } // test
+
+    // Display description of stock item as it changes along the way.
+    private static void testTextDescriptionStockItem(TextDescriptionStockItem item)
+    {
+        item.setDescription("Description updated!");
+        System.out.println(item);
+    } // testTextDescriptionStockItem
 
 } // class TestStockItemSubclasses

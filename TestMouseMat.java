@@ -2,7 +2,7 @@
 public class TestMouseMat
 {
     public static void main(String[] args) {
-        MouseMat mouse = new MouseMat( 49, 10);
+        MouseMat mouse = new MouseMat("Plain blue cloth, foam backed", 49, 10);
         System.out.println("Creating a mouse mat stock item, " + mouse.getQuantityInStock()
                 + " in stock @ " + mouse.getPriceExVat());
         System.out.println(mouse);

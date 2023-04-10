@@ -6,39 +6,39 @@ public class TestStockItem
 {
     public static void main(String[] args)
     {
-        StockItem mouseMatStockItem = new MouseMat( 499, 10);
-        System.out.println("Creating a mouse mat stock item, " + mouseMatStockItem.getQuantityInStock()
-                            + " in stock @ " + mouseMatStockItem.getPriceExVat());
-        System.out.println(mouseMatStockItem);
+        StockItem mouseMat = new MouseMat("Plain blue cloth, foam backed", 499, 10);
+        System.out.println("Creating a mouse mat stock item, " + mouseMat.getQuantityInStock()
+                            + " in stock @ " + mouseMat.getPriceExVat());
+        System.out.println(mouseMat);
 
-        StockItem catalogueStockItem = new Catalogue( 9999, 20);
-        System.out.println("Creating a catalogue stock item, " + catalogueStockItem.getQuantityInStock()
-                            + " in stock @ " + catalogueStockItem.getPriceExVat());
-        System.out.println(catalogueStockItem);
+        StockItem book = new Book("List of all items and prices", 9999, 20);
+        System.out.println("Creating a catalogue stock item, " + book.getQuantityInStock()
+                            + " in stock @ " + book.getPriceExVat());
+        System.out.println(book);
 
         System.out.println("Obtain 10 mouse mats");
-        mouseMatStockItem.increaseStock(10);
-        System.out.println(mouseMatStockItem);
+        mouseMat.increaseStock(10);
+        System.out.println(mouseMat);
 
         System.out.println("Obtain 20 catalogues");
-        catalogueStockItem.increaseStock(20);
-        System.out.println(catalogueStockItem);
+        book.increaseStock(20);
+        System.out.println(book);
 
         System.out.println("Sell 5 mouse mats");
-        mouseMatStockItem.sellStock(5);
-        System.out.println(mouseMatStockItem);
+        mouseMat.sellStock(5);
+        System.out.println(mouseMat);
 
         System.out.println("Sell 10 catalogues");
-        catalogueStockItem.sellStock(10);
-        System.out.println(catalogueStockItem);
+        book.sellStock(10);
+        System.out.println(book);
 
         System.out.println("Change mouse mat price to 399");
-        mouseMatStockItem.setPriceExVat(399);
-        System.out.println(mouseMatStockItem);
+        mouseMat.setPriceExVat(399);
+        System.out.println(mouseMat);
 
         System.out.println("Change catalogue price to 7999");
-        catalogueStockItem.setPriceExVat(7999);
-        System.out.println(catalogueStockItem);
+        book.setPriceExVat(7999);
+        System.out.println(book);
 
     } // main
 } // class TestStockItem

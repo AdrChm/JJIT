@@ -1,9 +1,9 @@
-// Program to test Catalogue class.
-public class TestCatalogue
+// Program to test Book class.
+public class TestBook
 {
     public static void main(String[] args)
     {
-        Catalogue catalogue = new Catalogue( 0, 100);
+        Book catalogue = new Book("List of all items and prices", 0, 100);
         System.out.println("Creating a mouse mat stock item, " + catalogue.getQuantityInStock()
                 + " in stock @ " + catalogue.getPriceExVat());
         System.out.println(catalogue);
@@ -20,4 +20,5 @@ public class TestCatalogue
         catalogue.setPriceExVat(1);
         System.out.println(catalogue);
     } // main
-} // class TestCatalogue
+
+} // class TestBook
