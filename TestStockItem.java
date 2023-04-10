@@ -6,38 +6,39 @@ public class TestStockItem
 {
     public static void main(String[] args)
     {
-        StockItem keyboardStockItem = new StockItem( 499, 10);
-        System.out.println("Creating a keyboard stock item, " + keyboardStockItem.getQuantityInStock()
-                            + " in stock @ " + keyboardStockItem.getPriceExVat());
-        System.out.println(keyboardStockItem);
+        StockItem mouseMatStockItem = new MouseMat( 499, 10);
+        System.out.println("Creating a mouse mat stock item, " + mouseMatStockItem.getQuantityInStock()
+                            + " in stock @ " + mouseMatStockItem.getPriceExVat());
+        System.out.println(mouseMatStockItem);
 
-        StockItem monitorStockItem = new StockItem( 9999, 20);
-        System.out.println("Creating a monitor stock item, " + monitorStockItem.getQuantityInStock()
-                            + " in stock @ " + monitorStockItem.getPriceExVat());
-        System.out.println(monitorStockItem);
+        StockItem catalogueStockItem = new Catalogue( 9999, 20);
+        System.out.println("Creating a catalogue stock item, " + catalogueStockItem.getQuantityInStock()
+                            + " in stock @ " + catalogueStockItem.getPriceExVat());
+        System.out.println(catalogueStockItem);
 
-        System.out.println("Obtain 10 keyboards");
-        keyboardStockItem.increaseStock(10);
-        System.out.println(keyboardStockItem);
+        System.out.println("Obtain 10 mouse mats");
+        mouseMatStockItem.increaseStock(10);
+        System.out.println(mouseMatStockItem);
 
-        System.out.println("Obtain 20 monitors");
-        monitorStockItem.increaseStock(20);
-        System.out.println(monitorStockItem);
+        System.out.println("Obtain 20 catalogues");
+        catalogueStockItem.increaseStock(20);
+        System.out.println(catalogueStockItem);
 
-        System.out.println("Sell 5 keyboards");
-        keyboardStockItem.sellStock(5);
-        System.out.println(keyboardStockItem);
+        System.out.println("Sell 5 mouse mats");
+        mouseMatStockItem.sellStock(5);
+        System.out.println(mouseMatStockItem);
 
-        System.out.println("Sell 10 monitors");
-        monitorStockItem.sellStock(10);
-        System.out.println(monitorStockItem);
+        System.out.println("Sell 10 catalogues");
+        catalogueStockItem.sellStock(10);
+        System.out.println(catalogueStockItem);
 
-        System.out.println("Change keyboard price to 399");
-        keyboardStockItem.setPriceExVat(399);
-        System.out.println(keyboardStockItem);
+        System.out.println("Change mouse mat price to 399");
+        mouseMatStockItem.setPriceExVat(399);
+        System.out.println(mouseMatStockItem);
 
-        System.out.println("Change keyboard price to 7999");
-        monitorStockItem.setPriceExVat(7999);
-        System.out.println(monitorStockItem);
+        System.out.println("Change catalogue price to 7999");
+        catalogueStockItem.setPriceExVat(7999);
+        System.out.println(catalogueStockItem);
+
     } // main
 } // class TestStockItem
