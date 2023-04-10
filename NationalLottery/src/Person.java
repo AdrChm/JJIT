@@ -21,7 +21,7 @@ public abstract class Person
     } // getPersonName
 
     // Returns the Person's latest saying.
-    public String getLatestSaying()
+    public final String getLatestSaying()
     {
         return this.latestSaying;
     } // getLatestSaying
@@ -40,7 +40,7 @@ public abstract class Person
 
     // Causes the person to speak by updating their latest saying from
     // their current saying.
-    public void speak()
+    public final void speak()
     {
         latestSaying = getCurrentSaying();
     } // speak
