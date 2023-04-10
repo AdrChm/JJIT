@@ -37,7 +37,7 @@ public class TestStockItem
         System.out.println(keyboardStockItem);
 
         System.out.println("Change keyboard price to 7999");
-        keyboardStockItem.setPriceExVat(7999);
+        monitorStockItem.setPriceExVat(7999);
         System.out.println(monitorStockItem);
     } // main
 } // class TestStockItem

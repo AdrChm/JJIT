@@ -1,12 +1,6 @@
 // representation of a stock item.
 public class StockItem {
 
-    // Stock item type.
-    private String stockItemType = "Stock item type";
-
-    // Stock item description.
-    private String stockItemDescription = "A description of the stock item";
-
     // Price of this stock item in whole pence, before VAT tax.
     private int priceExVat;
 
@@ -40,13 +34,13 @@ public class StockItem {
     // Return type of this stock item.
     public String getStockItemType()
     {
-        return stockItemType;
+        return "Stock item type";
     } // getStockCode
 
     // Return description of this stock item.
     public String getStockItemDescription()
     {
-        return stockItemDescription;
+        return "A description of the stock item";
     } // getStockItemDescription
 
     // Return the quantity in stock of the stock item.
