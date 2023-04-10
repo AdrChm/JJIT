@@ -1,4 +1,4 @@
-// Representation of a psychic entertainer for the lottery company.
+// Representation of a psychic entertainer for the lottery.
 public class Psychic extends Person
 {
     // Constructor is given the person's name.

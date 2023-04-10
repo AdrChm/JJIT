@@ -16,6 +16,6 @@ public class Director extends Person
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {
-        return "Tis business is MY pleasure";
+        return "This business is MY pleasure";
     } // getCurrentSaying
 } // class Director
