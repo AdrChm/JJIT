@@ -35,7 +35,7 @@ public abstract class StockItem {
     public abstract String getStockItemType();
 
     // Return description of this stock item.
-    public abstract String getStockItemDescription();
+    public abstract String getDescription();
 
     // Return the quantity in stock of the stock item.
     public int getQuantityInStock()
@@ -97,7 +97,7 @@ public abstract class StockItem {
     {
         return "SC" + stockCode + ": "
                + getStockItemType() + ", "
-               + getStockItemDescription() + " ("
+               + getDescription() + " ("
                + getQuantityInStock() + " @ "
                + getPriceExVat() + "p/"
                + getPriceIncVat() + "p)";

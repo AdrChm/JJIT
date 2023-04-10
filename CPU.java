@@ -14,7 +14,7 @@ public class CPU extends StockItem
     } // getStockCode
 
     // Return description of this CPU.
-    public String getStockItemDescription()
+    public String getDescription()
     {
         return "Really fast";
     } // getStockItemDescription

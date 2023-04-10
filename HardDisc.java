@@ -14,7 +14,7 @@ public class HardDisc extends StockItem
     } // getStockCode
 
     // Return description of this HardDisc.
-    public String getStockItemDescription()
+    public String getDescription()
     {
         return "Lots of space";
     } // getStockItemDescription

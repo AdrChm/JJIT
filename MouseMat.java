@@ -1,10 +1,10 @@
 // Representation of a mouse mat.
-public class MouseMat extends StockItem
+public class MouseMat extends TextDescriptionStockItem
 {
-    // Constructor supplying StockItem superclass.
-    public MouseMat(int initialPriceExVat, int initialQuantityInStock)
+    // Constructor supplying TextDescriptionStockItem superclass.
+    public MouseMat(String description, int initialPriceExVat, int initialQuantityInStock)
     {
-        super(initialPriceExVat, initialQuantityInStock);
+        super(description, initialPriceExVat, initialQuantityInStock);
     } // MouseMat
 
     // Return type of this mouse mat.
@@ -13,9 +13,4 @@ public class MouseMat extends StockItem
         return "Mouse Mat";
     } // getStockCode
 
-    // Return description of this mouse mat.
-    public String getStockItemDescription()
-    {
-        return "Plain, blue cloth, foam backed";
-    } // getStockItemDescription
 } // class MouseMat

@@ -14,7 +14,7 @@ public class Keyboard extends StockItem
     } // getStockCode
 
     // Return description of this keyboard.
-    public String getStockItemDescription()
+    public String getDescription()
     {
         return "Cream, non-click";
     } // getStockItemDescription
