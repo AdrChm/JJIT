@@ -1,5 +1,5 @@
 // Representation of a person involved somehow in the lottery.
-public class Person
+public abstract class Person
 {
     // The name of the person.
     private final String personName;
@@ -27,10 +27,7 @@ public class Person
     } // getLatestSaying
 
     // Returns the name of the type of Person.
-    public String getPersonType()
-    {
-        return "Person";
-    } // getPersonType
+    public abstract String getPersonType();
 
     // Returns whether or not the Person is happy.
     public boolean isHappy()
@@ -39,10 +36,7 @@ public class Person
     } // isHappy
 
     // Returns the Person's current saying.
-    public String getCurrentSaying()
-    {
-        return "I have nothing to say.";
-    } // getCurrentSaying
+    public abstract String getCurrentSaying();
 
     // Causes the person to speak by updating their latest saying from
     // their current saying.
