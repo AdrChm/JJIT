@@ -5,7 +5,7 @@ public abstract class StockItem {
     private int priceExVat;
 
     // VAT tax rate of this stock item.
-    private double vatRate = 20.0;
+    private double vatRate = 17.5;
 
     // Current amount of item in the stock.
     private int quantityInStock;

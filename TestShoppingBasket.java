@@ -34,10 +34,14 @@ public class TestShoppingBasket
         System.out.println();
 
         System.out.println("Performing checkout:");
+        System.out.println("Checkout report:");
         System.out.println(shoppingBasket.checkout());
         System.out.println();
 
         System.out.println("Shopping basket after checkout:");
+        System.out.println(shoppingBasket);
+
+        System.out.println("Stock after checkout:");
         for(StockItem stockItem : stockItems)
             System.out.println(stockItem);
 
