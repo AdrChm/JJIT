@@ -43,7 +43,7 @@ public class Game
     // Also return the rejected Ball.
     public Ball ejectBall()
     {
-        if(machine.getNoOfBalls() > 0)
+        if(machine.getNoOfBalls() > 0
             && rack.getNoOfBalls() < rack.getSize())
         {
             Ball ejectedBall = machine.ejectBall();
