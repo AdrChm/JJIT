@@ -49,4 +49,19 @@ class Psychic extends Person
     + String getCurrentSaying()
 }
 
+abstract class MoodyPerson extends Person
+{
+    - boolean isHappyNow;
+    + MoodyPerson(String name, boolean initialHappiness)
+    + MoodyPerson(String name)
+    + boolean isHappy()
+    + void setHappy(boolean happyNow)
+}
+
+class Teenager extends MoodyPerson
+{
+    + Teenager(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
 @enduml
