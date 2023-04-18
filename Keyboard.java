@@ -4,7 +4,7 @@ public class Keyboard extends StockItem
     // Constructor supplying StockItem superclass.
     public Keyboard(int initialPriceExVat, int initialQuantityInStock)
     {
-        super(initialPriceExVat, initialQuantityInStock);
+        super("Cream, non-click", initialPriceExVat, initialQuantityInStock);
     } // MouseMat
 
     // Return type of this keyboard.
@@ -12,11 +12,5 @@ public class Keyboard extends StockItem
     {
         return "Keyboard";
     } // getStockCode
-
-    // Return description of this keyboard.
-    public String getDescription()
-    {
-        return "Cream, non-click";
-    } // getStockItemDescription
 
 } // class Keyboard

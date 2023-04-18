@@ -4,7 +4,7 @@ public class CPU extends StockItem
     // Constructor supplying StockItem superclass.
     public CPU(int initialPriceExVat, int initialQuantityInStock)
     {
-        super(initialPriceExVat, initialQuantityInStock);
+        super("Really fast", initialPriceExVat, initialQuantityInStock);
     } // MouseMat
 
     // Return type of this CPU.
@@ -12,11 +12,5 @@ public class CPU extends StockItem
     {
         return "CPU";
     } // getStockCode
-
-    // Return description of this CPU.
-    public String getDescription()
-    {
-        return "Really fast";
-    } // getStockItemDescription
 
 } // class CPU

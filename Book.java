@@ -1,7 +1,7 @@
 // Representation of book.
-public class Book extends TextDescriptionStockItem
-
-{    // Constructor supplying TextDescriptionStockItem superclass.
+public class Book extends StockItem
+{
+    // Constructor supplying StockItem superclass.
     public Book(String title, int initialPriceExVat, int initialQuantityInStock)
     {
         super(title,initialPriceExVat, initialQuantityInStock);

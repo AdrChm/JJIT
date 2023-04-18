@@ -1,5 +1,9 @@
-// representation of a stock item.
-public abstract class StockItem {
+// Representation of a stock item.
+public abstract class StockItem
+{
+
+    // Description of the stock item.
+    private String description;
 
     // Price of this stock item in whole pence, before VAT tax.
     private int priceExVat;
@@ -16,6 +20,7 @@ public abstract class StockItem {
     // The fixed stock code of this item.
     private final int stockCode;
 
+    // Constructor without description.
     public StockItem(int initialPriceExVat, int initialQuantityInStock)
     {
         numberOfItemsCreated++;
@@ -23,6 +28,17 @@ public abstract class StockItem {
 
         quantityInStock = initialQuantityInStock;
         priceExVat = initialPriceExVat;
+    } // StockItem
+
+    // Constructor with description.
+    public StockItem(String description, int initialPriceExVat, int initialQuantityInStock)
+    {
+        numberOfItemsCreated++;
+        stockCode = numberOfItemsCreated;
+
+        quantityInStock = initialQuantityInStock;
+        priceExVat = initialPriceExVat;
+        this.description = description;
     } // StockItem
 
     // Return the code of this stock item.
@@ -35,7 +51,10 @@ public abstract class StockItem {
     public abstract String getStockItemType();
 
     // Return description of this stock item.
-    public abstract String getDescription();
+    public String getDescription()
+    {
+        return description;
+    }
 
     // Return the quantity in stock of the stock item.
     public int getQuantityInStock()
@@ -92,6 +111,12 @@ public abstract class StockItem {
         return (int) Math.round(priceExVat * (1 + getVatRate()/100));
     } // getPriceIncVat
 
+    // Set description of this stock item to given input.
+    public void setDescription(String description)
+    {
+        this.description = description;
+    } //setDescription
+
     // String representation of the stock item.
     public String toString()
     {
@@ -102,4 +127,5 @@ public abstract class StockItem {
                + getPriceExVat() + "p/"
                + getPriceIncVat() + "p)";
     } // toString
-}// class StockItem
+
+} // class StockItem
