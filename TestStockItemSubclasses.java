@@ -13,7 +13,8 @@ public class TestStockItemSubclasses
                 new Book("Java: Just in Time", 15000, 100),
                 new Keyboard( 4999, 15),
                 new CPU( 99999, 10),
-                new HardDisc( 19999, 20)
+                new HardDisc( 19999, 20, 500),
+                new ReliableHardDisc( 19999, 20, 500, 10)
         };
 
             for(StockItem item: inventory)
