@@ -27,4 +27,26 @@ class Punter extends Person
     + boolean isHappy()
     + String getCurrentSaying()
 }
+
+class TVHost extends Person
+{
+    + TVHost(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Director extends Person
+{
+    + Director(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Psychic extends Person
+{
+    + Psychic(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
 @enduml
