@@ -19,4 +19,12 @@ class AudienceMember extends Person
     + String getPersonType()
     + String getCurrentSaying()
 }
+
+class Punter extends Person
+{
+    + Punter(String name)
+    + String getPersonType()
+    + boolean isHappy()
+    + String getCurrentSaying()
+}
 @enduml
