@@ -1,7 +1,7 @@
 // Representation of a mouse mat.
-public class MouseMat extends TextDescriptionStockItem
+public class MouseMat extends StockItem
 {
-    // Constructor supplying TextDescriptionStockItem superclass.
+    // Constructor supplying StockItem superclass.
     public MouseMat(String description, int initialPriceExVat, int initialQuantityInStock)
     {
         super(description, initialPriceExVat, initialQuantityInStock);

@@ -3,7 +3,7 @@ public abstract class StockItem
 {
 
     // Description of the stock item.
-    private String description;
+    private String description = "";
 
     // Price of this stock item in whole pence, before VAT tax.
     private int priceExVat;

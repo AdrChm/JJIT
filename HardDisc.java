@@ -3,11 +3,27 @@ public class HardDisc extends StockItem
 {
     // Capacity of the hard disc in GB.
     private int GBCapacity;
+
+    // Psychical size of hard disc in inches.
+    private double inchSize;
+
+    // Rotation speed of hard disc in revolutions per minute.
+    private int RPMspeed;
+
+    // Cache size of this hard disc in MB
+    private int MBCacheSize;
+
     // Constructor supplying StockItem superclass.
-    public HardDisc(int initialPriceExVat, int initialQuantityInStock, int size)
+    public HardDisc(int initialPriceExVat, int initialQuantityInStock, int size,
+                    double inchSize, int RPMspeed, int MBCacheSize)
     {
-        super(initialPriceExVat, initialQuantityInStock);
+        super("Lots of space", initialPriceExVat, initialQuantityInStock);
         GBCapacity = size;
+        this.inchSize = inchSize;
+        this.RPMspeed = RPMspeed;
+        this.MBCacheSize = MBCacheSize;
+        this.setDescription(GBCapacity + "GB of space");
+
     } // MouseMat
 
     // Return type of this HardDisc.
@@ -19,7 +35,9 @@ public class HardDisc extends StockItem
     // Return description of this HardDisc.
     public String getDescription()
     {
-        return GBCapacity + "GB of space";
-    } // getStockItemDescription
+        return super.getDescription() + ", " + inchSize + " inch, " + GBCapacity + "GB of space, "
+                                    + MBCacheSize + "MB of cache memory, " + RPMspeed + " RPMs";
+
+    } // getDescription
 
 } // class HardDisc

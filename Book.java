@@ -1,4 +1,4 @@
-// Representation of book.
+// Representation of a book.
 public class Book extends StockItem
 {
     // Constructor supplying StockItem superclass.
