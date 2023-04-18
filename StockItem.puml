@@ -1,0 +1,60 @@
+@startuml
+abstract class StockItem {
+    - int priceExVat
+    - double vatRate
+    - int quantityInStock
+    - int numberOfItemsCreated
+    # int stockCode
+    + StockItem(int initialPriceExVat, int initialQuantityInStock)
+    + int abstract getStockCode()
+    + String abstract getStockItemType()
+    + String getDescription()
+    + int getQuantityInStock()
+    + increaseStock(int amount)
+    + boolean sellStock(int amount)
+    + setPriceExVat(int newPrice)
+    + int getPriceExVat()
+    + double getVatRate()
+    + int getPriceIncVat()
+    + String toString()
+}
+
+abstract class TextDescriptionStockItem extends StockItem
+{
+    - String description;
+    + TextDescriptionStockItem(String description, int initialPriceExVat, int initialQuantityInStock)
+    + String getDescription()
+    + void setDescription(String description)
+}
+
+class MouseMat extends TextDescriptionStockItem
+{
+    + MouseMat(String description, int initialPriceExVat, int initialQuantityInStock)
+    + String getStockItemType()
+}
+
+class Book extends TextDescriptionStockItem
+{
+    + Book(String title, int initialPriceExVat, int initialQuantityInStock)
+    + String getStockItemType()
+    + double getVatRate()
+}
+class Keyboard extends StockItem
+{
+      + Keyboard(int initialPriceExVat, int initialQuantityInStock)
+      + String getStockItemType()
+      + String getDescription()
+}
+class HardDisc extends StockItem
+{
+    + HardDisc(int initialPriceExVat, int initialQuantityInStock)
+    + String getStockItemType()
+    + String getDescription()
+}
+class CPU extends StockItem
+{
+    + CPU(int initialPriceExVat, int initialQuantityInStock)
+    + String getStockItemType()
+    + String getDescription()
+}
+@enduml
