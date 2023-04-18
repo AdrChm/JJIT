@@ -1,0 +1,22 @@
+@startuml
+abstract class Person
+{
+    - final String personName;
+    - String latestSaying;
+    + Person(String requiredPersonName)
+    + String getPersonName()
+    + String getLatestSaying()
+    + abstract String getPersonType();
+    + boolean isHappy()
+    + abstract String getCurrentSaying();
+    + speak()
+    + String toString()
+}
+
+class AudienceMember extends Person
+{
+    + AudienceMember(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+@enduml
