@@ -39,22 +39,32 @@ class Book extends TextDescriptionStockItem
     + String getStockItemType()
     + double getVatRate()
 }
+
 class Keyboard extends StockItem
 {
       + Keyboard(int initialPriceExVat, int initialQuantityInStock)
       + String getStockItemType()
       + String getDescription()
 }
-class HardDisc extends StockItem
-{
-    + HardDisc(int initialPriceExVat, int initialQuantityInStock)
-    + String getStockItemType()
-    + String getDescription()
-}
+
 class CPU extends StockItem
 {
     + CPU(int initialPriceExVat, int initialQuantityInStock)
     + String getStockItemType()
+    + String getDescription()
+}
+
+class HardDisc extends StockItem
+{
+    - int GBCapacity;
+    + HardDisc(int initialPriceExVat, int initialQuantityInStock)
+    + String getStockItemType()
+    + String getDescription()
+}
+class ReliableHardDisc extends HardDisc
+{
+    - int guaranteedYears;
+    + ReliableHardDisc(int initialPriceExVat, int initialQuantityInStock, int size, int guaranteedYears) {
     + String getDescription()
 }
 @enduml
