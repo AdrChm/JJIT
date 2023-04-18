@@ -64,4 +64,21 @@ class Teenager extends MoodyPerson
     + String getPersonType()
     + String getCurrentSaying()
 }
+
+class Worker extends MoodyPerson
+{
+    + Worker(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+    + Ball makeNewBall(int number, Color color)
+    + fillMachine(Game game)
+}
+class TraineeWorker extends Worker
+{
+    - double efficiency;
+    + TraineeWorker(String name, double requiredEfficiency)
+    + String getPersonName()
+    + String getPersonType()
+    + Ball makeNewBall(int number, Color color)
+}
 @enduml
