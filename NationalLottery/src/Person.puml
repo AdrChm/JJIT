@@ -81,4 +81,15 @@ class TraineeWorker extends Worker
     + String getPersonType()
     + Ball makeNewBall(int number, Color color)
 }
+
+class CleverPunter extends Punter
+{
+    - Game currentGame
+    - int[] currentGuess
+    + CleverPunter(String name)
+    + String getPersonType()
+    + String getPersonName()
+    + String getCurrentSaying()
+    + setGame(Game requiredGame)
+}
 @enduml
