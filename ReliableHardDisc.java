@@ -5,10 +5,10 @@ public class ReliableHardDisc extends HardDisc
     private int guaranteedYears;
 
     // Constructor method.
-    public ReliableHardDisc(int initialPriceExVat, int initialQuantityInStock, int size,
-                            int guaranteedYears, double inchSize, int RPMspeed, int MBCacheSize)
+    public ReliableHardDisc(int initialPriceExVat, int initialQuantityInStock, int size, int guaranteedYears,
+                            double inchSize, int RPMspeed, int MBCacheSize, Vendor vendor)
     {
-        super(initialPriceExVat, initialQuantityInStock, size, inchSize, RPMspeed, MBCacheSize);
+        super(initialPriceExVat, initialQuantityInStock, size, inchSize, RPMspeed, MBCacheSize, vendor);
         this.guaranteedYears = guaranteedYears;
     } // ReliableHardDisc
 

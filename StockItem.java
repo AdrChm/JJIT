@@ -5,6 +5,9 @@ public abstract class StockItem
     // Description of the stock item.
     private String description = "";
 
+    // Vendor of this stock item.
+    private Vendor vendor;
+
     // Price of this stock item in whole pence, before VAT tax.
     private int priceExVat;
 
@@ -21,17 +24,18 @@ public abstract class StockItem
     private final int stockCode;
 
     // Constructor without description.
-    public StockItem(int initialPriceExVat, int initialQuantityInStock)
+    public StockItem(int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
     {
         numberOfItemsCreated++;
         stockCode = numberOfItemsCreated;
 
         quantityInStock = initialQuantityInStock;
         priceExVat = initialPriceExVat;
+        this.vendor = vendor;
     } // StockItem
 
     // Constructor with description.
-    public StockItem(String description, int initialPriceExVat, int initialQuantityInStock)
+    public StockItem(String description, int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
     {
         numberOfItemsCreated++;
         stockCode = numberOfItemsCreated;
@@ -39,6 +43,7 @@ public abstract class StockItem
         quantityInStock = initialQuantityInStock;
         priceExVat = initialPriceExVat;
         this.description = description;
+        this.vendor = vendor;
     } // StockItem
 
     // Return the code of this stock item.
@@ -121,6 +126,7 @@ public abstract class StockItem
     public String toString()
     {
         return "SC" + stockCode + ": "
+               + vendor.getName() + " "
                + getStockItemType() + ", "
                + getDescription() + " ("
                + getQuantityInStock() + " @ "

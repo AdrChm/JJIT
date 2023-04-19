@@ -8,9 +8,10 @@ public class CPU extends StockItem
     private double GHzClockSpeed;
 
     // Constructor supplying StockItem superclass.
-    public CPU(int initialPriceExVat, int initialQuantityInStock, double GHzClockSpeed, String architecture)
+    public CPU(int initialPriceExVat, int initialQuantityInStock, double GHzClockSpeed,
+               String architecture, Vendor vendor)
     {
-        super("Really fast", initialPriceExVat, initialQuantityInStock);
+        super("Really fast", initialPriceExVat, initialQuantityInStock, vendor);
         this.GHzClockSpeed = GHzClockSpeed;
         this.architecture = architecture;
     } // MouseMat

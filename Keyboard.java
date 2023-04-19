@@ -14,9 +14,9 @@ public class Keyboard extends StockItem
 
     // Constructor supplying StockItem superclass.
     public Keyboard(int initialPriceExVat, int initialQuantityInStock,
-                    Color color, int noOfKeys, String specialFeatures)
+                    Color color, int noOfKeys, String specialFeatures, Vendor vendor)
     {
-        super("Cream, non-click", initialPriceExVat, initialQuantityInStock);
+        super("Cream, non-click", initialPriceExVat, initialQuantityInStock, vendor);
         this.color = color;
         this.noOfKeys = noOfKeys;
         this.specialFeatures = specialFeatures;

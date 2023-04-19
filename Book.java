@@ -2,9 +2,9 @@
 public class Book extends StockItem
 {
     // Constructor supplying StockItem superclass.
-    public Book(String title, int initialPriceExVat, int initialQuantityInStock)
+    public Book(String title, int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
     {
-        super(title,initialPriceExVat, initialQuantityInStock);
+        super(title,initialPriceExVat, initialQuantityInStock, vendor);
     } // Book
 
     // Return type of this book.

@@ -15,9 +15,9 @@ public class HardDisc extends StockItem
 
     // Constructor supplying StockItem superclass.
     public HardDisc(int initialPriceExVat, int initialQuantityInStock, int size,
-                    double inchSize, int RPMspeed, int MBCacheSize)
+                    double inchSize, int RPMspeed, int MBCacheSize, Vendor vendor)
     {
-        super("Lots of space", initialPriceExVat, initialQuantityInStock);
+        super("Lots of space", initialPriceExVat, initialQuantityInStock, vendor);
         GBCapacity = size;
         this.inchSize = inchSize;
         this.RPMspeed = RPMspeed;
