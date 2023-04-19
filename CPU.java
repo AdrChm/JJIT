@@ -14,6 +14,7 @@ public class CPU extends StockItem
         super("Really fast", initialPriceExVat, initialQuantityInStock, vendor);
         this.GHzClockSpeed = GHzClockSpeed;
         this.architecture = architecture;
+        System.out.println("CPU");
     } // MouseMat
 
     // Return type of this CPU.

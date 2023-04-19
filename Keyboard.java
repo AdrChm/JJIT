@@ -20,6 +20,7 @@ public class Keyboard extends StockItem
         this.color = color;
         this.noOfKeys = noOfKeys;
         this.specialFeatures = specialFeatures;
+        System.out.println("Keyboard");
     } // MouseMat
 
     // Return type of this keyboard.

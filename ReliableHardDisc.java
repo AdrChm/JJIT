@@ -10,6 +10,7 @@ public class ReliableHardDisc extends HardDisc
     {
         super(initialPriceExVat, initialQuantityInStock, size, inchSize, RPMspeed, MBCacheSize, vendor);
         this.guaranteedYears = guaranteedYears;
+        System.out.println("ReliableHardDisc");
     } // ReliableHardDisc
 
     // Return description of this ReliableHardDisc.

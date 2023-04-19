@@ -5,6 +5,7 @@ public class Book extends StockItem
     public Book(String title, int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
     {
         super(title,initialPriceExVat, initialQuantityInStock, vendor);
+        System.out.println("Book");
     } // Book
 
     // Return type of this book.

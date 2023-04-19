@@ -32,6 +32,7 @@ public abstract class StockItem
         quantityInStock = initialQuantityInStock;
         priceExVat = initialPriceExVat;
         this.vendor = vendor;
+        System.out.println("StockItem");
     } // StockItem
 
     // Constructor with description.
@@ -44,6 +45,7 @@ public abstract class StockItem
         priceExVat = initialPriceExVat;
         this.description = description;
         this.vendor = vendor;
+        System.out.println("StockItem");
     } // StockItem
 
     // Return the code of this stock item.

@@ -23,6 +23,7 @@ public class HardDisc extends StockItem
         this.RPMspeed = RPMspeed;
         this.MBCacheSize = MBCacheSize;
         this.setDescription(GBCapacity + "GB of space");
+        System.out.println("HardDisc");
 
     } // MouseMat
 

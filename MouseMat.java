@@ -5,6 +5,7 @@ public class MouseMat extends StockItem
     public MouseMat(String description, int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
     {
         super(description, initialPriceExVat, initialQuantityInStock, vendor);
+        System.out.println("MouseMat");
     } // MouseMat
 
     // Return type of this mouse mat.
