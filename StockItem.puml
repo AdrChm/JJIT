@@ -1,12 +1,17 @@
 @startuml
-abstract class StockItem {
+abstract class StockItem
+{
+    - String description
+    - Vendor vendor
     - int priceExVat
     - double vatRate
     - int quantityInStock
     - int numberOfItemsCreated
-    # int stockCode
-    + StockItem(int initialPriceExVat, int initialQuantityInStock)
-    + int abstract getStockCode()
+    - int stockCode
+    + StockItem(int initialPriceExVat, int initialQuantityInStock, Vendor vendor)
+    + StockItem(String description, int initialPriceExVat,
+                int initialQuantityInStock, Vendor vendor)
+    + int getStockCode()
     + String abstract getStockItemType()
     + String getDescription()
     + int getQuantityInStock()
@@ -16,55 +21,86 @@ abstract class StockItem {
     + int getPriceExVat()
     + double getVatRate()
     + int getPriceIncVat()
+    + setDescription(String description)
     + String toString()
 }
 
-abstract class TextDescriptionStockItem extends StockItem
+class MouseMat extends StockItem
 {
-    - String description;
-    + TextDescriptionStockItem(String description, int initialPriceExVat, int initialQuantityInStock)
-    + String getDescription()
-    + void setDescription(String description)
-}
-
-class MouseMat extends TextDescriptionStockItem
-{
-    + MouseMat(String description, int initialPriceExVat, int initialQuantityInStock)
+    + MouseMat(String description, int initialPriceExVat,
+            int initialQuantityInStock, Vendor vendor)
     + String getStockItemType()
 }
 
-class Book extends TextDescriptionStockItem
+class Book
 {
-    + Book(String title, int initialPriceExVat, int initialQuantityInStock)
+    + Book(String title, int initialPriceExVat,
+        int initialQuantityInStock, Vendor vendor)
     + String getStockItemType()
     + double getVatRate()
 }
 
-class Keyboard extends StockItem
+class Keyboard
 {
-      + Keyboard(int initialPriceExVat, int initialQuantityInStock)
+      - Color color
+      - int noOfKeys
+      - String specialFeatures
+      + Keyboard(int initialPriceExVat, int initialQuantityInStock, Color color,
+                int noOfKeys, String specialFeatures, Vendor vendor)
       + String getStockItemType()
       + String getDescription()
 }
 
-class CPU extends StockItem
+class CPU
 {
-    + CPU(int initialPriceExVat, int initialQuantityInStock)
+    - String architecture
+    - double GHzClockSpeed
+    + CPU(int initialPriceExVat, int initialQuantityInStock,
+        double GHzClockSpeed, String architecture, Vendor vendor)
     + String getStockItemType()
     + String getDescription()
 }
 
-class HardDisc extends StockItem
+class HardDisc
 {
-    - int GBCapacity;
-    + HardDisc(int initialPriceExVat, int initialQuantityInStock)
+    - int GBCapacity
+    - double inchSize;
+    - int RPMspeed;
+    - int MBCacheSize;
+    + HardDisc(int initialPriceExVat, int initialQuantityInStock, int size,
+            double inchSize, int RPMspeed, int MBCacheSize, Vendor vendor)
     + String getStockItemType()
     + String getDescription()
 }
+
 class ReliableHardDisc extends HardDisc
 {
-    - int guaranteedYears;
-    + ReliableHardDisc(int initialPriceExVat, int initialQuantityInStock, int size, int guaranteedYears) {
+    - int guaranteedYears
+    + ReliableHardDisc(int initialPriceExVat, int initialQuantityInStock, int size,
+                    int guaranteedYears, double inchSize, int RPMspeed, int MBCacheSize, Vendor vendor)
     + String getDescription()
 }
+
+class Vendor
+{
+    - String name
+    - String EIN
+    - String address
+    + Vendor(String name, String ein, String address)
+    + String getName()
+    + String getEIN()
+    + String getAddress()
+    + String toString()
+
+}
+
+StockItem *-- "1" Vendor
+
+skinparam groupInheritance 2
+
+StockItem <|-- Book
+StockItem <|-- Keyboard
+StockItem <|-- CPU
+StockItem <|-- HardDisc
+
 @enduml
