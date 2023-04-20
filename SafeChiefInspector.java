@@ -6,11 +6,12 @@ public class SafeChiefInspector extends Inspector
         } // SafeChiefInspector
 
         @Override
-        public void interrogate(SafeChiefInspector suspect)
+        public void interrogate(Inspector suspect)
         {
             System.out.println("I am Chief Inspector " + getName() + ", who are you? " + suspect);
         } // interrogate
 
+        @Override
         public String toString()
         {
             return "I am Chief Inspector " + getName() + "!";

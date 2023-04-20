@@ -5,11 +5,13 @@ public class ChiefInspector extends Inspector
         super(name);
     } // ChiefInspector
 
-    public void interrogate(ChiefInspector suspect)
+    @Override
+    public void interrogate(Inspector suspect)
     {
         System.out.println("I am Chief Inspector " + getName() + ", who are you? " + suspect);
     } // interrogate
 
+    @Override
     public String toString()
     {
         return "I am Chief Inspector " + getName() + "!";
