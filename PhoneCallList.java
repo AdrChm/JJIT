@@ -30,9 +30,15 @@ public class PhoneCallList
 
                 processedCalls = upgradedArray;
             } // if
+            try{
+                processedCalls[elementsAddedSoFar] = new PhoneCall(scanner.nextLine());
+                elementsAddedSoFar++;
+            }
+            catch (Exception exception)
+            {
+                System.err.println("Error while reading the date!");
+            } // catch
 
-            processedCalls[elementsAddedSoFar] = new PhoneCall(scanner.nextLine());
-            elementsAddedSoFar++;
         } // while
 
         noOfPhoneCallItems = elementsAddedSoFar;

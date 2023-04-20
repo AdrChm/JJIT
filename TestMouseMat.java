@@ -1,23 +1,26 @@
 // Program to test MouseMat class.
 public class TestMouseMat
 {
-    public static void main(String[] args) {
-        MouseMat mouse = new MouseMat("Plain blue cloth, foam backed", 49, 10);
-        System.out.println("Creating a mouse mat stock item, " + mouse.getQuantityInStock()
-                + " in stock @ " + mouse.getPriceExVat());
-        System.out.println(mouse);
+    public static void main(String[] args)
+    {
+        Vendor vendor = new Vendor("HP Inc.", "94-1081436","1501 Page Mill Road\n Palo Alto\n California\n 94304");
+
+        MouseMat mouseMat = new MouseMat("Plain blue cloth, foam backed", 49, 10, vendor);
+        System.out.println("Creating a mouse mat stock item, " + mouseMat.getQuantityInStock()
+                + " in stock @ " + mouseMat.getPriceExVat());
+        System.out.println(mouseMat);
 
         System.out.println("Obtain 10 mouse mats");
-        mouse.increaseStock(10);
-        System.out.println(mouse);
+        mouseMat.increaseStock(10);
+        System.out.println(mouseMat);
 
         System.out.println("Sell 5 mouse mats");
-        mouse.sellStock(5);
-        System.out.println(mouse);
+        mouseMat.sellStock(5);
+        System.out.println(mouseMat);
 
         System.out.println("Change mouse mat price to 39");
-        mouse.setPriceExVat(39);
-        System.out.println(mouse);
+        mouseMat.setPriceExVat(39);
+        System.out.println(mouseMat);
 
     } // main
 

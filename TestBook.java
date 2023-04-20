@@ -3,7 +3,8 @@ public class TestBook
 {
     public static void main(String[] args)
     {
-        Book catalogue = new Book("List of all items and prices", 0, 100);
+        Vendor publisher = new Vendor("Our store.", "01-1000100", "here");
+        Book catalogue = new Book("List of all items and prices", 0, 100, publisher);
         System.out.println("Creating a mouse mat stock item, " + catalogue.getQuantityInStock()
                 + " in stock @ " + catalogue.getPriceExVat());
         System.out.println(catalogue);

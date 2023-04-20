@@ -24,43 +24,52 @@ public class Person
 	// Return the age history of this person.
 	public String ageHistory()
 	{
-		Date presentDate = Date.getPresentDate();
-
-		// Deal with cases where the person has just been born
-		// or is not born yet.
-		if (presentDate.equals(birthDate))
-			return name + " was, or will be, born today!";
-		else if (presentDate.lessThan(birthDate))
-			return name + " will be born on " + birthDate;
-		else // The person was born before today.
-		{
+		try{
+			Date presentDate = Date.getPresentDate();
 
 
-			// Start with the event of birth.
-			String result = name + " was born on " + birthDate;
-
-			// Now we will go through the years since birth, but before today.
-			// We keep track of the birthday we are considering. 
-			Date someBirthday = birthDate.addYear();
-			int ageOnSomeBirthday = 1;
-			while (someBirthday.lessThan(presentDate))	
+			// Deal with cases where the person has just been born
+			// or is not born yet.
+			if (presentDate.equals(birthDate))
+				return name + " was, or will be, born today!";
+			else if (presentDate.lessThan(birthDate))
+				return name + " will be born on " + birthDate;
+			else // The person was born before today.
 			{
-				result += NLS + name + " will be " + ageOnSomeBirthday
-				       + " on " + someBirthday;	
-				someBirthday = someBirthday.addYear();
-				ageOnSomeBirthday++;
-			} // while
 
-			// Now deal with the next birthday.
-			if (someBirthday.equals(presentDate))
-				result += NLS + name + " was " + ageOnSomeBirthday
-				       + " on " + someBirthday;
-				else 
-				result += NLS + name + " will be " + ageOnSomeBirthday
-				       + " on " + someBirthday;	
-			
-			return result;
-		} //else
-		
+
+				// Start with the event of birth.
+				String result = name + " was born on " + birthDate;
+
+				// Now we will go through the years since birth, but before today.
+				// We keep track of the birthday we are considering.
+				Date someBirthday = birthDate.addYear();
+				int ageOnSomeBirthday = 1;
+				while (someBirthday.lessThan(presentDate))
+				{
+					result += NLS + name + " will be " + ageOnSomeBirthday
+						   + " on " + someBirthday;
+					someBirthday = someBirthday.addYear();
+					ageOnSomeBirthday++;
+				} // while
+
+				// Now deal with the next birthday.
+				if (someBirthday.equals(presentDate))
+					result += NLS + name + " was " + ageOnSomeBirthday
+						   + " on " + someBirthday;
+					else
+					result += NLS + name + " will be " + ageOnSomeBirthday
+						   + " on " + someBirthday;
+
+				return result;
+			} //else
+		} // try
+		catch (Exception exception)
+		{
+			System.err.println("Error while reading the present date!");
+			return null;
+		} // catch
+
 	} // ageHistory
+
 } // class Person

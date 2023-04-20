@@ -6,12 +6,16 @@ public class TestStockItem
 {
     public static void main(String[] args)
     {
-        StockItem mouseMat = new MouseMat("Plain blue cloth, foam backed", 499, 10);
+
+        Vendor vendor = new Vendor("HP Inc.", "94-1081436","1501 Page Mill Road\n Palo Alto\n California\n 94304");
+        Vendor publisher = new Vendor("O'Reilly Media Inc.","04-2789763","1005 Gravenstein Highway N\n Sebastopol\n CA\n United States\n 95472");
+
+        StockItem mouseMat = new MouseMat("Plain blue cloth, foam backed", 499, 10, vendor);
         System.out.println("Creating a mouse mat stock item, " + mouseMat.getQuantityInStock()
                             + " in stock @ " + mouseMat.getPriceExVat());
         System.out.println(mouseMat);
 
-        StockItem book = new Book("List of all items and prices", 9999, 20);
+        StockItem book = new Book("List of all items and prices", 9999, 20, publisher);
         System.out.println("Creating a catalogue stock item, " + book.getQuantityInStock()
                             + " in stock @ " + book.getPriceExVat());
         System.out.println(book);
