@@ -36,6 +36,7 @@ public class Vendor
         return address;
     } // getAddress
 
+    @Override
     // Mostly for testing.
     public String toString()
     {

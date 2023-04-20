@@ -8,6 +8,7 @@ public class MouseMat extends StockItem
         System.out.println("MouseMat");
     } // MouseMat
 
+    @Override
     // Return type of this mouse mat.
     public String getStockItemType()
     {

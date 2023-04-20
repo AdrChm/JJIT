@@ -52,19 +52,19 @@ public class ShoppingBasket
         {
             if(shoppingBasket[index].getStockItem().sellStock(shoppingBasket[index].getRequestedQuantity()))
             {
-                sellReport.append("Purchased ");
+                sellReport.append("Purchased ").append(shoppingBasket[index]).append("\n");
                 shoppingBasket[index] = null;
             } // if
             else
-                sellReport.append("Not purchased ");
+                sellReport.append("Not purchased ").append(shoppingBasket[index]).append("\n");
 
-            sellReport.append(shoppingBasket[index]).append("\n");
         } // for
         cleanList();
         return sellReport.toString();
 
     } // checkout
 
+    @Override
     // Mainly for testing.
     public String toString()
     {
@@ -98,7 +98,7 @@ public class ShoppingBasket
                     isChanged = true;
                 }
             } // for
-        }while(isChanged);
+        } while(isChanged);
 
     } // cleanList
 

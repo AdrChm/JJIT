@@ -8,12 +8,14 @@ public class Book extends StockItem
         System.out.println("Book");
     } // Book
 
+    @Override
     // Return type of this book.
     public String getStockItemType()
     {
         return "Book";
     } // getStockCode
 
+    @Override
     // Returns the percentage VAT rate of the book.
     public double getVatRate()
     {

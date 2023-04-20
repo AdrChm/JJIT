@@ -26,6 +26,7 @@ public class StockItemPurchaseRequest
         return requestedQuantity;
     } //getRequestedQuantity
 
+    @Override
     // Mainly for testing.
     public String toString()
     {

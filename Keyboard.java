@@ -23,12 +23,14 @@ public class Keyboard extends StockItem
         System.out.println("Keyboard");
     } // MouseMat
 
+    @Override
     // Return type of this keyboard.
     public String getStockItemType()
     {
         return "Keyboard";
     } // getStockCode
 
+    @Override
     // Return description of this keyboard.
     public String getDescription()
     {

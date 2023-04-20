@@ -13,6 +13,7 @@ public class ReliableHardDisc extends HardDisc
         System.out.println("ReliableHardDisc");
     } // ReliableHardDisc
 
+    @Override
     // Return description of this ReliableHardDisc.
     public String getDescription()
     {

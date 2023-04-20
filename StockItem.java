@@ -124,6 +124,7 @@ public abstract class StockItem
         this.description = description;
     } //setDescription
 
+    @Override
     // String representation of the stock item.
     public String toString()
     {

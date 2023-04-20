@@ -17,12 +17,14 @@ public class CPU extends StockItem
         System.out.println("CPU");
     } // MouseMat
 
+    @Override
     // Return type of this CPU.
     public String getStockItemType()
     {
         return "CPU";
     } // getStockCode
 
+    @Override
     // Return description of this CPU.
     public String getDescription()
     {

@@ -27,12 +27,14 @@ public class HardDisc extends StockItem
 
     } // MouseMat
 
+    @Override
     // Return type of this HardDisc.
     public String getStockItemType()
     {
         return "Hard disc";
     } // getStockCode
 
+    @Override
     // Return description of this HardDisc.
     public String getDescription()
     {
