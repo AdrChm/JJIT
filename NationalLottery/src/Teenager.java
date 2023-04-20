@@ -7,12 +7,14 @@ public class Teenager extends MoodyPerson
         super(name, false);
     } // Teenager
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Teenager";
     } // getPersonType
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

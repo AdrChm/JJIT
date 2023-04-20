@@ -7,12 +7,14 @@ public class Psychic extends Person
         super(name);
     } // Psychic
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Psychic";
     } // getPersonType
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

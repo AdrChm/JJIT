@@ -7,19 +7,21 @@ public class CleverPunter extends MoodyPerson
 
     // The guess of what balls will come out.
     private int[] currentGuess = null;
-    
+
     // Constructor is given the person's name.
     public CleverPunter(String name)
     {
         super(name);        
     } // CleverPunter
-    
+
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Clever Punter";
     } // getPersonType
-    
+
+    @Override
     // Returns the Person's name, with the current guess included.
     public String getPersonName()
     {
@@ -35,6 +37,7 @@ public class CleverPunter extends MoodyPerson
 
     } // getPersonName
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

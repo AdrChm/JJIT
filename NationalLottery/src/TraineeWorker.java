@@ -14,18 +14,21 @@ public class TraineeWorker extends Worker
         efficiency = requiredEfficiency;
     } // TraineeWorker
 
+    @Override
     // Return's persons name with the efficiency added in brackets.
     public String getPersonName()
     {
         return super.getPersonName() + " (" + efficiency + " efficiency)";
     } // getPersonName
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Trainee " + super.getPersonType();
     } // getPersonType
 
+    @Override
     // Returns a newly created Ball with the given number and colour.
     // The ball's number may be wrong depending on the efficiency.
     public Ball makeNewBall(int number, Color color)

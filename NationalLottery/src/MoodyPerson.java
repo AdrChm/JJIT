@@ -18,6 +18,7 @@ public abstract class MoodyPerson extends Person
         this(name, true);
     } // MoodyPerson
 
+    @Override
     // Returns whether or not the Person is happy.
     public boolean isHappy()
     {

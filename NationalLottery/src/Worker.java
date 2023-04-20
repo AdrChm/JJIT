@@ -10,12 +10,14 @@ public class Worker extends MoodyPerson
         super(name);
     } // Worker
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Worker";
     } // getPersonType
 
+    @Override
     // Returns Person's current saying.
     public String getCurrentSaying()
     {
@@ -24,6 +26,7 @@ public class Worker extends MoodyPerson
         else
             return "Puff, pant, puff, pant";
     } // getCurrentSaying
+
 
     // Returns a newly created Ball with the given number and colour.
     public Ball makeNewBall(int number, Color color)

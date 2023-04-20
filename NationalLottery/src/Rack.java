@@ -9,6 +9,7 @@ public class Rack extends BallContainer
         super(name,size);
     } // Rack
 
+    @Override
     // Return the name of the type of the BallContainer.
     public String getType()
     {

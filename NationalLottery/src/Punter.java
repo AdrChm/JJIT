@@ -7,18 +7,21 @@ public class Punter extends Person
         super(name);
     } // Punter
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Punter";
     } // getPersonType
 
+    @Override
     // Returns whether or not the Person is happy.
     public boolean isHappy()
     {
         return false;
     } // isHappy
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

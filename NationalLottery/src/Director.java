@@ -7,12 +7,14 @@ public class Director extends Person
         super(name);
     } // Director
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Director";
     } // getPersonType
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

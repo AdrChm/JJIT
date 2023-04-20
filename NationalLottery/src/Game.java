@@ -28,7 +28,7 @@ public class Game
     } // getRackSize
 
     // Return the number of balls in the rack.
-    public int getRackNoOfBalls(Ball ball)
+    public int getRackNoOfBalls()
     {
         return rack.getNoOfBalls();
     } // getRackNoOfBalls
@@ -67,6 +67,7 @@ public class Game
         rack.sortBalls();
     } // rackSortBalls
 
+    @Override
     // Mainly for testing.
     public String toString()
     {

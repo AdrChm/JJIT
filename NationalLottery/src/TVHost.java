@@ -7,12 +7,14 @@ public class TVHost extends Person
         super(name);
     } // TVHost
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "TV Host";
     } // getPersonType
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

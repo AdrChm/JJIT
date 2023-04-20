@@ -7,12 +7,14 @@ public class AudienceMember extends Person
         super(name);
     } // AudienceMember
 
+    @Override
     // Returns the name of the type of Person.
     public String getPersonType()
     {
         return "Audience Member";
     } // getPersonType
 
+    @Override
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {

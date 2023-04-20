@@ -45,6 +45,8 @@ public abstract class Person
         latestSaying = getCurrentSaying();
     } // speak
 
+    @Override
+    // Returns string representation of this person.
     public String toString()
     {
         return getPersonType() + " " + getPersonName()

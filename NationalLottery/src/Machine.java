@@ -8,6 +8,7 @@ public class Machine extends BallContainer
         super(name, size);
     } // Machine
 
+    @Override
     // Return the name of the type of BallContainer.
     public String getType()
     {
@@ -29,7 +30,7 @@ public class Machine extends BallContainer
 
             Ball ejectedBall = getBall(ejectedBallIndex);
 
-            swapBalls(ejectedBallIndex,getNoOfBalls() - 1);
+            swapBalls(ejectedBallIndex, getNoOfBalls() - 1);
             removeBall();
 
             return ejectedBall;

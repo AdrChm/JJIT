@@ -41,6 +41,8 @@ public class Ball
     } // compareTo
 
     // Mainly for testing.
+
+    @Override
     public String toString()
     {
         return "Ball " + value + " " + colour;
