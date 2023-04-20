@@ -17,7 +17,7 @@ public class PhoneCall
     // Date and time this call took place.
     private final Date date;
     private final Time time;
-    public PhoneCall(String fileRecord)
+    public PhoneCall(String fileRecord) throws Exception
     {
         String [] phoneCallElements = fileRecord.split("\t+");
         String [] phoneNumberSections = phoneCallElements[0].split("\\W?\\.?\\-?");

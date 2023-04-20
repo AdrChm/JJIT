@@ -1,3 +1,4 @@
+import javax.swing.*;
 
 public class ShoppingBasket
 {
@@ -12,14 +13,14 @@ public class ShoppingBasket
     private int numberOfStockItems = 0;
 
     // List of StockItemPurchaseRequest
-    private final StockItemPurchaseRequest [] shoppingBasket;
+    private StockItemPurchaseRequest [] shoppingBasket;
 
     public ShoppingBasket()
     {
         shoppingBasket = new StockItemPurchaseRequest[INITIAL_ARRAY_SIZE];
     } // ShoppingBasket
 
-    public void add(StockItemPurchaseRequest (StockItem item, int quantity))
+    public void add(StockItem item, int quantity)
     {
         // When shoppingBasket is full.
         if(numberOfStockItems == shoppingBasket.length)
@@ -35,7 +36,7 @@ public class ShoppingBasket
     private void extendShoppingBasket()
     {
         StockItemPurchaseRequest [] newArray =
-                StockItemPurchaseRequest [shoppingBasket.length * ARRAY_MULTIPLICATION_FACTOR];
+                new StockItemPurchaseRequest [shoppingBasket.length * ARRAY_MULTIPLICATION_FACTOR];
         for (int index = 0; index < shoppingBasket.length; index++)
             newArray[index] = shoppingBasket[index];
 
@@ -47,25 +48,58 @@ public class ShoppingBasket
     public String checkout()
     {
         StringBuilder sellReport = new StringBuilder();
-        for (StockItemPurchaseRequest item: shoppingBasket)
+        for (int index = 0; index < numberOfStockItems; index++)
         {
-            sellReport.append(item.getStockItem().sell(item.getRequestedQuantity()));
-        } // for
+            if(shoppingBasket[index].getStockItem().sellStock(shoppingBasket[index].getRequestedQuantity()))
+            {
+                sellReport.append("Purchased ").append(shoppingBasket[index]).append("\n");
+                shoppingBasket[index] = null;
+            } // if
+            else
+                sellReport.append("Not purchased ").append(shoppingBasket[index]).append("\n");
 
+        } // for
+        cleanList();
         return sellReport.toString();
 
     } // checkout
 
+    @Override
     // Mainly for testing.
     public String toString()
     {
+
         StringBuilder result = new StringBuilder();
-        for (StockItemPurchaseRequest item: shoppingBasket)
+        for (int index = 0; index < numberOfStockItems; index++)
         {
-            result.append(item);
+            result.append(shoppingBasket[index]);
             result.append("\n");
+
         } // for
-            return result.toString();
+        return result.toString();
+
     } // toString
+
+    // Helper method to remove purchased items (null) from the shopping basket.
+    private void cleanList()
+    {
+        boolean isChanged = false;
+
+        do
+        {
+            isChanged = false;
+            for (int index = 0; index < numberOfStockItems; index++)
+            {
+                if (shoppingBasket[index] == null)
+                {
+                    numberOfStockItems--;
+                    shoppingBasket[index] = shoppingBasket[numberOfStockItems];
+                    shoppingBasket[numberOfStockItems] = null;
+                    isChanged = true;
+                }
+            } // for
+        } while(isChanged);
+
+    } // cleanList
 
 } // class ShoppingBasket

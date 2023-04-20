@@ -1,0 +1,33 @@
+@startuml
+abstract class BallContainer
+{
+    - final String name;
+    - final Ball[] balls;
+    - int noOfBalls;
+    + BallContainer(String requiredName, int requiredSize)
+    + String getName()
+    + abstract String getType();
+    + Ball getBall(int index)
+    + int getNoOfBalls()
+    + int getSize()
+    + addBall(Ball ball)
+    + swapBalls(int index1, int index2)
+    + removeBall()
+    + String toString()
+}
+
+class Machine extends BallContainer
+{
+    + Machine(String name, int size)
+    + String getType()
+    + Ball ejectBall()
+}
+
+class Rack extends BallContainer
+{
+    + Rack(String name, int size)
+    + String getType()
+    + sortBalls()
+    + boolean contains(int value)
+}
+@enduml

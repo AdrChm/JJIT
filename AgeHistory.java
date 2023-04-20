@@ -111,17 +111,27 @@ public class AgeHistory extends JFrame implements ActionListener
 		buttonJPanel.add(newJButton);
 		newJButton.addActionListener(this);
 
-		// Allow for the possibility that the present date has already been set.
-		Date presentDate = Date.getPresentDate();
-		if (presentDate != null)
+		try{
+			// Allow for the possibility that the present date has already been set.
+			Date presentDate = Date.getPresentDate();
+
+			if (presentDate != null)
+			{
+				presentDayJTextField.setText("" + presentDate.getDay());
+				presentMonthJTextField.setText("" + presentDate.getMonth());
+				presentYearJTextField.setText("" + presentDate.getYear());
+				presentDayJTextField.setEnabled(false);
+				presentMonthJTextField.setEnabled(false);
+				presentYearJTextField.setEnabled(false);
+			} // if
+
+		} // try
+		catch (Exception exception)
 		{
-			presentDayJTextField.setText("" + presentDate.getDay());
-			presentMonthJTextField.setText("" + presentDate.getMonth());
-			presentYearJTextField.setText("" + presentDate.getYear());
-			presentDayJTextField.setEnabled(false);
-			presentMonthJTextField.setEnabled(false);
-			presentYearJTextField.setEnabled(false);
-		} // if
+			System.err.println("Error while reading the present date!");
+		} // catch
+
+
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
@@ -131,60 +141,67 @@ public class AgeHistory extends JFrame implements ActionListener
 	// Act upon the button being pressed.
 	public void actionPerformed(ActionEvent event)
 	{
-		if(event.getSource() == newJButton)
-		{
-			new AgeHistory().setVisible(true);
-
-
-		} // if
-
-
-
-		else if (event.getSource() == displayJButton)
-		{
-			// Set the present date only if it has not already been set.
-			if (Date.getPresentDate() == null)
+		try{
+			if(event.getSource() == newJButton)
 			{
+				new AgeHistory().setVisible(true);
 
-				Date presentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
-											Integer.parseInt(presentMonthJTextField.getText()),
-											Integer.parseInt(presentYearJTextField.getText()));
 
-			System.out.println("gen" + presentDate);
-
-				Date.setPresentDate(presentDate);
-
-				// Date should be set only once: disable further editing.
-				presentDayJTextField.setEnabled(false);
-				presentMonthJTextField.setEnabled(false);
-				presentYearJTextField.setEnabled(false);
 			} // if
-			else // Prevents existence of multiple present dates
-			{
-				Date givenPresentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
-												 Integer.parseInt(presentMonthJTextField.getText()),
-												 Integer.parseInt(presentYearJTextField.getText()));
 
-				// When given date is not present date, fields will update themselves to original value.
-				if(Date.getPresentDate().compareTo(givenPresentDate) != 0)
+
+
+			else if (event.getSource() == displayJButton)
+			{
+				// Set the present date only if it has not already been set.
+				if (Date.getPresentDate() == null)
 				{
-					presentDayJTextField.setText("" + Date.getPresentDate().getDay());
-					presentMonthJTextField.setText("" + Date.getPresentDate().getMonth());
-					presentYearJTextField.setText("" + Date.getPresentDate().getYear());
+
+					Date presentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
+												Integer.parseInt(presentMonthJTextField.getText()),
+												Integer.parseInt(presentYearJTextField.getText()));
+
+				System.out.println("gen" + presentDate);
+
+					Date.setPresentDate(presentDate);
+
+					// Date should be set only once: disable further editing.
 					presentDayJTextField.setEnabled(false);
 					presentMonthJTextField.setEnabled(false);
 					presentYearJTextField.setEnabled(false);
 				} // if
-			}
-			// Compute and display the age history.
-			String name = nameJTextField.getText();
-			Date birthday = new Date(Integer.parseInt(birthDayJTextField.getText()),
-									 Integer.parseInt(birthMonthJTextField.getText()),
-									 Integer.parseInt(birthYearJTextField.getText()));
+				else // Prevents existence of multiple present dates
+				{
+					Date givenPresentDate = new Date(Integer.parseInt(presentDayJTextField.getText()),
+													 Integer.parseInt(presentMonthJTextField.getText()),
+													 Integer.parseInt(presentYearJTextField.getText()));
 
-			Person person = new Person(name, birthday);
-			ageHistoryJTextArea.setText(person.ageHistory());
-		} // else if
+					// When given date is not present date, fields will update themselves to original value.
+					if(Date.getPresentDate().compareTo(givenPresentDate) != 0)
+					{
+						presentDayJTextField.setText("" + Date.getPresentDate().getDay());
+						presentMonthJTextField.setText("" + Date.getPresentDate().getMonth());
+						presentYearJTextField.setText("" + Date.getPresentDate().getYear());
+						presentDayJTextField.setEnabled(false);
+						presentMonthJTextField.setEnabled(false);
+						presentYearJTextField.setEnabled(false);
+					} // if
+				}
+				// Compute and display the age history.
+				String name = nameJTextField.getText();
+				Date birthday = new Date(Integer.parseInt(birthDayJTextField.getText()),
+										 Integer.parseInt(birthMonthJTextField.getText()),
+										 Integer.parseInt(birthYearJTextField.getText()));
+
+				Person person = new Person(name, birthday);
+				ageHistoryJTextArea.setText(person.ageHistory());
+			} // else if
+		} // try
+		catch (Exception exception)
+		{
+			System.err.println("Error while reading the date!");
+		} // catch
+
 	} // actionPerformed
 
 	// Create and AgeHistory and make it appear on the screen.

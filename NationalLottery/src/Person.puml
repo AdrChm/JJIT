@@ -1,0 +1,95 @@
+@startuml
+abstract class Person
+{
+    - final String personName;
+    - String latestSaying;
+    + Person(String requiredPersonName)
+    + String getPersonName()
+    + String getLatestSaying()
+    + abstract String getPersonType();
+    + boolean isHappy()
+    + abstract String getCurrentSaying();
+    + speak()
+    + String toString()
+}
+
+class AudienceMember extends Person
+{
+    + AudienceMember(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Punter extends Person
+{
+    + Punter(String name)
+    + String getPersonType()
+    + boolean isHappy()
+    + String getCurrentSaying()
+}
+
+class TVHost extends Person
+{
+    + TVHost(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Director extends Person
+{
+    + Director(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Psychic extends Person
+{
+    + Psychic(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+abstract class MoodyPerson extends Person
+{
+    - boolean isHappyNow;
+    + MoodyPerson(String name, boolean initialHappiness)
+    + MoodyPerson(String name)
+    + boolean isHappy()
+    + void setHappy(boolean happyNow)
+}
+
+class Teenager extends MoodyPerson
+{
+    + Teenager(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+}
+
+class Worker extends MoodyPerson
+{
+    + Worker(String name)
+    + String getPersonType()
+    + String getCurrentSaying()
+    + Ball makeNewBall(int number, Color color)
+    + fillMachine(Game game)
+}
+class TraineeWorker extends Worker
+{
+    - double efficiency;
+    + TraineeWorker(String name, double requiredEfficiency)
+    + String getPersonName()
+    + String getPersonType()
+    + Ball makeNewBall(int number, Color color)
+}
+
+class CleverPunter extends Punter
+{
+    - Game currentGame
+    - int[] currentGuess
+    + CleverPunter(String name)
+    + String getPersonType()
+    + String getPersonName()
+    + String getCurrentSaying()
+    + setGame(Game requiredGame)
+}
+@enduml

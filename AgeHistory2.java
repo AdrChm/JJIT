@@ -43,8 +43,7 @@ public class AgeHistory2
 	} // printAgeHistory
 	
 	// The main method: get arguments and call printAgeHistory. 
-	public static void main(String [] args)
-	{
+	public static void main(String [] args) throws Exception {
 		// The present date.
 		presentDate = new Date (Integer.parseInt(args[0]),
 					     Integer.parseInt(args[1]),

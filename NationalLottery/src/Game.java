@@ -28,7 +28,7 @@ public class Game
     } // getRackSize
 
     // Return the number of balls in the rack.
-    public int getRackNoOfBalls(Ball ball)
+    public int getRackNoOfBalls()
     {
         return rack.getNoOfBalls();
     } // getRackNoOfBalls
@@ -43,7 +43,7 @@ public class Game
     // Also return the rejected Ball.
     public Ball ejectBall()
     {
-        if(machine.getNoOfBalls() > 0)
+        if(machine.getNoOfBalls() > 0
             && rack.getNoOfBalls() < rack.getSize())
         {
             Ball ejectedBall = machine.ejectBall();
@@ -67,6 +67,7 @@ public class Game
         rack.sortBalls();
     } // rackSortBalls
 
+    @Override
     // Mainly for testing.
     public String toString()
     {
