@@ -15,15 +15,15 @@ public class Date
 	 *
 	 * @param requiredPresentDate The required date for the present day.
 	 *
-	 * @throws Exception if present date has already been set or if given
+	 * @throws DateException if present date has already been set or if given
 	 * 					 date is null.
 	 */
-	public static void setPresentDate(Date requiredPresentDate) throws Exception
+	public static void setPresentDate(Date requiredPresentDate) throws DateException
 	{
 		if (requiredPresentDate == null)
-			throw new Exception("Present date cannot be set to null.");
+			throw new DateException("Present date cannot be set to null.");
 		if (presentDate != null)
-			throw new Exception("Present date has already been set.");
+			throw new DateException("Present date has already been set.");
 
 		presentDate = requiredPresentDate;
 	} // setPresentDate
@@ -33,12 +33,12 @@ public class Date
 	 *
 	 * @return The present date, or null if it has not been set.
 	 *
-	 * @throws Exception if present date has not been set.
+	 * @throws DateException if present date has not been set.
 	 */
-	public static Date getPresentDate() throws Exception
+	public static Date getPresentDate() throws DateException
 	{
 		if (presentDate == null)
-			throw new Exception("Present date has not been set.");
+			throw new DateException("Present date has not been set.");
 		return presentDate;
 	} // getPresentDate
 
@@ -52,12 +52,12 @@ public class Date
 	 * @param requiredMonth The required month.
 	 * @param requiredYear The required year.
 	 *
-	 * @throws Exception if the date components do not form a legal date since
+	 * @throws DateException if the date components do not form a legal date since
 	 * 					 the start od 1753 (post Gregorian Reformation).
 	 */
 	// Construct a date -- given the required day, month and year.
 	public Date(int requiredDay, int requiredMonth, int requiredYear)
-			throws Exception
+			throws DateException
 	{
 		year = requiredYear;
 		month = requiredMonth;
@@ -67,16 +67,16 @@ public class Date
 		checkDateIsLegal();
 	} // Date
 
-	private void checkDateIsLegal() throws Exception
+	private void checkDateIsLegal() throws DateException
 	{
 		if (year < 1753)
-			throw new Exception("Year " + year + " must be >= 1753");
+			throw new DateException("Year " + year + " must be >= 1753");
 
 		if (month < 1 ||  month > 12)
-			throw new Exception("Month " + month + " must be from 1 to 12");
+			throw new DateException("Month " + month + " must be from 1 to 12");
 
 		if (day < 1 ||  day > daysInMonth())
-			throw new Exception("Day " + month + " must be from 1 to " + daysInMonth()
+			throw new DateException("Day " + month + " must be from 1 to " + daysInMonth()
 								+ " for " + month + "/" + year);
 
 	} // checkDateIsLegal
@@ -87,25 +87,25 @@ public class Date
 	 *
 	 * @param dateString The required date as day/month/year.
 	 *
-	 * @throws Exception if dateString is not legal.
+	 * @throws DateException if dateString is not legal.
 	 */
-	public Date(String dateString) throws Exception
+	public Date(String dateString) throws DateException
 	{
 		try
 		{
 			String [] dateElements = dateString.split("/");
 			if(dateElements.length > 3)
-				// This exception will be caught below.
-				throw new Exception("Too many date elements");
+				// This date exception will be caught below.
+				throw new DateException("Too many date elements");
 
 			day = Integer.parseInt(dateElements[0]);
 			month = Integer.parseInt(dateElements[1]);
 			year = Integer.parseInt(dateElements[2]);
 
 		} // try
-		catch (Exception exception)
+		catch (DateException exception)
 		{
-			throw new Exception("Date '" + dateString + "' is not in day/month/year format", exception);
+			throw new DateException("Date '" + dateString + "' is not in day/month/year format", exception);
 		} // catch
 		// If we get to here, we just check if the date components are legal.
 		checkDateIsLegal();
@@ -220,18 +220,17 @@ public class Date
 	{
 		// First try the obvious.
 		try { return new Date(day + 1, month, year); }
-		catch (Exception exception1)
+		catch (DateException exception1)
 		{
 			// Okay, so day must have been the last in the month.
 			// Now try the first of the next month.
 			try { return new Date(1, month + 1, year); }
-			catch (Exception exception2)
+			catch (DateException exception2)
 			{
 				// Okay, so month must have been 12.
 				// Now try the first of the next year.
 				// This cannot cause an exception.
-				try { return new Date(1, 1, year + 1); }
-				catch (Exception exception3) { return null; }	// catch
+				return new Date(1, 1, year + 1);
 			}	// catch
 		}	// catch
 	} // addDay
@@ -247,14 +246,15 @@ public class Date
 	{
 		// First try the obvious.
 		try { return new Date(day, month + 1, year); }
-		catch (Exception monthException)
+		catch (DateException monthException)
 		{
 			// Okay, so month must have been 12.
 			// Now try the first of the next year.
-			// This cannot cause an exception.
-			try { return new Date(day, 1, year + 1); }
-			catch (Exception exception) { return null; }	// catch
+			// This cannot cause a date exception.
+			return new Date(day, 1, year + 1);
+
 		}	// catch
+
 	} // addMonth
 
 	/**
@@ -265,43 +265,40 @@ public class Date
 	 */
 	public Date addYear()
 	{
-		// This cannot cause an exception, but Java does not know that.
-		try
-		{
+		// This cannot cause a date exception, but Java does not know that.
 			if(month == 2 && day == 29)
 				return new Date(28,month,year + 1);
 			else
 				return new Date(day, month, year + 1);
-		} // try
-		catch (Exception exception) { return null; }
+
 	} // addYear
 
 	/**
 	 * Constructs a new date which is one day earlier than this one.
-	 * This can throw an exception
+	 * This can throw an date exception
 	 * if the new date is earlier than the start of 1753.
 	 *
 	 * @return A new date which is one day earlier than this one.
 	 *
-	 * @throws Exception if the new date is earlier than the start of 1753.
+	 * @throws DateException if the new date is earlier than the start of 1753.
 	 */
-	public Date subtractDay() throws Exception
+	public Date subtractDay() throws DateException
 	{
 		// First try the obvious.
 		try { return new Date(day - 1, month, year); }
-		catch (Exception dayException)
+		catch (DateException dayException)
 		{
 			// Okay, so day must have been the first in the month.
 			// Now try the last of the previous month.
 			try { return new Date(daysInMonth(month - 1, year), month - 1, year); }
-			catch (Exception monthException)
+			catch (DateException monthException)
 			{
 				// Okay, so month must have been 1.
 				// Now try the first of the previous year.
-				// This cannot cause an exception.
-				try { return new Date(daysInMonth(12, year - 1), 12, year - 1); }
-				catch (Exception yearException) { return null; }	// catch
-			}	// catch
+				// This cannot cause a date exception.
+				return new Date(daysInMonth(12, year - 1), 12, year - 1);
+			} // catch
+
 		}	// catch
 
 	} // subtractDay
@@ -315,20 +312,19 @@ public class Date
 	 *
 	 * @return A new date which is one month earlier than this one.
 	 *
-	 * @throws Exception if the new date is earlier than the start of 1753.
+	 * @throws DateException if the new date is earlier than the start of 1753.
 	 */
-	public Date subtractMonth() throws Exception
+	public Date subtractMonth() throws DateException
 	{
 		// First try the obvious.
 		try { return new Date(day, month - 1, year); }
-		catch (Exception monthException)
+		catch (DateException monthException)
 		{
 			// Okay, so month must have been 1.
 			// Now try the first of the previous year.
-			// This cannot cause an exception.
-			try { return new Date(day, 1, year - 1); }
-			catch (Exception exception) { return null; }	// catch
-		}	// catch
+			// This cannot cause a date exception.
+			return new Date(day, 1, year - 1);
+		} // catch
 
 	} // subtractMonth
 
@@ -340,9 +336,9 @@ public class Date
 	 *
 	 * @return A new date which is one year later than this one.
 	 *
-	 * @throws Exception if the new date is earlier than the start of 1753.
+	 * @throws DateException if the new date is earlier than the start of 1753.
 	 */
-	public Date subtractYear() throws Exception
+	public Date subtractYear() throws DateException
 	{
 		try{
 			if (day == 29 && month == 2)
@@ -350,7 +346,7 @@ public class Date
 			else
 				return new Date(day, month, year - 1);
 		} // try
-		catch (Exception exception) { return null; }
+		catch (DateException exception) { return null; }
 	} // subtractYear
 
 	/**
@@ -382,7 +378,7 @@ public class Date
 			return noOfDaysDistance;
 		} // else if
 		else
-			try // We should not get an exception form subtractDay,
+			try // We should not get a date exception form subtractDay,
 				// because target date is legal. But Java does not know this.
 			{
 				Date someDate = subtractDay();
@@ -394,7 +390,7 @@ public class Date
 				} // while
 				return noOfDaysDistance;
 			} // try
-			// java does not know we cannot get an exception.
+			// java does not know we cannot get a date exception.
 			catch (Exception e) { return 0; }
 	} // daysFrom
 
