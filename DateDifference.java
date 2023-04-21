@@ -7,12 +7,12 @@ public class DateDifference
 {
     public static void main(String[] args)
     {
-            // A scanner for reading from standard input.
-            Scanner input = new Scanner(System.in);
-            // The two dates obtained from the user.
-            Date date1 = inputDate(input, "first");
-            Date date2 = inputDate(input, "second");
-            System.out.println();
+        // A scanner for reading from standard input.
+        Scanner input = new Scanner(System.in);
+        // The two dates obtained from the user.
+        Date date1 = inputDate(input, "first");
+        Date date2 = inputDate(input, "second");
+        System.out.println();
         System.out.println("From " + date1 + " to " + date2 + " is " + date1.daysFrom(date2) + " days");
     } // main
 
