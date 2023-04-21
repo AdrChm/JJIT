@@ -21,8 +21,18 @@ public class TestMachineExceptionClass
 
         try
         {
-            System.out.println("Creating machine sized " + machineSize);
-            Machine machine = new Machine("Test4U", machineSize);
+            Machine machine = null;
+
+            // Coffee 17.4.4 Changing all Machine constructor exceptions into MachineExceptions
+            try
+            {
+                System.out.println("Creating machine sized " + machineSize);
+                machine = new Machine("Test4U", machineSize);
+            } // try
+            catch (BallContainerException exception)
+            {
+                throw new MachineException("Size must be at least 2");
+            } // catch
 
             System.out.println("Filling with " + fillCount + " balls");
             for (int i = 1; i <= fillCount; i++)
