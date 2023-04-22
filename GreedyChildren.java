@@ -11,7 +11,7 @@ public class GreedyChildren
 	public static void deliver(IceCreamParlour parlour, double amount)
 	{
 		System.out.println(parlour);
-		System.out.println("accecpt delivery of " + amount);
+		System.out.println("Accepted delivery of " + amount);
 		parlour.acceptDelivery(amount);
 		System.out.println("Result: " + parlour);
 		System.out.println();
@@ -74,4 +74,4 @@ public class GreedyChildren
 		eat(child3, 2, parlour3);
 	} // main
 
-} // class GreedyChilden
+} // class GreedyChildren

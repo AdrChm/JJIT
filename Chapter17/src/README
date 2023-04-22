@@ -1,0 +1,8 @@
+This file is created to avoid class duplications required by this chapter,
+so new versions of already existing classes and the other, related to these
+new copies are put here.
+Add Clone to these classes name would be another solution, but requiring much
+more effort in terms of testing and ensuring compatibility with other already
+existing classes.
+This might be changed in future, or this directory might extent to cover future
+chapters as well if this will be necessary.
