@@ -16,9 +16,9 @@ public class CheckSum
             {
                 checkSum = BSDRotation(checkSum) + currentByte;
 
-                // Preventing exceeding 16 bit values.
-                if (checkSum >= 65536)
-                    checkSum -= 65536;
+                // Preventing exceeding 16 bit values (35536).
+                if (checkSum >= 0x10000)
+                    checkSum -= 0x10000;
 
             } // while
             System.out.println(checkSum);
@@ -47,10 +47,11 @@ public class CheckSum
     private static int BSDRotation(int number)
     {
         // Takes 16 least important bits and shifts them.
+        // If given number is odd, 32768 is added to supply 16th byte with 1.
         if(number % 2 == 1)
-            return number / 2 + (int) Math.pow(2,15);
+            return (number >> 1) + 0x8000;
         else
-            return number / 2;
+            return number >> 1;
 
     } // BSDRotation
 
