@@ -4,6 +4,7 @@ import java.io.*;
 // Field to be deleted is given as an input argument.
 // Counting of fields starts from 1, each is separated by a tab.
 // Class with go through given file and produce output in another.
+// If instead of a file name "-" is given, then standard input/output is used.
 public class DeleteField
 {
     public static void main(String[] args)
@@ -12,23 +13,36 @@ public class DeleteField
         PrintWriter output = null;
 
         try{
+
             if(args.length != 3)
-                throw new DeleteFieldException("There must be exactly two arguments: infile, outfile, deleted field number");
+                throw new DeleteFieldException("Wrong number of arguments! input file, output file, deleted column");
 
-            input = new BufferedReader(new FileReader(args[0]));
-            output = new PrintWriter(new FileWriter(args[1]));
+            if(args[0].equals("-"))
+                input = new BufferedReader(new InputStreamReader(System.in));
+            else
+                input = new BufferedReader(new FileReader(args[0]));
+
+            if(args[1].equals("-"))
+                output = new PrintWriter(System.out, true);
+            else
+            {
+                if(new File(args[1]).exists())
+                    throw new DeleteFieldException("file " + args[1] + " already exists.");
+
+                output = new PrintWriter(new FileWriter(args[1]));
+            } // else
+
             final int fieldToDelete = Integer.parseInt(args[2]);
-
             String inputLine;
 
             while ((inputLine = input.readLine()) != null)
             {
                 // Divide the line into fields using tab as delimiter.
                 String[] fields = inputLine.split("\t");
-                StringBuffer editedLine = new StringBuffer("");
+                StringBuilder editedLine = new StringBuilder("");
 
                 if(fields.length < fieldToDelete)
-                    editedLine = new StringBuffer(inputLine);
+                    editedLine = new StringBuilder(inputLine);
                 else
                 {
                     // We build the new line in parts.
@@ -47,8 +61,8 @@ public class DeleteField
                             editedLine.append("\t").append(fields[index]);
                 } // else
 
-                System.out.println(editedLine.toString());
-                output.print(editedLine.toString() + "\n");
+                System.out.println(editedLine);
+                output.print(editedLine + "\n");
 
             } // while
 
