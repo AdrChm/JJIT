@@ -1,0 +1,62 @@
+00001 Juliet
+00002 O Romeo, Romeo! Wherefore art thou Romeo?
+00003 Deny thy father and refuse thy name;
+00004 Or, if thou wilt not, be but sworn my love,
+00005 And I'll no longer be a Capulet.
+00006 Romeo
+00007 [Aside] Shall I hear more, or shall I speak at this?
+00008 Juliet
+00009 'Tis but thy name that is my enemy;
+00010 Thou art thyself, though not a Montague.
+00011 What's Montague? It is nor hand, nor foot,                    
+00012 Nor arm, nor face, nor any other part
+00013 Belonging to a man. O, be some other name!
+00014 What's in a name? That which we call a rose,
+00015 By any other word would smell as sweet.
+00016 So Romeo would — were he not Romeo called —
+00017 Retain that dear perfection which he owes
+00018 Without that title. Romeo, doff thy name,
+00019 And for that name, which is no part of thee,
+00020 Take all myself.
+00021 Romeo
+00022                           [Aloud] I take thee at thy word.
+00023 Call me but love, and I'll be new baptized;                    
+00024 Henceforth I never will be Romeo.
+00025 Juliet
+00026 What man art thou that, thus bescreened in night,
+00027 So stumblest on my counsel?
+00028 Romeo
+00029                                                 By a name
+00030 I know not how to tell thee who I am.
+00031 My name, dear saint, is hateful to myself,
+00032 Because it is an enemy to thee.
+00033 Had I it written, I would tear the word.
+00034 Juliet
+00035 My ears have not yet drunk a hundred words
+00036 Of that tongue's uttering, yet I know the sound.
+00037 Art thou not Romeo and a Montague?                           
+00038 Romeo
+00039 Neither, fair maid, if either thee dislike.
+00040 Juliet
+00041 How camest thou hither, tell me, and wherefore?
+00042 The orchard walls are high and hard to climb,
+00043 And the place death, considering who thou art,
+00044 If any of my kinsmen find thee here.
+00045 Romeo
+00046 With love's light wings did I o'erperch these walls,
+00047 For stony limits cannot hold love out;
+00048 And what love can do, that dares love attempt.
+00049 Therefore thy kinsmen are no stop to me.
+00050 Juliet
+00051 If they do see thee, they will murder thee.                     
+00052 Romeo
+00053 Alack, there lies more peril in thine eye
+00054 Than twenty of their swords. Look thou but sweet,
+00055 And I am proof against their enmity.
+00056 Juliet
+00057 I would not for the world they saw thee here.
+00058 Romeo
+00059 I have night's cloak to hide me from their eyes,
+00060 And but thou love me, let them find me here.
+00061 My life were better ended by their hate,
+00062 Than death proroguèd, wanting of thy love.
