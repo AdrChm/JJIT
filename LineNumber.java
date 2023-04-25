@@ -1,12 +1,9 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 // Program to add a line number to the lines from an input file
 // and produce the result in an output file.
 // The two file names are given as command line arguments.
+// If a filename is missing, or is "-", then standard input/output is used.
 public class LineNumber
 {
     // The minimum number of digits in a line number.
@@ -23,12 +20,23 @@ public class LineNumber
         PrintWriter output = null;
         try
         {
-            if(args.length != 2)
-                throw new LineNumberException
-                        ("There must be exactly two arguments: infile outfile");
+            // Check for too many arguments before opening files, is case wrong names.
+            if(args.length > 2)
+                throw new LineNumberException("Too many arguments ");
 
-            input = new BufferedReader(new FileReader(args[0]));
-            output = new PrintWriter(new FileWriter(args[1]));
+            if(args.length < 1 || args[0].equals("-"))
+                input = new BufferedReader(new InputStreamReader(System.in));
+            else
+                input = new BufferedReader(new FileReader(args[0]));
+
+            if(args.length < 2 || args[1].equals("-"))
+                output = new PrintWriter(System.out, true);
+            else
+            {
+                if(new File(args[1]).exists())
+                    throw new LineNumberException("Output file " + args[1] + " already exists");
+                output = new PrintWriter(new FileWriter(args[1]));
+            } // else
 
             // Now copy input to output, adding line numbers.
             int noOfLinesReadSoFar = 0;
