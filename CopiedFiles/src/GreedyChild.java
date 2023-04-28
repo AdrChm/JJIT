@@ -1,6 +1,4 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.Serializable;
 
 /*	Each greedy child has a name and a fixed stomach size, which is an amount
 	of ice cream he or she can hold. This capacity can either be specified, or 
@@ -15,7 +13,7 @@ import java.io.IOException;
 	State of the child can be read and saved in file, data order is following:
 	name, stomachSize, stomachContents, tShirtStainSize, IceCreamParlour
 */
-public class GreedyChild
+public class GreedyChild implements Serializable
 {
 	// When a GreedyChild is created with no given capacity
 	// a random one is chosen up to this maximum.
@@ -61,17 +59,6 @@ public class GreedyChild
 
 		name = requiredName;
 		stomachSize = Math.random() * MAXIMUM_RANDOM_STOMACH_SIZE;
-	} // GreedyChild
-
-	// Construct a greedy child from the input file
-	// considering name and stomach size as well as stomach content and t-shirt state.
-	public GreedyChild(DataInputStream inputStream) throws GreedyChildException, IOException
-	{
-		// Passing to constructor with name and stomach size.
-		this(inputStream.readUTF(),inputStream.readDouble());
-		stomachContents = inputStream.readDouble();
-		tShirtStainSize = inputStream.readByte();
-
 	} // GreedyChild
 
 	// Enter an ice cream parlour.
@@ -123,15 +110,5 @@ public class GreedyChild
 		       + " and has spilt " + tShirtStainSize + NLS
 		       + "(currently in " + currentParlour + ")";
 	} // toString
-
-	// Saves state of a child in given output.
-	public void saveGreedyChild(DataOutputStream output) throws IOException
-	{
-		output.writeUTF(name);
-		output.writeDouble(stomachSize);
-		output.writeDouble(stomachContents);
-		output.writeByte(tShirtStainSize);
-		output.writeInt(currentParlour != null ? currentParlour.getIndex() : 0);
-	} // saveGreedyChild
 
 } // class GreedyChild

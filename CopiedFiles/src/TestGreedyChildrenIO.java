@@ -1,24 +1,24 @@
 import java.io.IOException;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-// Program to test GreedyChildren and IceCreamParlour classes ability
+// Another version Program to test GreedyChildren and IceCreamParlour classes ability
 // to save and read data from the file.
 public class TestGreedyChildrenIO
 {
     // Every time new element is created, it's saved in array to save it later into
     // the output file, using assigned index.
-    private static int ELEMENTS_STARTING_SIZE = 100;
+    private static final int ELEMENTS_STARTING_SIZE = 100;
 
     // Number of created children, next array free index.
     private static int childrenCreatedSoFar = 0;
-    private static GreedyChild [] children = new GreedyChild[ELEMENTS_STARTING_SIZE];
+    private static final GreedyChild [] children = new GreedyChild[ELEMENTS_STARTING_SIZE];
 
     // Number of created parlours, next array free index.
     private static int parloursCreatedSoFar = 0;
-    private static IceCreamParlour [] parlours = new IceCreamParlour[ELEMENTS_STARTING_SIZE];
+    private static final IceCreamParlour [] parlours = new IceCreamParlour[ELEMENTS_STARTING_SIZE];
 
     // Private helper method to make a delivery and report it.
     public static void deliver(IceCreamParlour parlour, double amount)
@@ -48,9 +48,9 @@ public class TestGreedyChildrenIO
     } // eat
 
     // The main method tells the 'story'.
-    public static void main(String [] args) throws IOException
+    public static void main(String [] args)
     {
-
+        String usedFile = "objectsHistory.dat";
 
         // Beginning of the story - no need to read the file.
         System.out.println("Greedy children: ");
@@ -104,18 +104,18 @@ public class TestGreedyChildrenIO
         // All children are assumed to leave parlour they are in.
         try
         {
-            saveHistory(new DataOutputStream(new FileOutputStream("history.dat")));
+            saveHistory(new ObjectOutputStream(new FileOutputStream(usedFile)));
 
         } // try
         catch (IOException exception)
         {
             System.err.println("File already exist " + exception.getMessage());
         } // catch
+
         // New day comes and our story continues.
-        DataInputStream input = null;
         try
         {
-            loadHistory(new DataInputStream(new FileInputStream("history.dat")));
+            loadHistory(new ObjectInputStream(new FileInputStream(usedFile)));
 
             GreedyChild newGuy = new GreedyChild("Bączek");
             IceCreamParlour newParlour = new IceCreamParlour("Zgierz");
@@ -132,8 +132,8 @@ public class TestGreedyChildrenIO
             for (int child = 0; child < childrenCreatedSoFar; child++)
                 eat(children[child], child * 10 + 10, parlours[child]);
 
-            saveHistory(new DataOutputStream(new FileOutputStream("history.dat")));
-            loadHistory(new DataInputStream(new FileInputStream("history.dat")));
+            saveHistory(new ObjectOutputStream(new FileOutputStream(usedFile)));
+            loadHistory(new ObjectInputStream(new FileInputStream(usedFile)));
 
             System.out.println("Story ends here:");
             for (int objectIndex = 0; objectIndex < childrenCreatedSoFar + parloursCreatedSoFar; objectIndex++)
@@ -151,8 +151,8 @@ public class TestGreedyChildrenIO
             for (int childIndex = 0; childIndex < childrenCreatedSoFar; childIndex++)
                 children[childIndex].enterParlour(parlours[childIndex]);
 
-            saveHistory(new DataOutputStream(new FileOutputStream("history.dat")));
-            loadHistory(new DataInputStream(new FileInputStream("history.dat")));
+            saveHistory(new ObjectOutputStream(new FileOutputStream(usedFile)));
+            loadHistory(new ObjectInputStream(new FileInputStream(usedFile)));
 
             System.out.println("The end of the third chapter:");
             System.out.println();
@@ -170,6 +170,10 @@ public class TestGreedyChildrenIO
         catch (IOException exception)
         {
             System.err.println("File doesn't exist " + exception.getMessage());
+        } // catch
+        catch (ClassNotFoundException exception)
+        {
+            System.err.println("Class not found " + exception.getMessage());
         } // catch
     } // main
 
@@ -197,7 +201,7 @@ public class TestGreedyChildrenIO
     } // saveElement
 
     // Saves state of the objects in the output file.
-    private static void saveHistory(DataOutputStream output) throws IOException
+    private static void saveHistory(ObjectOutputStream output) throws IOException
     {
         // Number of saved objects is first element of the file
         output.writeInt(childrenCreatedSoFar + parloursCreatedSoFar);
@@ -206,16 +210,10 @@ public class TestGreedyChildrenIO
         {
             // IceCreamParlour
             if (objectIndex < parloursCreatedSoFar)
-            {
-                output.writeByte(1);
-                parlours[objectIndex].saveIceCreamParlour(output);
-            } // if
+                output.writeObject(parlours[objectIndex]);
             // GreedyChild
             else
-            {
-                output.writeByte(2);
-                children[objectIndex - parloursCreatedSoFar].saveGreedyChild(output);
-            } // else
+                output.writeObject(children[objectIndex - parloursCreatedSoFar]);
 
         } // for
 
@@ -223,7 +221,7 @@ public class TestGreedyChildrenIO
     } // saveHistory
 
     // Load objects from the input file.
-    private static void loadHistory(DataInputStream input) throws IOException
+    private static void loadHistory(ObjectInputStream input) throws IOException, ClassNotFoundException
     {
         // This is necessary, as new load clears current state.
         childrenCreatedSoFar = 0;
@@ -234,39 +232,22 @@ public class TestGreedyChildrenIO
 
         for (int objectIndex = 0; objectIndex < elementsToRead; objectIndex++)
         {
+            Object object;
             // IceCreamParlour
-            if(input.readByte() == 1)
+            if((object = input.readObject()) instanceof IceCreamParlour)
             {
-                parlours[parloursCreatedSoFar] = new IceCreamParlour(input);
+                parlours[parloursCreatedSoFar] = (IceCreamParlour) object;
                 parloursCreatedSoFar++;
             } // if
             // GreedyChild
             else
             {
-                children[childrenCreatedSoFar] = new GreedyChild(input);
-                int parlourId;
-                if((parlourId = input.readInt()) != 0)
-                    children[childrenCreatedSoFar].enterParlour(findById(parlourId));
+                children[childrenCreatedSoFar] = (GreedyChild) object;
                 childrenCreatedSoFar++;
             } // else
 
         } // for
         input.close();
     } // loadHistory
-
-    // Returns IceCreamParlour with given id.
-    private static IceCreamParlour findById(int id)
-    {
-        // No parlour assigned.
-        if(id == 0)
-            return null;
-        else
-            // Iterating through existing ones.
-            for (int i = 0; i < parloursCreatedSoFar; i++)
-                if(parlours[i].getIndex() == id)
-                    return parlours[i];
-
-        return null;
-    } // findById
 
 } // class TestGreedyChildrenIO

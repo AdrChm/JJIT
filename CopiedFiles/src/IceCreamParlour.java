@@ -1,6 +1,5 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.Serializable;
+
 
 /*	Ice cream parlours have a name and amount of ice cream, initially zero.
 	The can accept deliveries of ice cream, which increases their stock level.
@@ -9,13 +8,8 @@ import java.io.IOException;
 	attempt to eat, unless parlour's stock level is less than that amount,
 	in which case the children are served with as much ice cream as is left.
 */
-public class IceCreamParlour
+public class IceCreamParlour implements Serializable
 {
-	// Class variable responsible for assigned number.
-	private static int createdItems = 0;
-
-	// Index of the parlour.
-	private final int index;
 
 	// The name of the parlour.
 	private final String name;
@@ -29,16 +23,6 @@ public class IceCreamParlour
 		if(requiredName == null)
 			 throw new IceCreamParlourException("Name can't be set to null");
 		name = requiredName;
-		index = ++createdItems;
-	} // IceCreamParlour
-
-	// Construct an ice cream parlour from the input file.
-	public IceCreamParlour(DataInputStream inputStream) throws IceCreamParlourException, IOException
-	{
-		// Passing to constructor.
-		name = inputStream.readUTF();
-		iceCreamInStock = inputStream.readDouble();
-		index = inputStream.readInt();
 	} // IceCreamParlour
 
 	// Accept delivery of ice cream.
@@ -74,19 +58,5 @@ public class IceCreamParlour
 	{
 		return name + " has " + iceCreamInStock + " in stock.";
 	} // toString
-
-	// Saves state of a parlour in given output.
-	public void saveIceCreamParlour(DataOutputStream output) throws IOException
-	{
-		output.writeUTF(name);
-		output.writeDouble(iceCreamInStock);
-		output.writeInt(index);
-	} // saveIceCreamParlour
-
-	// Return Index of the parlour.
-	public int getIndex()
-	{
-		return index;
-	} // getIndex
 
 } // class IceCreamParlour
