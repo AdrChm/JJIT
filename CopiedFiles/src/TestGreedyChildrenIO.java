@@ -1,4 +1,8 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 // Program to test GreedyChildren and IceCreamParlour classes ability
 // to save and read data from the file.
@@ -142,6 +146,26 @@ public class TestGreedyChildrenIO
                     System.out.println(parlours[objectIndex - childrenCreatedSoFar]);
             } // for
 
+            System.out.println("Well, not quite as new chapter was written");
+            System.out.println("Children storm the palmours!");
+            for (int childIndex = 0; childIndex < childrenCreatedSoFar; childIndex++)
+                children[childIndex].enterParlour(parlours[childIndex]);
+
+            saveHistory(new DataOutputStream(new FileOutputStream("history.dat")));
+            loadHistory(new DataInputStream(new FileInputStream("history.dat")));
+
+            System.out.println("The end of the third chapter:");
+            System.out.println();
+            for (int objectIndex = 0; objectIndex < childrenCreatedSoFar + parloursCreatedSoFar; objectIndex++)
+            {
+                // GreedyChild
+                if(objectIndex < childrenCreatedSoFar)
+                    System.out.println(children[objectIndex]);
+                    // IceCreamParlour
+                else
+                    System.out.println(parlours[objectIndex - childrenCreatedSoFar]);
+            } // for
+
         } // try
         catch (IOException exception)
         {
@@ -180,17 +204,17 @@ public class TestGreedyChildrenIO
 
         for (int objectIndex = 0; objectIndex < childrenCreatedSoFar + parloursCreatedSoFar; objectIndex++)
         {
-            // GreedyChild
-            if (objectIndex < childrenCreatedSoFar)
-            {
-                output.writeByte(0);
-                children[objectIndex].saveGreedyChild(output);
-            } // if
             // IceCreamParlour
-            else
+            if (objectIndex < parloursCreatedSoFar)
             {
                 output.writeByte(1);
-                parlours[objectIndex - childrenCreatedSoFar].saveIceCreamParlour(output);
+                parlours[objectIndex].saveIceCreamParlour(output);
+            } // if
+            // GreedyChild
+            else
+            {
+                output.writeByte(2);
+                children[objectIndex - parloursCreatedSoFar].saveGreedyChild(output);
             } // else
 
         } // for
@@ -210,21 +234,39 @@ public class TestGreedyChildrenIO
 
         for (int objectIndex = 0; objectIndex < elementsToRead; objectIndex++)
         {
-            // GreedyChild
-            if(input.readByte() == 0)
-            {
-                children[childrenCreatedSoFar] = new GreedyChild(input);
-                childrenCreatedSoFar++;
-            } // if
             // IceCreamParlour
-            else
+            if(input.readByte() == 1)
             {
                 parlours[parloursCreatedSoFar] = new IceCreamParlour(input);
                 parloursCreatedSoFar++;
+            } // if
+            // GreedyChild
+            else
+            {
+                children[childrenCreatedSoFar] = new GreedyChild(input);
+                int parlourId;
+                if((parlourId = input.readInt()) != 0)
+                    children[childrenCreatedSoFar].enterParlour(findById(parlourId));
+                childrenCreatedSoFar++;
             } // else
 
         } // for
         input.close();
     } // loadHistory
+
+    // Returns IceCreamParlour with given id.
+    private static IceCreamParlour findById(int id)
+    {
+        // No parlour assigned.
+        if(id == 0)
+            return null;
+        else
+            // Iterating through existing ones.
+            for (int i = 0; i < parloursCreatedSoFar; i++)
+                if(parlours[i].getIndex() == id)
+                    return parlours[i];
+
+        return null;
+    } // findById
 
 } // class TestGreedyChildrenIO

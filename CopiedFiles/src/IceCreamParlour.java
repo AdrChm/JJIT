@@ -11,6 +11,12 @@ import java.io.IOException;
 */
 public class IceCreamParlour
 {
+	// Class variable responsible for assigned number.
+	private static int createdItems = 0;
+
+	// Index of the parlour.
+	private final int index;
+
 	// The name of the parlour.
 	private final String name;
 	
@@ -23,14 +29,16 @@ public class IceCreamParlour
 		if(requiredName == null)
 			 throw new IceCreamParlourException("Name can't be set to null");
 		name = requiredName;
+		index = ++createdItems;
 	} // IceCreamParlour
+
 	// Construct an ice cream parlour from the input file.
 	public IceCreamParlour(DataInputStream inputStream) throws IceCreamParlourException, IOException
 	{
 		// Passing to constructor.
-		this(inputStream.readUTF());
+		name = inputStream.readUTF();
 		iceCreamInStock = inputStream.readDouble();
-
+		index = inputStream.readInt();
 	} // IceCreamParlour
 
 	// Accept delivery of ice cream.
@@ -67,11 +75,18 @@ public class IceCreamParlour
 		return name + " has " + iceCreamInStock + " in stock.";
 	} // toString
 
-	//Saves state of a parlour in given output.
+	// Saves state of a parlour in given output.
 	public void saveIceCreamParlour(DataOutputStream output) throws IOException
 	{
 		output.writeUTF(name);
 		output.writeDouble(iceCreamInStock);
+		output.writeInt(index);
 	} // saveIceCreamParlour
+
+	// Return Index of the parlour.
+	public int getIndex()
+	{
+		return index;
+	} // getIndex
 
 } // class IceCreamParlour

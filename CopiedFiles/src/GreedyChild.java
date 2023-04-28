@@ -13,8 +13,7 @@ import java.io.IOException;
 	track of how much ice cream he or she has split, initially zero.
 
 	State of the child can be read and saved in file, data order is following:
-	name, stomachSize, stomachContents, tShirtStainSize.
-	Current IceCreamParlour is not saved, as null is assumed.
+	name, stomachSize, stomachContents, tShirtStainSize, IceCreamParlour
 */
 public class GreedyChild
 {
@@ -125,15 +124,14 @@ public class GreedyChild
 		       + "(currently in " + currentParlour + ")";
 	} // toString
 
-	//Saves state of a child in given output.
-	//Current IceCreamParlour is not saved, as null is assumed.
+	// Saves state of a child in given output.
 	public void saveGreedyChild(DataOutputStream output) throws IOException
 	{
-
 		output.writeUTF(name);
 		output.writeDouble(stomachSize);
 		output.writeDouble(stomachContents);
 		output.writeByte(tShirtStainSize);
+		output.writeInt(currentParlour != null ? currentParlour.getIndex() : 0);
 	} // saveGreedyChild
 
 } // class GreedyChild
