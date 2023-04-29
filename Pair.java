@@ -1,25 +1,27 @@
 // Two objects grouped into a pair.
-public class Pair
+public class Pair <FirstType, SecondType>
 {
-    // The two objects.
-    private final Object first, second;
+    // The first object.
+    private final FirstType first;
+
+    // The second object.
+    private final SecondType second;
 
     // The constructor is given the two objects.
-
-    public Pair(Object requiredFirst, Object requiredSecond)
+    public Pair(FirstType requiredFirst, SecondType requiredSecond)
     {
         first = requiredFirst;
         second = requiredSecond;
     } // Pair
 
     // Returns the first object.
-    public Object getFirst()
+    public FirstType getFirst()
     {
         return first;
     } // getFirst
 
     // Returns the second object.
-    public Object getSecond()
+    public SecondType getSecond()
     {
         return second;
     } // getSecond
