@@ -6,7 +6,7 @@ public class LongestArgument
     {
         Pair<String, Integer> result = LongestString.findLongestString(args);
         String longestArg = result.getFirst();
-        int longestIndex = result.getSecond().intValue();
+        int longestIndex = result.getSecond();
 
         System.out.println("A longest arguments was '" + longestArg + "'");
         System.out.println("of length " + longestArg.length());

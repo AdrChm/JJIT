@@ -20,7 +20,7 @@ public class LongestString
                 longestIndex = index;
             } // if
         }
-        return new Pair<String, Integer>(longestString, longestIndex);
+        return new Pair(longestString, longestIndex);
     } // findLongestString
 
 } // class LongestString
