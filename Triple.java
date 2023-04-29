@@ -1,18 +1,18 @@
 // Representation of 3 values, to be used as IntArrayStats class helper
 // to represent given array in the class mentioned above.
-public class Triple
+public class Triple<TypeOne, TypeTwo, TypeThree>
 {
     // Minimal value of some data set.
-    private final int minValue;
+    private final TypeOne minValue;
 
     // Maximum value of some data set.
-    private final int maxValue;
+    private final TypeTwo maxValue;
 
     // Mean value of some data set.
-    private final double meanValue;
+    private final TypeThree meanValue;
 
     // Constructor method.
-    public Triple(int minValue, int maxValue, double meanValue)
+    public Triple(TypeOne minValue, TypeTwo maxValue, TypeThree meanValue)
     {
         this.minValue = minValue;
         this.maxValue = maxValue;
@@ -20,19 +20,19 @@ public class Triple
     } // Triple
 
     // Returns the minimal value.
-    public int getMinValue()
+    public TypeOne getMinValue()
     {
         return minValue;
     } // getMinValue
 
     // Returns the maximum value.
-    public int getMaxValue()
+    public TypeTwo getMaxValue()
     {
         return maxValue;
     } // getMaxValue
-    
+
     // Returns the mean value.
-    public double getMeanValue()
+    public TypeThree getMeanValue()
     {
         return meanValue;
     } // getMeanValue

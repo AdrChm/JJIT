@@ -4,7 +4,7 @@ public class IntArrayStats
 
     // Finds the minimum, maximum and mean value of given int array.
     // Throw IllegalArgumentException if array is null or empty.
-    public static Triple getStats(int [] array) throws IllegalArgumentException
+    public static Triple<Integer, Integer, Double> getStats(int [] array) throws IllegalArgumentException
     {
         if(array == null || array.length == 0)
             throw new IllegalArgumentException("Array must exist and be non-empty");
