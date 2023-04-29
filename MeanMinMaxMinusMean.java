@@ -9,11 +9,14 @@ public class MeanMinMaxMinusMean
         for (int index = 0; index < args.length; index++)
             array[index] = Integer.parseInt(args[index]);
 
-        Triple<Integer, Integer, Double> stats = new IntArrayStats().getStats(array);
-        int max = stats.getMaxValue().intValue();
-        int min = stats.getMinValue().intValue();
-        double mean = stats.getMeanValue().doubleValue();
+        Triple<Integer, Integer, Double> stats = IntArrayStats.getStats(array);
+
+        int max = stats.getMaxValue();
+        int min = stats.getMinValue();
+        double mean = stats.getMeanValue();
+
         System.out.println((min + max) / 2.0 - mean);
+
     } // main
 
 } // class MeanMinMaxMinusMean
