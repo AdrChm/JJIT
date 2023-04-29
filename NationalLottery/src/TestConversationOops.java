@@ -4,7 +4,7 @@ public class TestConversationOops {
     public static void main(String[] args)
     {
         // A conversation of AudienceMembers.
-        Conversation<MoodyPerson> moodyChat = new Conversation<MoodyPerson>();
+        Conversation moodyChat = new Conversation();
 
         moodyChat.addPerson(new Teenager("TA 1"));
         moodyChat.addPerson(new CleverPunter("CP 1"));
