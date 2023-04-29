@@ -2,7 +2,7 @@
 // and get them to fill the machine of a game.
 public class TestWorkers
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws BallContainerException
     {
         testWorker(new Worker("May Kit Dewitt"),
                 new Game("Lott O'Luck Larry", 3, "Slippery's Mile", 2));
@@ -13,7 +13,7 @@ public class TestWorkers
 
     // Make tge given worker fill the given name,
     // reporting values before and after.
-    public static void testWorker(Worker worker, Game game)
+    public static void testWorker(Worker worker, Game game) throws BallContainerException
     {
         System.out.println("-----------------------------------");
         System.out.println("Start with");

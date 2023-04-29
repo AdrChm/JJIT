@@ -4,7 +4,7 @@
 public class Rack extends BallContainer
 {
     // Constructor is given the name and size.
-    public Rack(String name, int size)
+    public Rack(String name, int size) throws BallContainerException
     {
         super(name,size);
     } // Rack
@@ -18,7 +18,7 @@ public class Rack extends BallContainer
 
     // Sorts the balls in the Rack into ascending order,
     // using their compareTo() methods.
-    public void sortBalls()
+    public void sortBalls() throws BallContainerException
     {
         // Each pass of the sort reduces unsortedLength by one.
         int unsortedLength = getNoOfBalls();
@@ -39,7 +39,7 @@ public class Rack extends BallContainer
 
     // Return true if and only if the rack contains
     // a Ball with the given number.
-    public boolean contains(int value)
+    public boolean contains(int value) throws BallContainerException
     {
         boolean found = false;
         int index = 0;

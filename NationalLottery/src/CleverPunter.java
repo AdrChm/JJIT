@@ -41,33 +41,42 @@ public class CleverPunter extends MoodyPerson
     // Returns the Person's current saying.
     public String getCurrentSaying()
     {
-        if (currentGame == null)
+        try{
+            if (currentGame == null)
+            {
+                setHappy(false);
+                return "I need a game to play!";
+            } // if
+            else {
+                int noOfMatches = getNoOfMatches();
+                int noOfNonMatches = currentGame.getRackNoOfBalls() - noOfMatches;
+
+                // Is happy if and only if there are no non-matches.
+                setHappy(noOfNonMatches == 0);
+
+                if (noOfMatches == currentGame.getRackSize())
+                    return "Yippee!! I've won the jackpot!";
+                else if (noOfNonMatches != 0)
+                    return "Doh! " + noOfNonMatches + " not matched";
+                else if (noOfMatches == 0) // I.e. the rack is still empty.
+                    return "I'm excited!";
+                else
+                    return noOfMatches + " matched so far!";
+
+            } // else
+
+        } // try
+        catch(BallContainerException exception)
         {
-            setHappy(false);
-            return "I need a game to play!";
-        } // if
-        else {
-            int noOfMatches = getNoOfMatches();
-            int noOfNonMatches = currentGame.getRackNoOfBalls() - noOfMatches;
+            System.err.println(exception.getMessage());
+            return null;
+        } // catch
 
-            // Is happy if and only if there are no non-matches.
-            setHappy(noOfNonMatches == 0);
-
-            if (noOfMatches == currentGame.getRackSize())
-                return "Yippee!! I've won the jackpot!";
-            else if (noOfNonMatches != 0)
-                return "Doh! " + noOfNonMatches + " not matched";
-            else if (noOfMatches == 0) // I.e. the rack is still empty.
-                return "I'm excited!";
-            else
-                return noOfMatches + " matched so far!";
-
-        } // else
     } // getCurrentSaying 
 
     // Helper method to find out how many of the guesses currently match the
     // game rack. Note: this does not get called if currentGuess is null.
-    private int getNoOfMatches()
+    private int getNoOfMatches() throws BallContainerException
     {
         int noMatchedSoFar = 0;
         for (int oneNumber : currentGuess)
@@ -77,7 +86,7 @@ public class CleverPunter extends MoodyPerson
     } // getNoOfMatches
 
     // Set the game being currently played.
-    public void setGame(Game requiredGame)
+    public void setGame(Game requiredGame) throws BallContainerException
     {
         currentGame = requiredGame;
         currentGuess = new int[currentGame.getRackSize()];

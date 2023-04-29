@@ -9,7 +9,7 @@ public class Game
 
     // Constructor takes name and size of the machine, and the rack.
     public Game(String machineName, int machineSize,
-                String rackName, int rackSize)
+                String rackName, int rackSize) throws BallContainerException
     {
         machine = new Machine(machineName, machineSize);
         rack = new Rack(rackName, rackSize);
@@ -34,14 +34,14 @@ public class Game
     } // getRackNoOfBalls
 
     // Add a ball into the machine.
-    public void machineAddBall(Ball ball)
+    public void machineAddBall(Ball ball) throws BallContainerException
     {
         machine.addBall(ball);
     } // machineAddBall
 
     // Eject a ball from the machine into the rack.
     // Also return the rejected Ball.
-    public Ball ejectBall()
+    public Ball ejectBall() throws BallContainerException
     {
         if(machine.getNoOfBalls() > 0
             && rack.getNoOfBalls() < rack.getSize())
@@ -56,13 +56,13 @@ public class Game
 
     // Returns true if and only if the rack contains
     // a Ball with the given number.
-    public boolean rackContains(int value)
+    public boolean rackContains(int value) throws BallContainerException
     {
         return rack.contains(value);
     } // rackContains
 
     // Sorts the ball in the rack into ascending order.
-    public void rackSortBalls()
+    public void rackSortBalls() throws BallContainerException
     {
         rack.sortBalls();
     } // rackSortBalls
