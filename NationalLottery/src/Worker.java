@@ -36,7 +36,7 @@ public class Worker extends MoodyPerson
 
     // Makes this worker fill the machine of the given Game.
     // The balls are created as they are inserted into the Machine.
-    public void fillMachine(Game game)
+    public void fillMachine(Game game) throws BallContainerException
     {
         // Color of balls are evenly spread between these colours,
         // in ascending order.

@@ -3,7 +3,7 @@
 // reporting result as eject each ball.
 public class TestCleverPunter
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws BallContainerException
     {
         int machineSize = Integer.parseInt(args[0]);
         int rackSize = Integer.parseInt(args[1]);
