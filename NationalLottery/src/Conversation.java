@@ -20,8 +20,7 @@ public class Conversation<PersonType extends Person>
         if (noOfPersons == persons.length)
         {
             Person [] biggerArray = new Person[persons.length * ARRAY_RESIZE_FACTOR];
-            for (int index = 0; index < persons.length; index++)
-                biggerArray[index] = persons[index];
+            System.arraycopy(persons, 0, biggerArray, 0, persons.length);
             persons = biggerArray;
         } // if
         persons[noOfPersons] = newPerson;
