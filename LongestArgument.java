@@ -2,11 +2,11 @@
 // (Warning: this program does not catch RunTimeExceptions.)
 public class LongestArgument
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws RuntimeException
     {
-        Pair result = LongestString.findLongestString(args);
-        String longestArg = (String) result.getFirst();
-        int longestIndex = ((Integer) result.getSecond()).intValue();
+        Pair<String, Integer> result = LongestString.findLongestString(args);
+        String longestArg = result.getFirst();
+        int longestIndex = result.getSecond().intValue();
 
         System.out.println("A longest arguments was '" + longestArg + "'");
         System.out.println("of length " + longestArg.length());
