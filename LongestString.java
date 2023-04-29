@@ -4,7 +4,8 @@ public class LongestString
     // Find the longest string in the given array.
     // Return a pair containing it and its position.
     // Throw IllegalArgumentException if array is null or empty.
-    public static Pair findLongestString(String [] array) throws IllegalArgumentException
+    public static Pair<String, Integer> findLongestString(String [] array)
+                                        throws IllegalArgumentException
     {
         if(array == null || array.length == 0)
             throw new IllegalArgumentException("Array must exist and be non-empty");
@@ -19,7 +20,7 @@ public class LongestString
                 longestIndex = index;
             } // if
         }
-        return new Pair(longestString, longestIndex);
+        return new Pair<String, Integer>(longestString, longestIndex);
     } // findLongestString
 
 } // class LongestString
