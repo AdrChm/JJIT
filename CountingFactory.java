@@ -15,11 +15,13 @@ public class CountingFactory<ObjectType>
         return constructionCountSoFar;
     } // getConstructionCountSoFar
 
+
+    /* Commented out for project maintainability
     // Create an ObjectType and count it.
     public ObjectType newObject()
     {
         constructionCountSoFar++;
         return new ObjectType();
     } // newObject
-
+    */
 } // class CountingFactory
