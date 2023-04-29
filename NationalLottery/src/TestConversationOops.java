@@ -4,15 +4,17 @@ public class TestConversationOops {
     public static void main(String[] args)
     {
         // A conversation of AudienceMembers.
-        Conversation<AudienceMember> audienceChat = new Conversation<AudienceMember>();
+        Conversation<MoodyPerson> moodyChat = new Conversation<MoodyPerson>();
 
-        audienceChat.addPerson(new AudienceMember("AM 1"));
-        audienceChat.addPerson(new TVHost("TVH 1"));
-        System.out.printf("%s%n%n", audienceChat);
-        for (int count = 1; count <= audienceChat.getSize() ; count++)
+        moodyChat.addPerson(new Teenager("TA 1"));
+        moodyChat.addPerson(new CleverPunter("CP 1"));
+        moodyChat.addPerson(new Worker("W 1"));
+        moodyChat.addPerson(new TraineeWorker("TW 1", 0.5));
+        System.out.printf("%s%n%n", moodyChat);
+        for (int count = 1; count <= moodyChat.getSize() ; count++)
         {
-            audienceChat.speak();
-            System.out.printf("%s%n%n", audienceChat);
+            moodyChat.speak();
+            System.out.printf("%s%n%n", moodyChat);
         } // for
 
     } // main
