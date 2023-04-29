@@ -4,9 +4,9 @@ public class LongestArgumentOops
 {
     public static void main(String[] args)
     {
-        Pair result = LongestString.findLongestString(args);
-        int longestIndex = ((Integer) result.getFirst()).intValue();
-        String longestArg = (String) result.getSecond();
+        Pair<Integer, String> result = LongestString.findLongestString(args);
+        int longestIndex = result.getFirst().intValue();
+        String longestArg = result.getSecond();
 
         System.out.println("A longest arguments was '" + longestArg + "'");
         System.out.println("of length " + longestArg.length());
