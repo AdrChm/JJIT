@@ -1,0 +1,29 @@
+// representation of a Valuable which is a car.
+public class ValuableCar extends Car implements Valuable
+{
+    // A measure of the value of the car in general.
+    private double streetCredibilityIndex;
+
+    // Construct a ValuableCar with a given number of doors
+    // and general desirability.
+    public ValuableCar(int requiredNoOfDoors, double requiredStreetCredibilityIndex)
+    {
+        super(requiredNoOfDoors);
+        streetCredibilityIndex = requiredStreetCredibilityIndex;
+    } // ValuableCar
+
+    // Calculate and return the value of this valuable item.
+    @Override
+    public int value()
+    {
+        return (int) (getNoOfDoors() * 2000 * streetCredibilityIndex);
+    } // value
+
+    // Return a short description of this as a valuable item.
+    @Override
+    public String toString()
+    {
+        return "Car worth " + value();
+    } // toString
+
+} // class ValuableCar
