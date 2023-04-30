@@ -2,6 +2,6 @@
 public interface Valuable
 {
     // The value of this Valuable.
-    int Value();
+    int value();
 
 } // interface Valuable
