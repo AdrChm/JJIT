@@ -3,7 +3,7 @@ public class SortArray
 {
 
     // Sort the given array from indices 0 to noOfItemsToSort - 1.
-    private static void sort(Sortable [] anArray, int noOfItemsToSort)
+    public static void sort(Sortable [] anArray, int noOfItemsToSort)
         throws NullPointerException, ArrayIndexOutOfBoundsException
     {
         // Each pass of the sort reduces unsortedLength by one.
