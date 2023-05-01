@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // Representation of a collection of Valuables.
 public class Valuables
 {
@@ -45,8 +47,13 @@ public class Valuables
 
     } // toString
 
+    // Sort the collection into order by value.
+    public void sort()
+    {
+        Arrays.sort(valuableArray, 0, noOfValuables);
+    } // sort
 
-    // Create a Valuables collection, add Valuable items and show result.
+    // Create a Valuables collection, add Valuable items, sort and show result.
     // Purely for testing during development.
     public static void main(String[] args)
     {
@@ -68,6 +75,8 @@ public class Valuables
         valuables.addValuable(new ValuableCar(12, 4.0));
 
         System.out.println("My valuables are worth " + valuables.totalValue());
+
+        valuables.sort();
 
         System.out.println(valuables);
     } // main
