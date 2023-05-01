@@ -26,4 +26,23 @@ public class ValuableHouse extends House implements Valuable
         return "House worth " + value();
     } // toString
 
+    // Return negative if this value is greater than other's value,
+    // zero if they are the same, or positive if this value is lesser.
+    @Override
+    public int compareTo(Valuable other)
+    {
+        return other.value() - value();
+    } // compareTo
+
+    // Return true if and only if this and other have the same value.
+    // Unless other is not a Valuable, in which case delegate to superclass.
+    @Override
+    public boolean equals(Object other)
+    {
+        if(other instanceof Valuable)
+            return compareTo((Valuable) other) == 0;
+        else
+            return super.equals(other);
+    } // equals
+
 } // class ValuableHouse
