@@ -29,7 +29,7 @@ public class TestMinMaxArray
         for (int index = 0; index < cars.length; index++)
             System.out.println(cars[index]);
 
-        Pair minMaxCars = MinMaxArray.<ValuableCar>getPair(cars);
+        Pair minMaxCars = MinMaxArray.getPair(cars);
         System.out.println(minMaxCars);
 
     } // main
