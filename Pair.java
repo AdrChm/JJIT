@@ -26,4 +26,11 @@ public class Pair <FirstType, SecondType>
         return second;
     } // getSecond
 
+    // String representation of a Pair.
+    @Override
+    public String toString()
+    {
+        return first + ", " + second;
+    } // toString
+
 } // class Pair
