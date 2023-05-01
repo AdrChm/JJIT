@@ -3,7 +3,7 @@
  *
  * @author Adrian Chmielewski
  */
-public class Student
+public class Student implements Comparable<Student>
 {
 	// Not changeable name.
 	private final String name;
@@ -136,12 +136,50 @@ public class Student
 		return this.mark;
 	} // getMark
 
+	/**
+	 * 	Compares this student's value with another, returning
+	 * 	< 0 if this student's mark is smaller than the other's,
+	 * 	> 0 if it is greater, or if the values are equal then
+	 * 	compare the @name of the colours instead. If these are
+	 * 	equal as well, student's phones is compared with other's.
+	 * 	@see Phone, returning
+	 * 	< 0 if this student's phone model has smaller value than
+	 * 	the other's, > 0 if it has greater, or if the values are
+	 * 	equal then return 0;
+	 *
+	 * @param other Student compared with this.
+	 *
+	 * @return int representing comparing outcome.
+ 	 */
+
+	@Override
 	public int compareTo(Student other)
 	{
 		if(this.mark == other.getMark())
-			return this.name.compareTo(other.getName());
+			if(this.name.compareTo(other.getName()) == 0)
+				return this.phone.getModelName().compareTo(other.getPhone().getModelName());
+			else
+				return this.name.compareTo(other.getName());
 		else
 			return this.mark - other.getMark();
 	} // getName
+
+	/**
+	 * Indicates whether other Student is "equal to" this one.
+	 * To be considered equal compared Students must return 0 in
+	 * compareTo method.
+	 *
+	 * @param other Student compared with this.
+	 *
+	 * @return boolean, true if equal and false if not.
+	 */
+	@Override
+	public boolean equals(Object other)
+	{
+		if(other instanceof Student)
+			return this.compareTo((Student) other) == 0;
+		else
+			return super.equals(other);
+	} // equals
 
 } // class Student

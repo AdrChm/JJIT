@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 // Representation of a lottery ball, comprising colour and value.
-public class Ball
+public class Ball implements Comparable<Ball>
 {
     // The numeric value of the ball.
     private final int value;
@@ -39,6 +39,16 @@ public class Ball
         else
             return value - other.value;
     } // compareTo
+
+    // Return true if and only if this and other have the same value and color.
+    @Override
+    public boolean equals(Object other)
+    {
+        if(other instanceof Ball)
+            return compareTo((Ball) other) == 0;
+        else
+            return super.equals(other);
+    } // equals
 
     // Mainly for testing.
 
