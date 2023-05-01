@@ -1,5 +1,5 @@
 // representation of a Valuable which is a car.
-public class ValuableCar extends Car implements Valuable
+public class ValuableCar extends Car implements Valuable, Comparable
 {
     // A measure of the value of the car in general.
     private double streetCredibilityIndex;
@@ -25,5 +25,19 @@ public class ValuableCar extends Car implements Valuable
     {
         return "Car worth " + value();
     } // toString
+
+    @Override
+    public int compareTo(Object o)
+    {
+        ValuableCar other = (ValuableCar) o;
+
+        if(value() == other.value())
+            if (getNoOfDoors() == other.getNoOfDoors())
+                return 0;
+            else
+                return getNoOfDoors() - other.getNoOfDoors();
+
+        return (value() - other.value());
+    } // compareTo
 
 } // class ValuableCar
