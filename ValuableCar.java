@@ -1,5 +1,5 @@
 // representation of a Valuable which is a car.
-public class ValuableCar extends Car implements Valuable, Comparable
+public class ValuableCar extends Car implements Valuable, Comparable<Valuable>
 {
     // A measure of the value of the car in general.
     private double streetCredibilityIndex;
@@ -26,18 +26,23 @@ public class ValuableCar extends Car implements Valuable, Comparable
         return "Car worth " + value();
     } // toString
 
+    // Return negative if this value is greater than other's value,
+    // zero if they are the same, or positive if this value is lesser.
     @Override
-    public int compareTo(Object o)
+    public int compareTo(Valuable other)
     {
-        ValuableCar other = (ValuableCar) o;
-
-        if(value() == other.value())
-            if (getNoOfDoors() == other.getNoOfDoors())
-                return 0;
-            else
-                return getNoOfDoors() - other.getNoOfDoors();
-
-        return (value() - other.value());
+        return other.value() - value();
     } // compareTo
+
+    // Return true if and only if this and other have the same value.
+    // Unless other is not a Valuable, in which case delegate to superclass.
+    @Override
+    public boolean equals(Object other)
+    {
+        if(other instanceof Valuable)
+            return compareTo((Valuable) other) == 0;
+        else
+            return super.equals(other);
+    } // equals
 
 } // class ValuableCar
