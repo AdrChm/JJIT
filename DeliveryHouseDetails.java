@@ -56,6 +56,8 @@ public class DeliveryHouseDetails implements Comparable<DeliveryHouseDetails>
     } // compareTo
 
     // Equivalence test, consistent with compareTo.
+    // Is not aligned with hashCode() as this is equivalence of house number
+    // rather than full equivalence, which is sufficient for its purpose.
     @Override
     public boolean equals(Object other)
     {
@@ -65,5 +67,15 @@ public class DeliveryHouseDetails implements Comparable<DeliveryHouseDetails>
             return super.equals(other);
     } // equals
 
+    // Return int hash value of this object.
+    // Adjusted to be compatible with equals(), which in this case
+    // doesn't mean full equality of the objects, but just its address part.
+    @Override
+    public int hashCode()
+    {
+        // Mersenne prime
+        int base = 31;
+        return base * houseNumber % 29;
+    } // hashCode
 
 } // class DeliveryHouseDetails

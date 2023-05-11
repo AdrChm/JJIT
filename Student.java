@@ -147,6 +147,10 @@ public class Student implements Comparable<Student>
 	 * 	the other's, > 0 if it has greater, or if the values are
 	 * 	equal then return 0;
 	 *
+	 * 	The way this method is required to work unables proper implemention
+	 * 	of hashCode funtion, thus Student class must rely on super.hashCode()
+	 * 	which is not consistent with equals method for this class.
+	 *
 	 * @param other Student compared with this.
 	 *
 	 * @return int representing comparing outcome.
@@ -181,5 +185,21 @@ public class Student implements Comparable<Student>
 		else
 			return super.equals(other);
 	} // equals
+
+	/**
+	 * 	Returns hashCode of this student.
+	 * 	Due to requirements for compareTo class, this is only partially correct
+	 * 	implementation as it doesn't provide proper values when marks of compared
+	 * 	students are equal, thus considers mark as the only parameter. This implementation
+	 * 	discourages the use of hashmap, as chance for collision is almost certain.
+	 * 	Regardless this drawback, it must be done as part of coffee 21.4.4 task.
+	 *
+	 * 	@return int representing this date.
+	 */
+	@Override
+	public int hashCode()
+	{
+		return (11 * mark) % 5;
+	} // hashCode
 
 } // class Student
