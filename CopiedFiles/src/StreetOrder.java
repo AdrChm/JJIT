@@ -1,10 +1,5 @@
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 // Program to sort elements to be delivered at some street.
 // Two arguments are required: input file, output file.
@@ -31,28 +26,22 @@ public class StreetOrder
 
             // Populating the list.
             String inputLine;
-            List<String> lines = new ArrayList<String>();
-
+            ArrayList<DeliveryHouseDetails> lines = new ArrayList<DeliveryHouseDetails>();
+            int nextHouseNumber = 1;
             while ((inputLine = input.readLine()) != null)
-                lines.add(inputLine);
+            {
+                lines.add(new DeliveryHouseDetails(nextHouseNumber, inputLine));
+                System.out.println(inputLine);
+                nextHouseNumber++;
+            } // while
 
             // Natural ordering assumed - by the number
             lines.sort(null);
 
-            boolean isEven = lines.size() % 2 == 0;
-
-            for (int index = 0; index < lines.size(); index += 2)
+            for (int index = 0; index < lines.size(); index++)
             {
-                output.println(lines.get(index));
+                output.println(lines.get(index).getDeliveryDetails());
             } // for
-
-            // No middle element - last index element is odd
-            if(isEven)
-                for (int index = lines.size() - 1; index > 0 ; index -= 2)
-                    output.println(lines.get(index));
-            else
-                for (int index = lines.size() - 2; index > 0 ; index -= 2)
-                    output.println(lines.get(index));
 
         } // try
         catch (IOException exception)
