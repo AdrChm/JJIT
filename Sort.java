@@ -3,9 +3,8 @@ import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 // Program to sort lines of a file, line by line, and write to another.
 // Input file is the first argument, output is the second.
@@ -24,20 +23,20 @@ public class Sort
             input = new BufferedReader(new FileReader("fileToRead.txt"));
             output = new PrintWriter(new FileWriter("fileToWrite.txt"));
 
-            // The list for storing the lines.
-            List<String> lineList = new ArrayList<String>();
+            // The Set for sorting the lines
+            TreeSet<String> lineSet = new TreeSet<>();
 
             // Read the lines into lineList.
             String currentLine;
 
             while ((currentLine = input.readLine()) != null)
-                lineList.add(currentLine);
+                lineSet.add(currentLine);
 
-            // Sort lineList
-            Collections.sort(lineList);
+            // Now output them in natural order
+            Iterator<String> iterator = lineSet.iterator();
 
-            for (int index = 0; index < lineList.size(); index++)
-                output.println(lineList.get(index));
+            while(iterator.hasNext())
+                output.println(iterator.next());
 
         } // try
         catch (Exception exception)
