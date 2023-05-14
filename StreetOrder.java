@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
-import java.io.PrintWriter;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Iterator;
 
 // Program to sort elements to be delivered at some street.
 // Two arguments are required: input file, output file.
@@ -29,9 +30,10 @@ public class StreetOrder
             input = new BufferedReader(new FileReader(args[0]));
             output = new PrintWriter(new FileWriter(args[1]));
 
-            // Populating the list.
+            // String to populate the list.
             String inputLine;
-            ArrayList<DeliveryHouseDetails> lines = new ArrayList<DeliveryHouseDetails>();
+
+            Set<DeliveryHouseDetails> lines = new TreeSet<>();
             int nextHouseNumber = 1;
             while ((inputLine = input.readLine()) != null)
             {
@@ -41,12 +43,11 @@ public class StreetOrder
             } // while
 
             // Natural ordering assumed - by the number
-            lines.sort(null);
-
-            for (int index = 0; index < lines.size(); index++)
+            Iterator<DeliveryHouseDetails> iterator = lines.iterator();
+            while(iterator.hasNext())
             {
-                output.println(lines.get(index).getDeliveryDetails());
-            } // for
+                output.println(iterator.next().getDeliveryDetails());
+            } // while
 
         } // try
         catch (IOException exception)
