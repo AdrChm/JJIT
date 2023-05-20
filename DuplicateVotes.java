@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class DuplicateVotes
 {
@@ -21,28 +22,34 @@ public class DuplicateVotes
                 throw new IllegalArgumentException("Program requires tow arguments: Input file, output file");
 
             // HashMap to keep voters.
-            HashMap<String, String> voters = new HashMap<>();
+            // I really don't like the requirements of the solution.
+            HashMap<String, VoterRecord> voters = new HashMap<>();
 
-            // Duplicates found.
-            int duplicatesFound = 0;
-
-            String voter;
+            String voterData;
             String timeAndLocation;
-            while ((voter = input.readLine()) != null)
+            while ((voterData = input.readLine()) != null)
             {
                 timeAndLocation = input.readLine();
 
-                if(voters.get(voter) == null)
-                    voters.put(voter, timeAndLocation);
+                if(!voters.containsKey(voterData))
+                {
+                    voters.put(voterData, new VoterRecord(voterData));
+                    voters.get(voterData).addVote(timeAndLocation);
+                }
                 else
                 {
-                    duplicatesFound++;
-                    output.println(voter);
-                    output.println("\tDuplicate: " + timeAndLocation);
-                    output.println("\tFirst occurrence: " + voters.get(voter));
+                    voters.get(voterData).addVote(timeAndLocation);
+                    output.print(voters.get(voterData));
                 } // else
-
             } // while
+
+            // Duplicates calculation, another downgrade comparing with previous solution,
+            // but we do what requirements say to do.
+            int duplicatesFound = 0;
+            for (String voter: voters.keySet())
+                if(voters.get(voter).numberOfVotes() != 1)
+                    duplicatesFound += voters.get(voter).numberOfVotes() - 1;
+
             output.println("There " + (duplicatesFound == 1 ? "was " : "were ") + duplicatesFound + " duplicate votes");
         } // try
         catch (IOException exception)
