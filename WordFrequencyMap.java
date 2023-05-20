@@ -1,15 +1,14 @@
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeSet;
 
 // A map from word to WordWithFrequency.
 public class WordFrequencyMap
 {
-    // The map uses a TreeMap, so that we can obtain the values in natural
-    // ordering of the keys. I.e., in order by word.
-    private final TreeMap<String, WordWithFrequency>
-        wordMappedToWoWithFrequency = new TreeMap<String, WordWithFrequency>();
+    // The map uses a HashMap to efficiently store the WordWithFrequency objects.
+    private final Map<String, WordWithFrequency>
+        wordMappedToWoWithFrequency = new HashMap<String, WordWithFrequency>();
 
     // Empty constructor, nothing needs doing.
     public WordFrequencyMap()
@@ -32,13 +31,14 @@ public class WordFrequencyMap
         } // else
     } // countWord
 
-    // Show the words and frequencies in word order.
+    // Show the words and frequencies in frequency order.
     @Override
     public String toString()
     {
-        // Obtain the WordWithFrequency values in word iterable order.
-        Collection<WordWithFrequency> wordWithFrequencyValues
-                = wordMappedToWoWithFrequency.values();
+        // Obtain the WordWithFrequency values in an unpredictable order,
+        // and put them into a TreeSet so we can extract them in frequency order.
+        TreeSet<WordWithFrequency> wordWithFrequencyValues
+                = new TreeSet<WordWithFrequency>(wordMappedToWoWithFrequency.values());
 
         String result = "";
         for (WordWithFrequency wordWithFrequency: wordWithFrequencyValues)
