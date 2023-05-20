@@ -1,5 +1,9 @@
-import java.io.*;
-import java.util.HashSet;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class DuplicateVotes
 {
@@ -16,23 +20,27 @@ public class DuplicateVotes
             if(args.length != 2)
                 throw new IllegalArgumentException("Program requires tow arguments: Input file, output file");
 
-            // HashSet to keep voters.
-            HashSet<String> voters = new HashSet<>();
+            // HashMap to keep voters.
+            HashMap<String, String> voters = new HashMap<>();
 
             // Duplicates found.
             int duplicatesFound = 0;
 
-            String nextLine;
-            while ((nextLine = input.readLine()) != null)
+            String voter;
+            String timeAndLocation;
+            while ((voter = input.readLine()) != null)
             {
-                if(!voters.add(nextLine))
+                timeAndLocation = input.readLine();
+
+                if(voters.get(voter) == null)
+                    voters.put(voter, timeAndLocation);
+                else
                 {
                     duplicatesFound++;
-                    output.println(nextLine);
+                    output.println(voter);
+                    output.println("\tDuplicate: " + timeAndLocation);
+                    output.println("\tFirst occurrence: " + voters.get(voter));
                 } // else
-
-                // Skipping time stamp line.
-                input.readLine();
 
             } // while
             output.println("There " + (duplicatesFound == 1 ? "was " : "were ") + duplicatesFound + " duplicate votes");

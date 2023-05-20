@@ -1,0 +1,82 @@
+Rupert Rodgers-Smythe, 4, M25 7QZ
+	Duplicate: 12:27 Manchester 99
+	First occurrence: 07:37 Manchester 538
+Samuel Pacock, 6, M25 7QZ
+	Duplicate: 14:59 Manchester 308
+	First occurrence: 10:25 Manchester 538
+Sarah Pacock, 6, M25 7QZ
+	Duplicate: 19:01 Manchester 539
+	First occurrence: 10:25 Manchester 538
+Margaret Chopin, 9, M37 9MP
+	Duplicate: 19:30 Manchester 308
+	First occurrence: 12:14 Manchester 299
+Sarah Pacock, 6, M25 7QZ
+	Duplicate: 20:59 Manchester 540
+	First occurrence: 10:25 Manchester 538
+Ava Kim, 5, M17 8XJ
+	Duplicate: 19:42 Manchester 189
+	First occurrence: 09:49 Manchester 308
+Ava Kim, 5, M17 8XJ
+	Duplicate: 13:51 Manchester 538
+	First occurrence: 09:49 Manchester 308
+Ava Kim, 5, M17 8XJ
+	Duplicate: 15:06 Manchester 314
+	First occurrence: 09:49 Manchester 308
+Ava Kim, 5, M17 8XJ
+	Duplicate: 10:31 Manchester 99
+	First occurrence: 09:49 Manchester 308
+Ava Kim, 5, M17 8XJ
+	Duplicate: 08:08 Manchester 189
+	First occurrence: 09:49 Manchester 308
+Liam Patel, 4, M17 8XJ
+	Duplicate: 21:41 Manchester 538
+	First occurrence: 17:47 Manchester 308
+Liam Patel, 4, M17 8XJ
+	Duplicate: 08:30 Manchester 314
+	First occurrence: 17:47 Manchester 308
+Liam Patel, 4, M17 8XJ
+	Duplicate: 15:15 Manchester 538
+	First occurrence: 17:47 Manchester 308
+Liam Patel, 4, M17 8XJ
+	Duplicate: 20:56 Manchester 99
+	First occurrence: 17:47 Manchester 308
+Liam Patel, 4, M17 8XJ
+	Duplicate: 12:14 Manchester 189
+	First occurrence: 17:47 Manchester 308
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 08:60 Manchester 308
+	First occurrence: 08:48 Manchester 605
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 12:44 Manchester 189
+	First occurrence: 08:48 Manchester 605
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 21:45 Manchester 538
+	First occurrence: 08:48 Manchester 605
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 17:25 Manchester 314
+	First occurrence: 08:48 Manchester 605
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 07:35 Manchester 99
+	First occurrence: 08:48 Manchester 605
+Benjamin Anderson, 12, M1 0KY
+	Duplicate: 08:60 Manchester 189
+	First occurrence: 08:48 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 15:23 Manchester 308
+	First occurrence: 20:17 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 10:43 Manchester 189
+	First occurrence: 20:17 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 20:59 Manchester 538
+	First occurrence: 20:17 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 14:46 Manchester 314
+	First occurrence: 20:17 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 07:38 Manchester 99
+	First occurrence: 20:17 Manchester 605
+Sophia Thompson, 13, M1 0KY
+	Duplicate: 15:15 Manchester 189
+	First occurrence: 20:17 Manchester 605
+There were 27 duplicate votes
