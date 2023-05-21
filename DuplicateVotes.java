@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.TreeMap;
 
 public class DuplicateVotes
 {
@@ -21,9 +22,9 @@ public class DuplicateVotes
             if(args.length != 2)
                 throw new IllegalArgumentException("Program requires tow arguments: Input file, output file");
 
-            // HashMap to keep voters.
+            // TreeMap to keep voters.
             // I really don't like the requirements of the solution.
-            HashMap<String, VoterRecord> voters = new HashMap<>();
+            TreeMap<String, VoterRecord> voters = new TreeMap<>();
 
             String voterData;
             String timeAndLocation;
