@@ -3,75 +3,65 @@ import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Arrays;
+import java.util.Iterator;
+import java.util.TreeSet;
 
-// Sort lines of text and saves the result into another file.
+// Program to sort lines of a file, line by line, and write to another.
+// Input file is the first argument, output is the second.
 public class Sort
 {
-    // Initial size of the array.
-    private static final int INITIAL_ARRAY_SIZE = 2;
-
-    // Array resize factor.
-    private static final int ARRAY_SIZE_FACTOR = 2;
-
-    // Array of lines from the file.
-    private static String [] array = new String[INITIAL_ARRAY_SIZE];
-    private static int elementsAdded = 0;
-
     public static void main(String[] args)
     {
         BufferedReader input = null;
         PrintWriter output = null;
-        try {
+        try
+        {
+            if(args.length != 2)
+                throw new IllegalArgumentException(
+                        "There must be exactly two arguments: infile outfile");
+
             input = new BufferedReader(new FileReader("fileToRead.txt"));
-            String nextLine;
-
-            while ((nextLine = input.readLine()) != null)
-            {
-                System.out.println(nextLine);
-                addElement(nextLine);
-            } // while
-
-            Arrays.sort(array, 0, elementsAdded);
             output = new PrintWriter(new FileWriter("fileToWrite.txt"));
 
-            for (int index = 0; index < elementsAdded; index++)
-                output.println(array[index]);
+            // The Set for sorting the lines
+            TreeSet<String> lineSet = new TreeSet<>();
 
-            if(output.checkError())
-                throw new IOException("Something wrong with the output file ");
-            output.close();
+            // Read the lines into lineList.
+            String currentLine;
+
+            while ((currentLine = input.readLine()) != null)
+                lineSet.add(currentLine);
+
+            // Now output them in natural order
+            Iterator<String> iterator = lineSet.iterator();
+
+            while(iterator.hasNext())
+                output.println(iterator.next());
 
         } // try
-        catch (IOException exception)
+        catch (Exception exception)
         {
-            System.err.println("Some file problem " + exception.getMessage());
+            System.err.println(exception);
         } // catch
         finally
         {
-            try{
-                input.close();
-            } catch (IOException exception) {
-                System.err.println("Could not close the input stream " + exception.getMessage());
+            try
+            {
+                if(input != null)
+                    input.close();
+
+            } // try
+            catch (IOException exception)
+            {
+                System.err.println("Could not close the input " + exception);
             } // catch
+            if(output != null)
+            {
+                output.close();
+                if (output.checkError())
+                    System.err.println("Something went wrong with the output");
+            } // if
         } // finally
-
     } // main
-
-    // Helper method to extend array if needed
-    private static void addElement(String element)
-    {
-        // Extending array once it's full
-        if(elementsAdded == array.length)
-        {
-            String [] extendedArray = new String[array.length * ARRAY_SIZE_FACTOR];
-            System.arraycopy(array, 0, extendedArray, 0, array.length);
-            array = extendedArray;
-        } // if
-
-        array[elementsAdded] = element;
-        elementsAdded++;
-
-    } // addElement
 
 } // class Sort

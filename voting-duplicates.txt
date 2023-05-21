@@ -1,0 +1,133 @@
+Rupert Rodgers-Smythe, 4, M25 7QZ
+	07:37 Manchester 538
+	12:27 Manchester 99
+Samuel Pacock, 6, M25 7QZ
+	10:25 Manchester 538
+	14:59 Manchester 308
+Sarah Pacock, 6, M25 7QZ
+	10:25 Manchester 538
+	19:01 Manchester 539
+Margaret Chopin, 9, M37 9MP
+	12:14 Manchester 299
+	19:30 Manchester 308
+Sarah Pacock, 6, M25 7QZ
+	10:25 Manchester 538
+	19:01 Manchester 539
+	20:59 Manchester 540
+Ava Kim, 5, M17 8XJ
+	09:49 Manchester 308
+	19:42 Manchester 189
+Ava Kim, 5, M17 8XJ
+	09:49 Manchester 308
+	19:42 Manchester 189
+	13:51 Manchester 538
+Ava Kim, 5, M17 8XJ
+	09:49 Manchester 308
+	19:42 Manchester 189
+	13:51 Manchester 538
+	15:06 Manchester 314
+Ava Kim, 5, M17 8XJ
+	09:49 Manchester 308
+	19:42 Manchester 189
+	13:51 Manchester 538
+	15:06 Manchester 314
+	10:31 Manchester 99
+Ava Kim, 5, M17 8XJ
+	09:49 Manchester 308
+	19:42 Manchester 189
+	13:51 Manchester 538
+	15:06 Manchester 314
+	10:31 Manchester 99
+	08:08 Manchester 189
+Liam Patel, 4, M17 8XJ
+	17:47 Manchester 308
+	21:41 Manchester 538
+Liam Patel, 4, M17 8XJ
+	17:47 Manchester 308
+	21:41 Manchester 538
+	08:30 Manchester 314
+Liam Patel, 4, M17 8XJ
+	17:47 Manchester 308
+	21:41 Manchester 538
+	08:30 Manchester 314
+	15:15 Manchester 538
+Liam Patel, 4, M17 8XJ
+	17:47 Manchester 308
+	21:41 Manchester 538
+	08:30 Manchester 314
+	15:15 Manchester 538
+	20:56 Manchester 99
+Liam Patel, 4, M17 8XJ
+	17:47 Manchester 308
+	21:41 Manchester 538
+	08:30 Manchester 314
+	15:15 Manchester 538
+	20:56 Manchester 99
+	12:14 Manchester 189
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+	12:44 Manchester 189
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+	12:44 Manchester 189
+	21:45 Manchester 538
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+	12:44 Manchester 189
+	21:45 Manchester 538
+	17:25 Manchester 314
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+	12:44 Manchester 189
+	21:45 Manchester 538
+	17:25 Manchester 314
+	07:35 Manchester 99
+Benjamin Anderson, 12, M1 0KY
+	08:48 Manchester 605
+	08:60 Manchester 308
+	12:44 Manchester 189
+	21:45 Manchester 538
+	17:25 Manchester 314
+	07:35 Manchester 99
+	08:60 Manchester 189
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+	10:43 Manchester 189
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+	10:43 Manchester 189
+	20:59 Manchester 538
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+	10:43 Manchester 189
+	20:59 Manchester 538
+	14:46 Manchester 314
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+	10:43 Manchester 189
+	20:59 Manchester 538
+	14:46 Manchester 314
+	07:38 Manchester 99
+Sophia Thompson, 13, M1 0KY
+	20:17 Manchester 605
+	15:23 Manchester 308
+	10:43 Manchester 189
+	20:59 Manchester 538
+	14:46 Manchester 314
+	07:38 Manchester 99
+	15:15 Manchester 189
+There were 27 duplicate votes

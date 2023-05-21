@@ -429,4 +429,23 @@ public class Date
 		return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 	} // isLeapYear
 
+	/**
+	 * 	Returns hashCode of this date.
+	 * 	91193 is used at it;s approximately close enough
+	 * 	to max value of presented formula which is a simplified way
+	 * 	sums up the amount of days for a given date.
+	 *
+	 * 	@return int representing this date.
+ 	 */
+
+	@Override
+	public int hashCode()
+	{
+		// Mersenne prime
+		int base = 91193;
+		int hash = base + day;
+		hash = hash * base + 31 * (month - 1);
+		return (hash * base + 365 * (year - 1754)) % 91193;
+	} // hashCode
+
 } // class Date

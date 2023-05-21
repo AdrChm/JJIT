@@ -51,11 +51,19 @@ public class Ball implements Comparable<Ball>
     } // equals
 
     // Mainly for testing.
-
     @Override
     public String toString()
     {
         return "Ball " + value + " " + colour;
     } // toString
+
+    // Return int hash value of this ball.
+    // Implementation is consistent only partially as it only considers
+    // first condition of the compareTo method - value.
+    public int hashcode()
+    {
+        int base = 47;
+        return (base * value) % 43;
+    } // hashcode
 
 } // class Ball

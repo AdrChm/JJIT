@@ -45,4 +45,17 @@ public class ValuableHouse extends House implements Valuable
             return super.equals(other);
     } // equals
 
+    // Return int hash value of this house.
+    // Adjusted to be compatible with equals(), which in this case
+    // doesn't mean full equality of the objects, but just it is
+    // value() and locationDesirabilityIndex.
+    @Override
+    public int hashCode()
+    {
+        // Mersenne prime
+        int base = 31;
+        int hash = base + value();
+        return hash * base + (int)locationDesirabilityIndex;
+    } // hashCode
+
 } // class ValuableHouse

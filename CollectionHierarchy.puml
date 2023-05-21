@@ -1,0 +1,93 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class ArrayList
+{
+    +
+}
+interface Set
+{
+    + boolean remove(Object o)
+    + boolean addAll(Collection c)
+    + boolean removeAll(Collection c)
+    + boolean retainAll(Collection c)
+    + boolean containsAll(Collection c)
+}
+class HashSet
+{
+    + HashSet()
+    + int size()
+    + boolean add(Object o)
+    + boolean contains(Object o)
+    + iterator()
+    + boolean remove(Object o)
+    + boolean addAll(Collection c)
+}
+class TreeSet
+{
+    + TreeSet()
+    + int size()
+    + boolean add(Object o)
+    + boolean contains(Object o)
+    + iterator()
+    + boolean remove(Object o)
+    + boolean addAll(Collection c)
+}
+interface List
+{
+    + Object get(int index)
+    + set(int index, Object element)
+    + boolean remove(Object o)
+    + boolean containsAll(Collection c)
+    + boolean addAll(Collection c)
+    + boolean removeAll(Collection c)
+    + boolean retainAll(Collection c)
+    + boolean add(int index, Object element)
+    + boolean remove(int index)
+}
+interface Collection
+{
+    + int size()
+    + boolean add(Object o)
+    + boolean contains(Object o)
+    + iterator()
+}
+class ArrayList
+{
+    + ArrayList()
+    + int size()
+    + boolean add(Object o)
+    + boolean contains(Object o)
+    + Iterator iterator()
+    + Object get(int index)
+    + set(int index, Object element)
+    + boolean add(int index, Object element)
+    + boolean remove(int index)
+    + boolean remove(Object o)
+    + boolean addAll(Collection c)
+    + boolean removeAll(Collection c)
+    + boolean retainAll(Collection c)
+
+}
+class LinkedList
+{
+    + LinkedList()
+    + int size()
+    + boolean add(Object o)
+    + boolean contains(Object o)
+    + Iterator iterator()
+    + Object get(int index)
+    + set(int index, Object element)
+    + boolean remove(Object o)
+    + boolean addAll(Collection c)
+    + boolean add(int index, Object element)
+    + boolean remove(int index)
+}
+Collection <|-- List
+List <|-- ArrayList
+List <|--- LinkedList
+Collection <|-- Set
+Set <|-- HashSet
+Set <|--- TreeSet
+
+@enduml

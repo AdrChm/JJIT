@@ -45,4 +45,17 @@ public class ValuableCar extends Car implements Valuable, Comparable<Valuable>
             return super.equals(other);
     } // equals
 
+    // Return int hash value of this car.
+    // Adjusted to be compatible with equals(), which in this case
+    // doesn't mean full equality of the objects, but just it is
+    // value() and streetCredibilityIndex.
+    @Override
+    public int hashCode()
+    {
+        // Mersenne prime
+        int base = 31;
+        int hash = base + value();
+        return hash * base + (int)streetCredibilityIndex % 29;
+    } // hashCode
+
 } // class ValuableCar

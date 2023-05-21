@@ -28,4 +28,16 @@ public class DictionaryEntry extends Pair<String, String>
             return super.equals(other);
     } // equals
 
+    // Return int hash value of this object.
+    // Adjusted to be compatible with equals()
+    @Override
+    public int hashCode()
+    {
+        // Mersenne prime
+        int base = 127;
+        int hash = base + ((super.getFirst() == null) ? 0 : super.getFirst().hashCode());
+        return base * hash + ((super.getSecond() == null) ? 0 : super.getSecond().hashCode());
+
+    } // hashCode
+
 } // class DictionaryEntry
